@@ -1,6 +1,6 @@
 package Utilidad;
 
-public class Position {
+public class Position implements Cloneable {
 	protected int f;
 	protected int c;
 	
@@ -28,6 +28,10 @@ public class Position {
 
 	public void setColumna(int c) {
 		this.c = c;
+	}
+	
+	public Position clone() {
+		return new Position(f, c);
 	}
 	
 }
