@@ -6,8 +6,8 @@ import IAs.ChaseRojo;
 import ResourceHandler.ResourceHandler;
 
 public class FantasmaRojo extends Fantasma {
-	public FantasmaRojo(int f, int c, int p, Grilla g) {
-		super(f, c, p, g);
+	public FantasmaRojo(int f, int c, Grilla g) {
+		super(f, c, g);
 		esquina = new Position(0, 25);
 		chase = new EstadoChase(new ChaseRojo());
 		scatter = new EstadoScatter(esquina);

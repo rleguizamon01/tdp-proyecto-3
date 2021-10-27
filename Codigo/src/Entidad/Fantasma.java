@@ -12,7 +12,7 @@ public abstract class Fantasma extends EntidadMovil {
 	protected EstadoFantasma miEstado;
 	protected Position esquina;
 	
-	public Fantasma(int f, int c, int p, Grilla g) {
+	public Fantasma(int f, int c, Grilla g) {
 		super(f, c, 7, g);
 	}
 

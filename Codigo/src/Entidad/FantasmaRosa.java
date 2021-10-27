@@ -6,8 +6,8 @@ import Utilidad.Position;
 
 public class FantasmaRosa extends Fantasma {
 
-	public FantasmaRosa(int f, int c, int p, Grilla g) {
-		super(f, c, p, g);
+	public FantasmaRosa(int f, int c, Grilla g) {
+		super(f, c, g);
 		esquina = new Position(0, 2);
 		chase = new EstadoChase(new ChaseRosa());
 		scatter = new EstadoScatter(esquina);
