@@ -7,7 +7,7 @@ import ResourceHandler.ResourceHandler;
 public class Pacman extends EntidadMovil {
 
 	public Pacman(int f, int c, int p, Grilla g) {
-		super(f, c, p, g);
+		super(f, c, 6, g);
 	}
 
 	@Override

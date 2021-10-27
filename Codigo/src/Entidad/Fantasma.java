@@ -13,7 +13,7 @@ public abstract class Fantasma extends EntidadMovil {
 	protected Position esquina;
 	
 	public Fantasma(int f, int c, int p, Grilla g) {
-		super(f, c, p, g);
+		super(f, c, 7, g);
 	}
 
 	@Override

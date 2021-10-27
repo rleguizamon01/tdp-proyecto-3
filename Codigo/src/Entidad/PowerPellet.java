@@ -5,8 +5,8 @@ import ResourceHandler.ResourceHandler;
 
 public class PowerPellet extends EntidadFija {
 
-	public PowerPellet(int f, int c, int pr, Grilla g) {
-		super(f, c, pr, g, 0);
+	public PowerPellet(int f, int c, Grilla g) {
+		super(f, c, 2, g, 0);
 	}
 
 	@Override

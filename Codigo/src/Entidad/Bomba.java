@@ -5,8 +5,8 @@ import ResourceHandler.ResourceHandler;
 
 public class Bomba extends EntidadFija {
 
-	public Bomba(int f, int c, int pr, Grilla g) {
-		super(f, c, pr, g, 0);
+	public Bomba(int f, int c, Grilla g) {
+		super(f, c, 5, g, 0);
 	}
 
 	@Override

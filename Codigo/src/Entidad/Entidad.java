@@ -8,10 +8,10 @@ public abstract class Entidad {
 	protected Position pos;
 	protected int prioridad;
 	
-	public Entidad(int f, int c, int p, Grilla g) {
+	public Entidad(int f, int c, int prioridad, Grilla miGrilla) {
 		pos = new Position(f, c);
-		prioridad = p;
-		miGrilla = g;
+		this.prioridad = prioridad;
+		this.miGrilla = miGrilla;
 	}
 	
 	public abstract void afectar();

@@ -11,13 +11,14 @@ public class PocionVelocidad extends Pocion {
 	
 	protected int velocidadOriginal;
 	
-	public PocionVelocidad(int f, int c, int pr, Grilla g, int v) {
-		super(f, c, pr, g);
+	public PocionVelocidad(int f, int c, Grilla g, int v) {
+		super(f, c, g);
 		velocidadOriginal = v;
 	}
 
 	@Override
 	public void afectar() {
+		miGrilla.removerEntidad(this);
 		miGrilla.pedirActualizarVelocidad(velocidadAumentada);
 		Esperador es = new EsperadorVelocidad(duracion, miGrilla, velocidadOriginal);
 		es.run();

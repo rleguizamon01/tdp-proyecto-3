@@ -5,9 +5,8 @@ import ResourceHandler.ResourceHandler;
 
 public class Moneda extends EntidadFija {
 
-	
-	public Moneda(int f, int c, int pr, Grilla g, int pu) {
-		super(f, c, pr, g, pu);
+	public Moneda(int f, int c, Grilla g) {
+		super(f, c, 1, g, 200);
 	}
 
 	@Override
