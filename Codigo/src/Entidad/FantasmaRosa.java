@@ -8,6 +8,7 @@ public class FantasmaRosa extends Fantasma {
 
 	public FantasmaRosa(int f, int c, Grilla g) {
 		super(f, c, g);
+		velocidad = 100;
 		esquina = new Position(0, 2);
 		chase = new EstadoChase(new ChaseRosa());
 		scatter = new EstadoScatter(esquina);

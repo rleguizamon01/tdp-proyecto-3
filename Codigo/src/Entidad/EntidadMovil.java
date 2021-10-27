@@ -5,6 +5,7 @@ import Utilidad.Position;
 
 public abstract class EntidadMovil extends Entidad {
 	protected char direccion;
+	protected int velocidad; //cada cuantos ms se mueve
 	
 	public EntidadMovil(int f, int c, int p, Grilla g) {
 		super(f, c, p, g);
@@ -21,4 +22,14 @@ public abstract class EntidadMovil extends Entidad {
 	public char getDireccion() {
 		return direccion;
 	}
+
+	public void setVelocidad(int v) {
+		velocidad = v;
+	}
+	
+	public int getVelocidad() {
+		return velocidad;
+	}
+	
+	
 }

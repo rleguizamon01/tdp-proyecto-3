@@ -8,6 +8,7 @@ public class Pacman extends EntidadMovil {
 
 	public Pacman(int f, int c, Grilla g) {
 		super(f, c, 6, g);
+		velocidad = 125;
 	}
 
 	@Override
