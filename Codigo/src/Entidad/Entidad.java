@@ -17,6 +17,18 @@ public abstract class Entidad {
 	public abstract void afectar();
 	public abstract String getCaminoImagen();
 	
+	public Position getPosition() {
+		return pos;
+	}
+	
+	public void setPosition(Position p) {
+		pos = p;
+	}
+	
+	public void setPosition(int f, int c) {
+		pos = new Position(f, c);
+	}
+	
 	public int getPrioridad() {
 		return prioridad;
 	}
