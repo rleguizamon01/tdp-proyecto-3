@@ -1,0 +1,24 @@
+package Entidad;
+
+import Grilla.Grilla;
+import ResourceHandler.ResourceHandler;
+
+public class Moneda extends EntidadFija {
+
+	
+	public Moneda(int f, int c, int pr, Grilla g, int pu) {
+		super(f, c, pr, g, pu);
+	}
+
+	@Override
+	public void afectar() {
+		miGrilla.pedirSumarPuntos(puntos);
+		miGrilla.decrementarMonedas();
+	}
+
+	@Override
+	public String getCaminoImagen() {
+		return ResourceHandler.getMonedaCI();
+	}
+
+}
