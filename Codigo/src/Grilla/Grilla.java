@@ -28,4 +28,8 @@ public class Grilla {
 	public void pedirActualizarVelocidad(int v) {
 		
 	}
+	
+	public boolean bloqueLibre(Position p) {
+		return true;
+	}
 }
