@@ -43,24 +43,7 @@ public class Pacman extends EntidadMovil {
 
 	@Override
 	public String getCaminoImagen() {
-		String ci = "";
-		
-		switch (direccion) {
-			case 'N':
-				ci = ResourceHandler.getPacmanNCI();
-				break;
-			case 'S':
-				ci = ResourceHandler.getPacmanSCI();
-				break;
-			case 'E':
-				ci = ResourceHandler.getPacmanECI();
-				break;
-			case 'O':
-				ci = ResourceHandler.getPacmanOCI();
-				break;
-		}
-		
-		return ci;
+		return ResourceHandler.getPacmanCI(direccion);
 	}
 
 }

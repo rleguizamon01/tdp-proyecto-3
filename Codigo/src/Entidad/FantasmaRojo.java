@@ -10,17 +10,12 @@ public class FantasmaRojo extends Fantasma {
 		super(f, c, g);
 		velocidad = 150;
 		esquina = new Position(0, 25);
-		chase = new EstadoChase(new ChaseRojo());
-		scatter = new EstadoScatter(esquina);
+		chase = new EstadoChase(new ChaseRojo(), this);
+		scatter = new EstadoScatter(esquina, this);
 	}
 
 	@Override
-	public String getCaminoImagen() {
-		// TODO Arreglar esto
-		if(miEstado == chase || miEstado == scatter)
-			return ResourceHandler.getFantasmaRojoCI();
-		else
-			return miEstado.caminoImagen();
+	public String imagenFantasmaColor() {
+		return ResourceHandler.getFantasmaRojoCI(direccion);
 	}
-
 }

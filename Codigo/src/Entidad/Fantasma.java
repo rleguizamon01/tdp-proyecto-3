@@ -27,11 +27,11 @@ public abstract class Fantasma extends EntidadMovil {
 	}
 	
 	public void ponerEnRun() {
-		miEstado = new EstadoRun();
+		miEstado = new EstadoRun(this);
 	}
 	
 	public void ponerEnDead() {
-		miEstado = new EstadoDead();
+		miEstado = new EstadoDead(this);
 	}
 	
 	public void ponerEnChase() {
@@ -40,6 +40,12 @@ public abstract class Fantasma extends EntidadMovil {
 	
 	public void ponerEnScatter() {
 		miEstado = scatter;
+	}
+	
+	public abstract String imagenFantasmaColor();
+	
+	public String getCaminoImagen() {
+		return miEstado.caminoImagen();
 	}
 
 }

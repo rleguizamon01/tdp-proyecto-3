@@ -4,9 +4,11 @@ import Utilidad.Position;
 
 public class EstadoScatter implements EstadoFantasma {
 	private Position esquinaBuscada;
+	private Fantasma miFantasma;
 	
-	public EstadoScatter(Position eb) {
+	public EstadoScatter(Position eb, Fantasma f) {
 		esquinaBuscada = eb;
+		miFantasma = f;
 	}
 	
 	@Override
@@ -23,9 +25,7 @@ public class EstadoScatter implements EstadoFantasma {
 
 	@Override
 	public String caminoImagen() {
-		//La imagen en chase depende del fantasma.
-		//Este metodo nunca se ejecutara.
-		return "";
+		return miFantasma.imagenFantasmaColor();
 	}
 
 }

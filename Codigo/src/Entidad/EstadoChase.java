@@ -5,9 +5,11 @@ import Utilidad.Position;
 
 public class EstadoChase implements EstadoFantasma {
 	private ChaseIA ia;
+	private Fantasma miFantasma;
 	
-	public EstadoChase(ChaseIA ia) {
+	public EstadoChase(ChaseIA ia, Fantasma f) {
 		this.ia = ia;
+		miFantasma = f;
 	}
 	
 	@Override
@@ -24,9 +26,7 @@ public class EstadoChase implements EstadoFantasma {
 
 	@Override
 	public String caminoImagen() {
-		//La imagen en chase depende del fantasma.
-		//Este metodo nunca se ejecutara.
-		return "";
+		return miFantasma.imagenFantasmaColor();
 	}
 
 }

@@ -3,6 +3,7 @@ package Entidad;
 import Grilla.Grilla;
 import IAs.ChaseNaranja;
 import Utilidad.Position;
+import ResourceHandler.ResourceHandler;
 
 public class FantasmaNaranja extends Fantasma {
 
@@ -10,14 +11,13 @@ public class FantasmaNaranja extends Fantasma {
 		super(f, c, g);
 		velocidad = 300;
 		esquina = new Position(35, 27);
-		chase = new EstadoChase(new ChaseNaranja());
-		scatter = new EstadoScatter(esquina);
+		chase = new EstadoChase(new ChaseNaranja(), this);
+		scatter = new EstadoScatter(esquina, this);
 	}
 
 	@Override
-	public String getCaminoImagen() {
-		// TODO Auto-generated method stub
-		return null;
+	public String imagenFantasmaColor() {
+		return ResourceHandler.getFantasmaNaranjaCI(direccion);
 	}
 
 }
