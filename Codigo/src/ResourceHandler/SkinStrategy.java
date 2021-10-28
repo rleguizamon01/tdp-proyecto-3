@@ -8,11 +8,23 @@ public interface SkinStrategy {
 	public String getPacmanOCI();
 	
 	//Fantasmas:
-	public String getFantasmaRojoCI();
-	public String getFantasmaRosaCI();
-	public String getFantasmaAzulCI();
-	public String getFantasmaNaranjaCI();
-	public String getFantasmaVulnerableCI();
+	public String getFantasmaRojoDCI();
+	public String getFantasmaRojoICI();
+	
+	public String getFantasmaRosaDCI();
+	public String getFantasmaRosaICI();
+	
+	public String getFantasmaAzulDCI();
+	public String getFantasmaAzulICI();
+	
+	public String getFantasmaNaranjaDCI();
+	public String getFantasmaNaranjaICI();
+	
+	public String getFantasmaVulnerableDCI();
+	public String getFantasmaVulnerableICI();
+	
+	public String getFantasmaMuertoDCI();
+	public String getFantasmaMuertoICI();
 	
 	//Mapa:
 	public String getParedCI();

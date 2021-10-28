@@ -1,8 +1,7 @@
 package ResourceHandler;
 
 public class ResourceHandler {
-	public static final SkinStrategy SKIN_TETRIS = SkinTetris.getSkinTetris();
-	public static final SkinStrategy SKIN_STAR_WARS = SkinStarWars.getSkinStarWars();
+	public static final SkinStrategy SKIN_AMONG_US = SkinAmongUs.getSkinAmongUs();
 	
 	private static SkinStrategy s;
 	
@@ -10,55 +9,21 @@ public class ResourceHandler {
 		s = ss;
 	}
 	
-	public static String getPacmanNCI() {
-		return s.getPacmanNCI();
-	}
+	//------------------------------------------------------------------//
+	//							NO ENTIDADES							//
+	//------------------------------------------------------------------//
 	
-	public static String getPacmanSCI() {
-		return s.getPacmanSCI();
+	public static String getPisoCI() {
+		return s.getPisoCI();
 	}
-	
-	public static String getPacmanECI() {
-		return s.getPacmanECI();
-	}
-	
-	public static String getPacmanOCI() {
-		return s.getPacmanOCI();
-	}
-	
-	public static String getFantasmaRojoCI() {
-		return s.getFantasmaRojoCI();
-	}
-	
-	public static String getFantasmaRosaCI() {
-		return s.getFantasmaRosaCI();
-	}
-	
-	public static String getFantasmaAzulCI() {
-		return s.getFantasmaAzulCI();
-	}
-	
-	public static String getFantasmaNaranjaCI() {
-		return s.getFantasmaNaranjaCI();
-	}
-	
-	public static String getFantasmaVulnerableCI() {
-		return s.getFantasmaVulnerableCI();
-	}
-	
-	/*
-	 * ACA PODEMOS HACER QUE NO DEPENDA DE LA STRATEGY, SINO QUE DEVUELVA SIEMPRE LO MISMO.
-	 * O MEJOR TODAVIA, IMPLEMENTAR LOS METODOS DE UNA EN LA CLASE SKIN, Y QUE NADA LOS REDEFINA.
-	 * A VER EN DESARROLLO.
-	 * */
 	
 	public static String getParedCI() {
 		return s.getParedCI();
 	}
 	
-	public static String getPisoCI() {
-		return s.getPisoCI();
-	}
+	//------------------------------------------------------------------//
+	//						ENTIDADES FIJAS								//
+	//------------------------------------------------------------------//
 	
 	public static String getMonedaCI() {
 		return s.getMonedaCI();
@@ -66,6 +31,10 @@ public class ResourceHandler {
 	
 	public static String getPowerPelletCI() {
 		return s.getPowerPelletCI();
+	}
+	
+	public static String getBombaCI() {
+		return s.getBombaCI();
 	}
 	
 	public static String getFrutaCI() {
@@ -80,7 +49,130 @@ public class ResourceHandler {
 		return s.getPocionBombaCI();
 	}
 	
-	public static String getBombaCI() {
-		return s.getBombaCI();
+	//------------------------------------------------------------------//
+	//						ENTIDADES MOVILES							//
+	//------------------------------------------------------------------//
+	
+	public static String getPacmanCI(char d) {
+		String ci = "";
+		
+		switch(d) {
+		case 'N':
+			ci = s.getPacmanNCI();
+			break;
+		case 'S':
+			ci = s.getPacmanSCI();
+			break;
+		case 'E':
+			ci = s.getPacmanECI();
+			break;
+		case 'O':
+			ci = s.getPacmanOCI();
+			break;
+		}
+		
+		return ci;
+	}
+	
+	public static String getFantasmaRojoCI(char d) {
+		String ci = "";
+		
+		switch(d) {
+		case 'N':
+		case 'E':
+			ci = s.getFantasmaRojoDCI();
+			break;
+		case 'S':
+		case 'O':
+			ci = s.getFantasmaRojoICI();
+			break;
+		}
+		
+		return ci;
+	}
+	
+	public static String getFantasmaRosaCI(char d) {
+		String ci = "";
+		
+		switch(d) {
+		case 'N':
+		case 'E':
+			ci = s.getFantasmaRosaDCI();
+			break;
+		case 'S':
+		case 'O':
+			ci = s.getFantasmaRosaICI();
+			break;
+		}
+		
+		return ci;
+	}
+	
+	public static String getFantasmaAzulCI(char d) {
+		String ci = "";
+		
+		switch(d) {
+		case 'N':
+		case 'E':
+			ci = s.getFantasmaAzulDCI();
+			break;
+		case 'S':
+		case 'O':
+			ci = s.getFantasmaAzulICI();
+			break;
+		}
+		
+		return ci;
+	}
+	
+	public static String getFantasmaNaranjaCI(char d) {
+		String ci = "";
+		
+		switch(d) {
+		case 'N':
+		case 'E':
+			ci = s.getFantasmaNaranjaDCI();
+			break;
+		case 'S':
+		case 'O':
+			ci = s.getFantasmaNaranjaICI();
+			break;
+		}
+		
+		return ci;
+	}
+	
+	public static String getFantasmaVulnerableCI(char d) {
+		String ci = "";
+		
+		switch(d) {
+		case 'N':
+		case 'E':
+			ci = s.getFantasmaVulnerableDCI();
+			break;
+		case 'S':
+		case 'O':
+			ci = s.getFantasmaVulnerableICI();
+			break;
+		}
+		
+		return ci;
+	}
+	
+	public static String getFantasmaMuertoCI(char d) {
+		String ci = "";
+		
+		switch(d) {
+		case 'N':
+		case 'E':
+			ci = s.getFantasmaMuertoDCI();
+			break;
+		case 'S':
+		case 'O':
+			ci = s.getFantasmaMuertoICI();
+			break;
+		}
+		
+		return ci;
 	}
 }
