@@ -120,7 +120,7 @@ public class SkinAmongUs extends Skin {
 
 	@Override
 	public String getPocionVelocidadCI() {
-		return path + p.getProperty("pcionVelocidad");
+		return path + p.getProperty("pocionVelocidad");
 	}
 
 	@Override
