@@ -1,5 +1,7 @@
 package Grilla;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import Entidad.*;
 import Logica.Juego;
 import Utilidad.Position;
@@ -27,7 +29,7 @@ public class NivelUno implements EstrategiaNivel {
 				"AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 				"AMMMMMMMMMMMMAAMMMMMMMMMMMMA",
 				"AMAAAAMAAAAAMAAMAAAAAMAAAAMA",
-				"AMAAAAMAAAAAMAAMAAAAAMAAAAMA",
+				"AWAAAAMAAAAAMAAMAAAAAMAAAAWA",
 				"AMAAAAMAAAAAMAAMAAAAAMAAAAMA",
 				"AMMMMMMMMMMMMMMMMMMMMMMMMMMA",
 				"AMAAAAMAAMAAAAAAAAMAAMAAAAMA",
@@ -41,19 +43,19 @@ public class NivelUno implements EstrategiaNivel {
 				"PPPPPPMPPPAPPPPPPAPPPMPPPPPP",
 				"AAAAAAMAAPAPPPPPPAPAAMAAAAAA",
 				"PPPPPAMAAPAAAAAAAAPAAMAPPPPP",
-				"PPPPPAMAAPPPPPPPPPPAAMAPPPPP",
+				"PPPPPAMAAPPPPFPPPPPAAMAPPPPP",
 				"PPPPPAMAAPAAAAAAAAPAAMAPPPPP",
 				"AAAAAAMAAPAAAAAAAAPAAMAAAAAA",
 				"AMMMMMMMMMMMMAAMMMMMMMMMMMMA",
 				"AMAAAAMAAAAAMAAMAAAAAMAAAAMA",
 				"AMAAAAMAAAAAMAAMAAAAAMAAAAMA",
-				"AMMMAAMMMMMMMPPMMMMMMMAAMMMA",
+				"AWMMAAMMMMMMMPPMMMMMMMAAMMWA",
 				"AAAMAAMAAMAAAAAAAAMAAMAAMAAA",
 				"AAAMAAMAAMAAAAAAAAMAAMAAMAAA",
 				"AMMMMMMAAMMMMAAMMMMAAMMMMMMA",
 				"AMAAAAAAAAAAMAAMAAAAAAAAAAMA",
 				"AMAAAAAAAAAAMAAMAAAAAAAAAAMA",
-				"AMMMMMMMMMMMMMMMMMMMMMMMMMMA",
+				"AMMMMMMMMMMMMOMMMMMMMMMMMMMA",
 				"AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 				"PPPPPPPPPPPPPPPPPPPPPPPPPPPP",
 				"PPPPPPPPPPPPPPPPPPPPPPPPPPPP"
@@ -64,10 +66,18 @@ public class NivelUno implements EstrategiaNivel {
 	public void strategyInitialize(Bloque[][] m) {
 		Bloque aux = null;
 		char c = 0;
+		int rand = 0;
 		
-		System.out.println(m.length + " " + m[0].length);
+		//System.out.println(m.length + " " + m[0].length);
+		
+		//Creamos las entidades
+		r = new FantasmaRojo(11, 17, g);
+		s = new FantasmaRosa(12, 17, g);
+		a = new FantasmaAzul(13, 17, g);
+		n = new FantasmaNaranja(14, 17, g);
+		p = new Pacman(14, 26, g);
+		
 		//Mapa
-		
 		int qFilas = m.length;
 		int qColumnas = m[0].length;
 		
@@ -83,6 +93,20 @@ public class NivelUno implements EstrategiaNivel {
 				if(c == 'M')
 					aux.agregarEntidad(new Moneda(fila, col, g));
 				
+				if(c == 'W')
+					aux.agregarEntidad(new PowerPellet(fila, col, g));
+				
+				if(c == 'F')
+					aux.agregarEntidad(new Fruta(fila, col, g));
+				
+				if(c == 'O') {
+					rand = ThreadLocalRandom.current().nextInt(1, 3);
+					if(rand % 2 == 0)
+						aux.agregarEntidad(new PocionVelocidad(fila, col, g, p.getVelocidad()));
+					else
+						aux.agregarEntidad(new PocionBomba(fila, col, g));
+				}
+				
 				ju.pedirActualizar(new Position(fila, col), aux.getCaminoImagen());
 				
 				m[fila][col] = aux;
@@ -90,26 +114,20 @@ public class NivelUno implements EstrategiaNivel {
 			col = 0;
 		}
 		
-		//Entidades
-		r = new FantasmaRojo(11, 17, g);
+		//Ponemos a las Entidades en el mapa
 		m[11][17].agregarEntidad(r);
 		ju.pedirActualizar(new Position(11, 17), r.getCaminoImagen());
 		
-		s = new FantasmaRosa(12, 17, g);
 		m[12][17].agregarEntidad(s);
 		ju.pedirActualizar(new Position(12, 17), s.getCaminoImagen());
 		
-		a = new FantasmaAzul(13, 17, g);
 		m[13][17].agregarEntidad(a);
 		ju.pedirActualizar(new Position(13, 17), a.getCaminoImagen());
 		
-		n = new FantasmaNaranja(14, 17, g);
 		m[14][17].agregarEntidad(n);
 		ju.pedirActualizar(new Position(14, 17), n.getCaminoImagen());
 		
-		p = new Pacman(14, 26, g);
 		m[14][26].agregarEntidad(p);
-		System.out.println(p.getCaminoImagen());
 		ju.pedirActualizar(new Position(14, 26), p.getCaminoImagen());
 	}
 
