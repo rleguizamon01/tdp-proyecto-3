@@ -68,6 +68,10 @@ public class Bloque {
 		return cmp;
 	}
 	
+	public void estadoPared(boolean p) {
+		esPared = p;
+	}
+	
 	public boolean esPared() {
 		return esPared;
 	}

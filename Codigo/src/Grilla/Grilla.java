@@ -31,22 +31,8 @@ public class Grilla {
 	
 	protected Juego miJuego;
 	
-	public Grilla(Juego j, EstrategiaNivel nivel) {
+	public Grilla() {
 		matrizGrilla = new Bloque[ANCHO][ALTO];
-		
-		nivelActual = nivel;
-		miJuego = j;
-		
-		pacman = new Pacman(0, 0, this);
-		rojo = new FantasmaRojo(0, 0, this);
-		rosa = new FantasmaRosa(0, 0, this);
-		azul = new FantasmaAzul(0, 0, this);
-		naranja = new FantasmaNaranja(0, 0, this);
-		
-		misFantasmas = new Fantasma[]{rojo, rosa, azul, naranja};
-		
-		inicializar();
-		
 	}
 	
 	public EntidadMovil getRojo() {
@@ -74,8 +60,8 @@ public class Grilla {
 		int f = p.getFila();
 		int c = p.getColumna();
 		
-		if(f >= 0 && f < ALTO && c >= 0 && c < ANCHO)
-			res = matrizGrilla[f][c].esPared();
+		if(f >= 0 && f < ALTO && c >= 0 && c < ANCHO) //Nos aseguramos que este in bounds
+			res = matrizGrilla[f][c].esPared();		  //Nos aseguramos que no sea pared.
 		
 		return res;
 	}
@@ -108,7 +94,18 @@ public class Grilla {
 		return bloqueNuevo;
 	}
 	
-	protected void inicializar() {
+	public void inicializar(Juego j, EstrategiaNivel nivel) {
+		nivelActual = nivel;
+		miJuego = j;
+		
+		pacman = nivelActual.getPacman();
+		rojo = nivelActual.getRojo();
+		rosa = nivelActual.getRosa();
+		azul = nivelActual.getAzul();
+		naranja = nivelActual.getNaranja();
+		
+		misFantasmas = new Fantasma[]{rojo, rosa, azul, naranja};
+		
 		nivelActual.strategyInitialize(matrizGrilla);
 	}
 	
