@@ -76,11 +76,11 @@ public class Bloque {
 		return esPared;
 	}
 	
-	public void agregarEntidad(Entidad e) {
+	public synchronized void agregarEntidad(Entidad e) {
 		misEntidades.add(e);
 	}
 	
-	public void eliminarEntidad(Entidad e) {
+	public synchronized void eliminarEntidad(Entidad e) {
 		misEntidades.remove(e);
 	}
 	
@@ -88,6 +88,10 @@ public class Bloque {
 		for(Entidad e : misEntidades) {
 			e.afectar();
 		}
+	}
+	
+	public Position getPosition() {
+		return pos;
 	}
 	
 	public String toString() {

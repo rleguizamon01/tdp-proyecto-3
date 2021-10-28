@@ -34,16 +34,18 @@ public class Juego {
 	
 	protected void crearRelojes() {
 		relojP = new RelojPacman(this, miGrilla.getVelocidadPacman());
-		/**relojF = new RelojFantasmas(this, miGrilla.getRojo().getVelocidad(), miGrilla.getRosa().getVelocidad(),
-									miGrilla.getAzul().getVelocidad(), miGrilla.getNaranja().getVelocidad());**/
+		relojF = new RelojFantasmas(this, miGrilla.getRojo().getVelocidad(), miGrilla.getRosa().getVelocidad(),
+									miGrilla.getAzul().getVelocidad(), miGrilla.getNaranja().getVelocidad());
+		/**relojF = new RelojFantasmas(this, miGrilla.getRojo().getVelocidad(), 1, 1, 1);**/
 	}
 	
 	public void iniciarPartida() {
 		crearRelojes();
 		relojP.setJugable(true);
-		//relojF.setJugable(true);
-		relojP.run();
-		//relojF.run();
+		relojF.setJugable(true);
+		relojP.start();
+		relojF.start();
+		pedirActualizar(new Position(25, 0), ResourceHandler.ResourceHandler.getBombaCI());
 	}
 	
 	public void finalizarPartida() {
@@ -62,23 +64,23 @@ public class Juego {
 	}
 
 	public void pedirMoverRojo() {
+		//System.out.println("Pedimos mover el rojo");
 		miGrilla.moverFantasma(miGrilla.getRojo());
 	}
 	
 	public void pedirMoverRosa() {
-		miGrilla.moverFantasma(miGrilla.getRosa());
+		//miGrilla.moverFantasma(miGrilla.getRosa());
 	}
 	
 	public void pedirMoverAzul() {
-		miGrilla.moverFantasma(miGrilla.getAzul());
+		//miGrilla.moverFantasma(miGrilla.getAzul());
 	}
 	
 	public void pedirMoverNaranja() {
-		miGrilla.moverFantasma(miGrilla.getNaranja());
+		//miGrilla.moverFantasma(miGrilla.getNaranja());
 	}
 
 	public void pedirActualizarDireccion(char d) {
-		System.out.println("Juego le pide a grilla que la direccion sea: " + d);
 		miGrilla.actualizarDireccionPacman(d);
 	}
 	

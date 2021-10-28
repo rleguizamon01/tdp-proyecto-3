@@ -99,7 +99,52 @@ public class Grilla {
 	}
 	
 	public synchronized void moverFantasma(EntidadMovil em) {
-		moverEntidad(em);
+		Position posVieja = em.getPosition();
+		Bloque b = moverEntidad(em);
+		Position posNueva = b.getPosition();
+		
+		int fv = posVieja.getFila();
+		int fn = posNueva.getFila();
+		int cv = posVieja.getColumna();
+		int cn = posNueva.getColumna();
+		
+		System.out.println("Se mueve de: " + posVieja + " a " + posNueva);
+		
+		int diferenciaF = fv - fn;
+		int diferenciaC = cv - cn;
+		
+		System.out.println("Diferencia F es: " + diferenciaF);
+		System.out.println("Diferencia C es: " + diferenciaC);
+		
+		/**if(diferenciaF == 0) {
+			if(diferenciaC > 0)
+				em.setDireccion('N');
+			else
+				em.setDireccion('S');
+		} else if(diferenciaC == 0) {
+			if(diferenciaF > 0)
+				em.setDireccion('O');
+			else
+				em.setDireccion('E');
+		}**/
+		
+		if(diferenciaF != 0 || diferenciaC != 0) { //Si ambas son cero, la EM no se movio, por lo que no actualizamos su direccion.
+			if(diferenciaF == 0) {
+				if(diferenciaC > 0)
+					em.setDireccion('N');
+				else
+					em.setDireccion('S');
+			}
+			
+			if(diferenciaC == 0) {
+				if(diferenciaF > 0)
+					em.setDireccion('O');
+				else
+					em.setDireccion('E');
+			}
+		}
+		
+		System.out.println("El fantasma se movio hacia el: " + em.getDireccion());
 	}
 	
 	private synchronized Bloque moverEntidad(EntidadMovil em) {
@@ -109,19 +154,20 @@ public class Grilla {
 		Bloque bloqueNuevo = matrizGrilla[posNueva.getFila()][posNueva.getColumna()];
 		Bloque bloqueActual = matrizGrilla[posActual.getFila()][posActual.getColumna()];
 		
-		em.setPosition(posNueva);
-		
-		bloqueActual.eliminarEntidad(em);
-		bloqueNuevo.agregarEntidad(em);
-		
-		//TODO pedidos de actualizacion cuando implementemos juego.
-		String a = bloqueActual.getCaminoImagen();
-		miJuego.pedirActualizar(posActual, a);
-		System.out.println("Actual: " + a);
-		
-		String n = bloqueNuevo.getCaminoImagen();
-		miJuego.pedirActualizar(posNueva, n);
-		System.out.println("Nuevo: " + n);
+		if(bloqueNuevo != bloqueActual) {
+			em.setPosition(posNueva);
+			
+			bloqueActual.eliminarEntidad(em);
+			bloqueNuevo.agregarEntidad(em);
+			
+			String a = bloqueActual.getCaminoImagen();
+			miJuego.pedirActualizar(posActual, a);
+			//System.out.println("Actual: " + a);
+			
+			String n = bloqueNuevo.getCaminoImagen();
+			miJuego.pedirActualizar(posNueva, n);
+			//System.out.println("Nuevo: " + n);
+		}
 		
 		return bloqueNuevo;
 	}

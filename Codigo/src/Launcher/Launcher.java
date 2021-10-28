@@ -6,6 +6,8 @@ import Grilla.*;
 import ResourceHandler.*;
 
 public class Launcher {
+	
+	
 	public static void main(String[] args) {
 		//Es vital que hasta que implementemos menu esta linea este aca.
 		ResourceHandler.setStrategy(ResourceHandler.SKIN_AMONG_US);

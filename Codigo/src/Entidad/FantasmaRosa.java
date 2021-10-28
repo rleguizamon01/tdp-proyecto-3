@@ -12,7 +12,7 @@ public class FantasmaRosa extends Fantasma {
 		velocidad = 100;
 		esquina = new Position(0, 2);
 		chase = new EstadoChase(new ChaseRosa(), this);
-		scatter = new EstadoScatter(esquina, this);
+		scatter = new EstadoScatter(esquina, this, miGrilla);
 		ponerEnScatter();
 	}
 

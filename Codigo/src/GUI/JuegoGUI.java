@@ -3,6 +3,8 @@ package GUI;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -34,7 +36,8 @@ public class JuegoGUI extends JFrame {
 	private JTextArea txtrCaptadorDeEventos;
 	
 	private Juego miJuego;
-
+	
+	private Map<String, ImageIcon> m;
 	/**
 	 * Create the frame.
 	 */
@@ -79,7 +82,6 @@ public class JuegoGUI extends JFrame {
 				aux.setIcon(img);
 
 				grilla.add(aux);
-				//System.out.println("(" + fila + ", " + columna + ")");
 				matrizLabels[fila][columna]= aux;
 			}
 			columna = 0;
@@ -134,6 +136,11 @@ public class JuegoGUI extends JFrame {
 		
 		informacion.add(txtrCaptadorDeEventos);
 		
+		//----------------------------------------------
+		m = new HashMap<String, ImageIcon>();
+		//-----------------------------------------------
+		
+		
 		//ULTIMAS INSTRUCCIONES SI O SI
 		txtrCaptadorDeEventos.grabFocus();
 	}
@@ -147,7 +154,16 @@ public class JuegoGUI extends JFrame {
 	}
 	
 	public void actualizar(Position position, String caminoImagen) {
-		ImageIcon img = new ImageIcon(JuegoGUI.class.getResource(caminoImagen));
+		ImageIcon img = null;
+		ImageIcon get = m.get(caminoImagen);
+		
+		if(get == null) {
+			img = new ImageIcon(JuegoGUI.class.getResource(caminoImagen));
+			m.put(caminoImagen, img);
+		} else {
+			img = get;
+		}
+		
 		int f = position.getFila();
 		int c = position.getColumna();
 		matrizLabels[f][c].setIcon(img);

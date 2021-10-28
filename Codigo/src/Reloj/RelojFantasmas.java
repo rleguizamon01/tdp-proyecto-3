@@ -55,7 +55,7 @@ public class RelojFantasmas extends Reloj {
 		int result = 0;
 		
 		for(int i : a) {
-			result = gcd(result, a[i]);
+			result = gcd(result, i);
 		}
 		
 		return result;

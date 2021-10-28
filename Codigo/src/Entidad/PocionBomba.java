@@ -14,10 +14,10 @@ public class PocionBomba extends Pocion {
 
 	@Override
 	public void afectar() {
-		miGrilla.removerEntidad(this);
 		miGrilla.ponerBombaEn(pos);
 		Esperador es = new EsperadorBomba(tiempoMecha, miGrilla, pos);
 		es.run();
+		miGrilla.removerEntidad(this);
 	}
 
 	@Override

@@ -9,9 +9,9 @@ public class FantasmaRojo extends Fantasma {
 	public FantasmaRojo(int f, int c, Grilla g) {
 		super(f, c, g);
 		velocidad = 150;
-		esquina = new Position(0, 25);
+		esquina = new Position(26, 0);
 		chase = new EstadoChase(new ChaseRojo(), this);
-		scatter = new EstadoScatter(esquina, this);
+		scatter = new EstadoScatter(esquina, this, miGrilla);
 		ponerEnScatter();
 	}
 
