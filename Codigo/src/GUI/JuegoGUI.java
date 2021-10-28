@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
+import Logica.Juego;
 import Utilidad.Position;
 import ResourceHandler.ResourceHandler;
 
@@ -31,6 +32,8 @@ public class JuegoGUI extends JFrame {
 	private JLabel[][] matrizLabels;
 	
 	private JTextArea txtrCaptadorDeEventos;
+	
+	private Juego miJuego;
 
 	/**
 	 * Create the frame.
@@ -76,7 +79,7 @@ public class JuegoGUI extends JFrame {
 				aux.setIcon(img);
 
 				grilla.add(aux);
-				System.out.println("(" + fila + ", " + columna + ")");
+				//System.out.println("(" + fila + ", " + columna + ")");
 				matrizLabels[fila][columna]= aux;
 			}
 			columna = 0;
@@ -101,15 +104,19 @@ public class JuegoGUI extends JFrame {
 				switch( keyCode ) {
 				    case KeyEvent.VK_UP:
 			        	System.out.println("ARRIBA");
+			        	miJuego.pedirActualizarDireccion('N');
 			        	break;
 			        case KeyEvent.VK_DOWN:
 			            System.out.println("ABAJO");
+			            miJuego.pedirActualizarDireccion('S');
 			            break;
 			        case KeyEvent.VK_LEFT:
 			        	System.out.println("IZQUIERDA");
+			        	miJuego.pedirActualizarDireccion('O');
 			            break;
 			        case KeyEvent.VK_RIGHT:
 			        	System.out.println("DERECHA");
+			        	miJuego.pedirActualizarDireccion('E');
 			            break;
 			    }
 			    
@@ -133,6 +140,10 @@ public class JuegoGUI extends JFrame {
 	
 	public void hacerVisible() {
 		setVisible(true);
+	}
+	
+	public void setJuego(Juego j) {
+		miJuego = j;
 	}
 	
 	public void actualizar(Position position, String caminoImagen) {

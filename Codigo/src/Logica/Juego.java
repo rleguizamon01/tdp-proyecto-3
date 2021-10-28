@@ -34,16 +34,16 @@ public class Juego {
 	
 	protected void crearRelojes() {
 		relojP = new RelojPacman(this, miGrilla.getVelocidadPacman());
-		relojF = new RelojFantasmas(this, miGrilla.getRojo().getVelocidad(), miGrilla.getRosa().getVelocidad(),
-									miGrilla.getAzul().getVelocidad(), miGrilla.getNaranja().getVelocidad());
+		/**relojF = new RelojFantasmas(this, miGrilla.getRojo().getVelocidad(), miGrilla.getRosa().getVelocidad(),
+									miGrilla.getAzul().getVelocidad(), miGrilla.getNaranja().getVelocidad());**/
 	}
 	
 	public void iniciarPartida() {
 		crearRelojes();
 		relojP.setJugable(true);
-		relojF.setJugable(true);
+		//relojF.setJugable(true);
 		relojP.run();
-		relojF.run();
+		//relojF.run();
 	}
 	
 	public void finalizarPartida() {
@@ -78,6 +78,7 @@ public class Juego {
 	}
 
 	public void pedirActualizarDireccion(char d) {
+		System.out.println("Juego le pide a grilla que la direccion sea: " + d);
 		miGrilla.actualizarDireccionPacman(d);
 	}
 	

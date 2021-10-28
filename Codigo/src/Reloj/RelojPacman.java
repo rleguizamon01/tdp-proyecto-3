@@ -21,7 +21,8 @@ public class RelojPacman extends Reloj {
 	public void run() {
 		try {
 			while(sePuedeJugar) {
-				Thread.sleep(velocidad);
+				//Thread.sleep(velocidad);
+				Thread.sleep(1000); //Por debugging, hacemos que se mueva 1 vez por segundo
 				miJuego.pedirMoverPacman();
 			}
 		} catch (InterruptedException e) {

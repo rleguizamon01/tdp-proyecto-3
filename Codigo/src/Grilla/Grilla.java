@@ -35,6 +35,23 @@ public class Grilla {
 		matrizGrilla = new Bloque[ANCHO][ALTO];
 	}
 	
+	public void inicializar(Juego j, EstrategiaNivel nivel) {
+		nivelActual = nivel;
+		miJuego = j;
+		
+		nivelActual.strategyInitialize(matrizGrilla);
+		
+		pacman = nivelActual.getPacman();
+		
+		rojo = nivelActual.getRojo();
+		rosa = nivelActual.getRosa();
+		azul = nivelActual.getAzul();
+		naranja = nivelActual.getNaranja();
+		misFantasmas = new Fantasma[]{rojo, rosa, azul, naranja};
+		
+		monedasRestantes = nivelActual.getTotalDeMonedasEnNivel();
+	}
+	
 	public EntidadMovil getRojo() {
 		return rojo;
 	}
@@ -60,53 +77,53 @@ public class Grilla {
 		int f = p.getFila();
 		int c = p.getColumna();
 		
-		if(f >= 0 && f < ALTO && c >= 0 && c < ANCHO) //Nos aseguramos que este in bounds
-			res = matrizGrilla[f][c].esPared();		  //Nos aseguramos que no sea pared.
+		if(f >= 0 && f < ANCHO && c >= 0 && c < ALTO) //Nos aseguramos que este in bounds
+			res = !matrizGrilla[f][c].esPared();	  //Nos aseguramos que no sea pared.
 		
 		return res;
 	}
 	
 	public void actualizarDireccionPacman(char d) {
+		System.out.println("Grilla le pide a pacman que la direccion sea: " + d);
 		pacman.setDireccion(d);
 	}
 	
-	public void moverPacman() {
+	public synchronized void moverPacman() {
+		//System.out.print("Pacman se mueve de: " + pacman.getPosition() + " a ");
+		
 		Bloque b = moverEntidad(pacman);
+		
+		//System.out.println(b);
+		
 		b.ejecutarEfectos();
 	}
 	
-	public void moverFantasma(EntidadMovil em) {
+	public synchronized void moverFantasma(EntidadMovil em) {
 		moverEntidad(em);
 	}
 	
-	private Bloque moverEntidad(EntidadMovil em) {
+	private synchronized Bloque moverEntidad(EntidadMovil em) {
 		Position posNueva = em.getSiguientePosicion();
 		Position posActual = em.getPosition();
 		
 		Bloque bloqueNuevo = matrizGrilla[posNueva.getFila()][posNueva.getColumna()];
 		Bloque bloqueActual = matrizGrilla[posActual.getFila()][posActual.getColumna()];
 		
+		em.setPosition(posNueva);
+		
 		bloqueActual.eliminarEntidad(em);
 		bloqueNuevo.agregarEntidad(em);
 		
 		//TODO pedidos de actualizacion cuando implementemos juego.
+		String a = bloqueActual.getCaminoImagen();
+		miJuego.pedirActualizar(posActual, a);
+		System.out.println("Actual: " + a);
+		
+		String n = bloqueNuevo.getCaminoImagen();
+		miJuego.pedirActualizar(posNueva, n);
+		System.out.println("Nuevo: " + n);
 		
 		return bloqueNuevo;
-	}
-	
-	public void inicializar(Juego j, EstrategiaNivel nivel) {
-		nivelActual = nivel;
-		miJuego = j;
-		
-		pacman = nivelActual.getPacman();
-		rojo = nivelActual.getRojo();
-		rosa = nivelActual.getRosa();
-		azul = nivelActual.getAzul();
-		naranja = nivelActual.getNaranja();
-		
-		misFantasmas = new Fantasma[]{rojo, rosa, azul, naranja};
-		
-		nivelActual.strategyInitialize(matrizGrilla);
 	}
 	
 	public void pedirSumarPuntos(int p) {
@@ -147,8 +164,8 @@ public class Grilla {
 	}
 
 	public void removerEntidad(Entidad e) {
-		//pos = posicion de e
-		//bloque = bloque[pos]
-		//bloque.remover(e)
+		Position pos = e.getPosition();
+		Bloque b = matrizGrilla[pos.getFila()][pos.getColumna()];
+		b.eliminarEntidad(e);
 	}
 }

@@ -16,16 +16,16 @@ public class Pacman extends EntidadMovil {
 		Position posicionNueva = pos.clone();
 		
 		switch (direccion) {
-			case 'N':
+			case 'O':
 				posicionNueva.setFila(posicionNueva.getFila() - 1);
 				break;
-			case 'S':
+			case 'E':
 				posicionNueva.setFila(posicionNueva.getFila() + 1);
 				break;
-			case 'E':
+			case 'S':
 				posicionNueva.setColumna(posicionNueva.getColumna() + 1);
 				break;
-			case 'O':
+			case 'N':
 				posicionNueva.setColumna(posicionNueva.getColumna() - 1);
 				break;
 		}
@@ -33,7 +33,7 @@ public class Pacman extends EntidadMovil {
 		//Si no nos podemos mover es porque nos chocamos contra una pared
 		//Y por tanto nos quedamos en el lugar.
 		if(!miGrilla.bloqueLibre(posicionNueva))
-			posicionNueva = pos;
+			posicionNueva = pos.clone();
 		
 		return posicionNueva;
 	}

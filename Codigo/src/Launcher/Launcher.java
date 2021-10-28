@@ -20,6 +20,9 @@ public class Launcher {
 		
 		g.inicializar(j, nivelUno);
 		
+		jGUI.setJuego(j);
+		
 		jGUI.hacerVisible();
+		j.iniciarPartida();
 	}
 }

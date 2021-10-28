@@ -10,4 +10,6 @@ public interface EstrategiaNivel {
 	public Fantasma getRosa();
 	public Fantasma getAzul();
 	public Fantasma getNaranja();
+	
+	public int getTotalDeMonedasEnNivel();
 }

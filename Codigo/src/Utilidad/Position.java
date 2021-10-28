@@ -34,4 +34,8 @@ public class Position implements Cloneable {
 		return new Position(f, c);
 	}
 	
+	public String toString() {
+		return "(" + f + ", " + c + ")";
+	}
+	
 }

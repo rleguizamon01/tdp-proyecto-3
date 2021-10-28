@@ -13,6 +13,7 @@ public class Moneda extends EntidadFija {
 	public void afectar() {
 		miGrilla.pedirSumarPuntos(puntos);
 		miGrilla.decrementarMonedas();
+		miGrilla.removerEntidad(this);
 	}
 
 	@Override

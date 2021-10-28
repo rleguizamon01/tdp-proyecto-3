@@ -10,6 +10,7 @@ public class NivelUno implements EstrategiaNivel {
 	private Juego ju;
 	private Grilla g;
 	private String[] mapa;
+	private int contadorMonedas;
 	
 	private Pacman p;
 	
@@ -21,7 +22,7 @@ public class NivelUno implements EstrategiaNivel {
 	public NivelUno(Juego j, Grilla g) {
 		this.ju = j;
 		this.g = g;
-		
+		contadorMonedas = 0;
 		mapa = new String[]{
 				"PPPPPPPPPPPPPPPPPPPPPPPPPPPP",
 				"PPPPPPPPPPPPPPPPPPPPPPPPPPPP",
@@ -68,8 +69,6 @@ public class NivelUno implements EstrategiaNivel {
 		char c = 0;
 		int rand = 0;
 		
-		//System.out.println(m.length + " " + m[0].length);
-		
 		//Creamos las entidades
 		r = new FantasmaRojo(11, 17, g);
 		s = new FantasmaRosa(12, 17, g);
@@ -90,9 +89,10 @@ public class NivelUno implements EstrategiaNivel {
 				if(c == 'A')
 					aux.estadoPared(true);
 				
-				if(c == 'M')
+				if(c == 'M') {
 					aux.agregarEntidad(new Moneda(fila, col, g));
-				
+					contadorMonedas++;
+				}
 				if(c == 'W')
 					aux.agregarEntidad(new PowerPellet(fila, col, g));
 				
@@ -138,13 +138,12 @@ public class NivelUno implements EstrategiaNivel {
 
 	@Override
 	public Fantasma getRojo() {
-		// TODO Auto-generated method stub
-		return null;
+		return r;
 	}
 
 	@Override
 	public Fantasma getRosa() {
-		return r;
+		return s;
 	}
 
 	@Override
@@ -155,6 +154,10 @@ public class NivelUno implements EstrategiaNivel {
 	@Override
 	public Fantasma getNaranja() {
 		return n;
+	}
+	
+	public int getTotalDeMonedasEnNivel() {
+		return contadorMonedas;
 	}
 
 }

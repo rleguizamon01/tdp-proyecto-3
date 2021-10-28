@@ -89,4 +89,8 @@ public class Bloque {
 			e.afectar();
 		}
 	}
+	
+	public String toString() {
+		return pos.toString();
+	}
 }

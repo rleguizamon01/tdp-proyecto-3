@@ -15,8 +15,7 @@ public abstract class EntidadMovil extends Entidad {
 	public abstract Position getSiguientePosicion();
 	
 	public void setDireccion(char d) {
-		if(d == 'N' || d == 'S' || d == 'E' || d == 'O')
-			direccion = d;
+		direccion = d;
 	}
 	
 	public char getDireccion() {
