@@ -13,6 +13,7 @@ public class FantasmaAzul extends Fantasma {
 		esquina = new Position(35, 0);
 		chase = new EstadoChase(new ChaseAzul(), this);
 		scatter = new EstadoScatter(esquina, this);
+		ponerEnScatter();
 	}
 
 	@Override

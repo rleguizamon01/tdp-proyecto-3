@@ -2,8 +2,10 @@ package Logica;
 
 import Audio.AudioPlayer;
 import GUI.JuegoGUI;
+import Grilla.EstrategiaNivel;
 import Grilla.Grilla;
 import Reloj.*;
+import Utilidad.Position;
 
 public class Juego {
 	protected JuegoGUI miGUI;
@@ -17,22 +19,27 @@ public class Juego {
 	
 	protected int puntaje;
 	
-	public Juego(JuegoGUI gui) {
-		miGUI = gui;
-		miGrilla = new Grilla(this, null);
-		
+	public Juego() {
 		//TODO: SONIDO
 		miSoundPlayer = new AudioPlayer();
 		miMusicPlayer = new AudioPlayer();
 		
-		relojP = new RelojPacman(this, miGrilla.getVelocidadPacman());
-		relojF = new RelojFantasmas(this, miGrilla.getRojo().getVelocidad(), miGrilla.getRosa().getVelocidad(),
-									miGrilla.getAzul().getVelocidad(), miGrilla.getNaranja().getVelocidad());
-		
 		puntaje = 0;
 	}
 	
+	public void inicializar(JuegoGUI gui, Grilla grilla) {
+		miGUI = gui;
+		miGrilla = grilla;
+	}
+	
+	protected void crearRelojes() {
+		relojP = new RelojPacman(this, miGrilla.getVelocidadPacman());
+		relojF = new RelojFantasmas(this, miGrilla.getRojo().getVelocidad(), miGrilla.getRosa().getVelocidad(),
+									miGrilla.getAzul().getVelocidad(), miGrilla.getNaranja().getVelocidad());
+	}
+	
 	public void iniciarPartida() {
+		crearRelojes();
 		relojP.setJugable(true);
 		relojF.setJugable(true);
 		relojP.run();
@@ -76,5 +83,9 @@ public class Juego {
 	
 	public void actualizarVelocidad(int v) {
 		relojP.setVelocidad(v);
+	}
+
+	public void pedirActualizar(Position position, String caminoImagen) {
+		miGUI.actualizar(position, caminoImagen);
 	}
 }

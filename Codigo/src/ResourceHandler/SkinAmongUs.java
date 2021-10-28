@@ -22,22 +22,22 @@ public class SkinAmongUs extends Skin {
 	
 	@Override
 	public String getPacmanNCI() {
-		return path + p.getProperty("PacmanD");
+		return path + p.getProperty("pacmanD");
 	}
 
 	@Override
 	public String getPacmanSCI() {
-		return path + p.getProperty("PacmanI");
+		return path + p.getProperty("pacmanI");
 	}
 
 	@Override
 	public String getPacmanECI() {
-		return path + p.getProperty("PacmanD");
+		return path + p.getProperty("pacmanD");
 	}
 
 	@Override
 	public String getPacmanOCI() {
-		return path + p.getProperty("PacmanI");
+		return path + p.getProperty("pacmanI");
 	}
 
 	@Override
