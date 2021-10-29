@@ -18,9 +18,9 @@ public class Launcher {
 		
 		j.inicializar(jGUI, g);
 		
-		EstrategiaNivel nivelUno = new NivelUno(j, g);
+		EstrategiaNivel nivel = new NivelDos(j, g);
 		
-		g.inicializar(j, nivelUno);
+		g.inicializar(j, nivel);
 		
 		jGUI.setJuego(j);
 		

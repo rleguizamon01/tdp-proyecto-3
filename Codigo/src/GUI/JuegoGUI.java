@@ -57,7 +57,7 @@ public class JuegoGUI extends JFrame {
 		grilla = new JPanel();
 		grilla.setBounds(10, 11, ANCHO*PIXELES, ALTO*PIXELES);
 		grilla.setBorder(new LineBorder(java.awt.Color.BLACK));
-		grilla.setBackground(java.awt.Color.BLACK);
+		grilla.setBackground(java.awt.Color.PINK);
 		grilla.setLayout(null);
 		contentPane.add(grilla);
 		
