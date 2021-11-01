@@ -16,6 +16,8 @@ import javax.swing.border.LineBorder;
 import Logica.Juego;
 import Utilidad.Position;
 import ResourceHandler.ResourceHandler;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class JuegoGUI extends JFrame {
 	//Constantes del tamaño de la ventana:
@@ -32,6 +34,8 @@ public class JuegoGUI extends JFrame {
 	private JPanel informacion;
 	
 	private JLabel[][] matrizLabels;
+	private JLabel puntajeTituloLabel;
+	private JLabel puntajeLabel;
 	
 	private JTextArea txtrCaptadorDeEventos;
 	
@@ -89,7 +93,7 @@ public class JuegoGUI extends JFrame {
 		
 		//Panel contenedor de la informacion: puntaje, etc.
 		informacion = new JPanel();
-		informacion.setBounds(ANCHO*PIXELES+100, 11, W-(ANCHO*PIXELES+100), ALTO*PIXELES);
+		informacion.setBounds(790, 11, 540, 720);
 		informacion.setBorder(new LineBorder(java.awt.Color.BLACK));
 		contentPane.add(informacion);
 		
@@ -136,6 +140,25 @@ public class JuegoGUI extends JFrame {
 		
 		informacion.add(txtrCaptadorDeEventos);
 		
+		// Puntaje
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(580, 11, 196, 121);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		puntajeTituloLabel = new JLabel("SCORE");
+		puntajeTituloLabel.setBounds(72, 10, 56, 22);
+		puntajeTituloLabel.setVerticalAlignment(SwingConstants.TOP);
+		puntajeTituloLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		panel.add(puntajeTituloLabel);
+		
+		puntajeLabel = new JLabel("0");
+		puntajeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		puntajeLabel.setFont(new Font("Tahoma", Font.PLAIN, 38));
+		puntajeLabel.setBounds(10, 52, 176, 69);
+		panel.add(puntajeLabel);
+		
 		//----------------------------------------------
 		m = new HashMap<String, ImageIcon>();
 		//-----------------------------------------------
@@ -168,5 +191,9 @@ public class JuegoGUI extends JFrame {
 		int c = position.getColumna();
 		matrizLabels[f][c].setIcon(img);
 		
+	}
+
+	public void actualizarPuntaje(String p) {
+		puntajeLabel.setText(p);
 	}
 }

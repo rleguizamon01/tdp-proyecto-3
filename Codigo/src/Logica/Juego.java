@@ -57,6 +57,7 @@ public class Juego {
 	
 	public void sumarPuntos(int p) {
 		puntaje += p;
+		actualizarPuntaje();
 	}
 
 	public void pedirMoverPacman() {
@@ -90,5 +91,10 @@ public class Juego {
 
 	public void pedirActualizar(Position position, String caminoImagen) {
 		miGUI.actualizar(position, caminoImagen);
+	}
+	
+	// preguntar motivo de int p si puntaje es atributo de juego
+	public void actualizarPuntaje() {
+		this.miGUI.actualizarPuntaje(puntaje + "");
 	}
 }
