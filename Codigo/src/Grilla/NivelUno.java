@@ -57,10 +57,10 @@ public class NivelUno extends Nivel{
 		g.agregarLabel(egPacman);
 		
 		//Fantasma Rojo:
-		r = new FantasmaRojo(12, 17, g);
+		r = new FantasmaRojo(13, 17, g);
 		EntidadGrafica egRojo = new EntidadGrafica(r);
 		r.setEntidadGrafica(egRojo);
-		m[12][17].agregarEntidad(r);
+		m[13][17].agregarEntidad(r);
 		g.agregarLabel(egRojo);
 	}
 }

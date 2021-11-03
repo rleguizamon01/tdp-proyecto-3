@@ -61,9 +61,18 @@ public abstract class Estado implements EstadoFantasma {
 		Position min = null;
 		float aux = 0;
 		
+		Position pEID;
+		Position pEII;
+		Position pESD;
+		
 		for(Position p : prioridades) {
 			aux = distancia(p, target);
-			if(miGrilla.zonaLibre(p))
+			
+			pEID = new Position(p.getFila() + miFantasma.getAncho() - 1, p.getColumna() + miFantasma.getAlto() - 1);
+			pEII = new Position(p.getFila(), p.getColumna() + miFantasma.getAlto() - 1);
+			pESD = new Position(p.getFila() + miFantasma.getAncho() - 1, p.getColumna());
+			
+			if(miGrilla.zonaLibre(p) && miGrilla.zonaLibre(pEID) && miGrilla.zonaLibre(pEII) && miGrilla.zonaLibre(pESD))
 				if(aux < distanciaMinima) {
 					distanciaMinima = aux;
 					min = p;
