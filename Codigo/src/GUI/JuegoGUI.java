@@ -87,9 +87,13 @@ public class JuegoGUI {
 			        	System.out.println("DERECHA");
 			        	miJuego.pedirActualizarDireccion('E');
 			            break;
-			       case KeyEvent.VK_Q:
+			        case KeyEvent.VK_Q:
 			        	System.out.println("ESQUINAS");
 			        	miJuego.pedirMostrarEntidades();
+			            break;
+			        case KeyEvent.VK_F:
+			        	System.out.println("FANTASMA");
+			        	miJuego.pedirMoverRojo();
 			            break;
 			        case KeyEvent.VK_SPACE:
 			        	System.out.println("ESPACIO");

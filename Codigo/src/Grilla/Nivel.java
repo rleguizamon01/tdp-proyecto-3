@@ -13,10 +13,10 @@ public abstract class Nivel implements EstrategiaNivel{
 	
 	protected Pacman pacman;
 	
-	/**protected Fantasma r;
+	protected Fantasma r;
 	protected Fantasma s;
 	protected Fantasma a;
-	protected Fantasma n;**/
+	protected Fantasma n;
 	
 	public Nivel(Juego j, Grilla g) {
 		ju = j;
@@ -108,7 +108,7 @@ public abstract class Nivel implements EstrategiaNivel{
 		return pacman;
 	}
 
-	/**@Override
+	@Override
 	public Fantasma getRojo() {
 		return r;
 	}
@@ -126,7 +126,7 @@ public abstract class Nivel implements EstrategiaNivel{
 	@Override
 	public Fantasma getNaranja() {
 		return n;
-	}**/
+	}
 	
 	public int getTotalDeMonedasEnNivel() {
 		return contadorMonedas;

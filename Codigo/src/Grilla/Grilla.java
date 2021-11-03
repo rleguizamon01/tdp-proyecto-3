@@ -2,14 +2,12 @@ package Grilla;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import Entidad.*;
 import Utilidad.Position;
 import Utilidad.PositionAdapter;
 import Logica.Juego;
-import ResourceHandler.ResourceHandler;
 
 public class Grilla {
 	private static final int ALTO = 36; //Cantidad de filas en la grilla.
@@ -17,9 +15,16 @@ public class Grilla {
 	private static final int PIXELES = 20;//Tamaño en px de cada celda.
 	
 	protected Bloque matrizGrilla[][];
-	protected int contadorMonedas;
 	protected Juego miJuego;
+	
+	protected int contadorMonedas;
+	
 	protected EntidadMovil pacman;
+	protected Fantasma rojo;
+	protected Fantasma rosa;
+	protected Fantasma azul;
+	protected Fantasma naranja;
+	
 	protected EstrategiaNivel nivelActual;
 	
 	public Grilla(Juego j) {
@@ -34,8 +39,30 @@ public class Grilla {
 	
 	public void inicializar() {
 		nivelActual.strategyInitialize(matrizGrilla);
+		
 		pacman = nivelActual.getPacman();
+		rojo = nivelActual.getRojo();
+		rosa = nivelActual.getRosa();
+		azul = nivelActual.getAzul();
+		naranja = nivelActual.getNaranja();
+		
 		contadorMonedas = nivelActual.getTotalDeMonedasEnNivel();
+	}
+	
+	public Fantasma getRojo() {
+		return rojo;
+	}
+	
+	public Fantasma getRosa() {
+		return rosa;
+	}
+	
+	public Fantasma getAzul() {
+		return azul;
+	}
+	
+	public Fantasma getNaranja() {
+		return naranja;
 	}
 	
 	public void sumarPuntos(int p) {
@@ -63,7 +90,36 @@ public class Grilla {
 		
 		for(Entidad e: entidadesQueColisionan())
 			e.afectar();
+	}
+	
+	public void moverFantasma(Fantasma f) {
+		Position posVieja = f.getPosicionAbsoluta();
+		moverEntidad(f);
+		Position posNueva = f.getPosicionAbsoluta();
 		
+		int fv = posVieja.getFila();
+		int fn = posNueva.getFila();
+		int cv = posVieja.getColumna();
+		int cn = posNueva.getColumna();
+		
+		int diferenciaF = fv - fn;
+		int diferenciaC = cv - cn;
+		
+		if(diferenciaF != 0 || diferenciaC != 0) { //Si ambas son cero, la EM no se movio, por lo que no actualizamos su direccion.
+			if(diferenciaF == 0) {
+				if(diferenciaC > 0)
+					f.setDireccion('N');
+				else
+					f.setDireccion('S');
+			}
+			
+			if(diferenciaC == 0) {
+				if(diferenciaF > 0)
+					f.setDireccion('O');
+				else
+					f.setDireccion('E');
+			}
+		}
 	}
 	
 	private Bloque moverEntidad(EntidadMovil em) {
@@ -98,7 +154,7 @@ public class Grilla {
 		boolean res = false;
 		int f = p.getFila() / 20;
 		int c = p.getColumna() / 20;
-		
+
 		if(f >= 0 && f < ANCHO && c >= 0 && c < ALTO) //Nos aseguramos que este in bounds
 			res = !matrizGrilla[f][c].esPared();	  //Nos aseguramos que no sea pared.
 		

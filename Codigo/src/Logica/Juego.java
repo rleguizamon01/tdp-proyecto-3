@@ -34,6 +34,22 @@ public class Juego {
 		miGrilla.moverPacman();
 	}
 	
+	public void pedirMoverRojo() {
+		miGrilla.moverFantasma(miGrilla.getRojo());
+	}
+	
+	public void pedirMoverRosa() {
+		miGrilla.moverFantasma(miGrilla.getRosa());
+	}
+	
+	public void pedirMoverAzul() {
+		miGrilla.moverFantasma(miGrilla.getAzul());
+	}
+	
+	public void pedirMoverNaranja() {
+		miGrilla.moverFantasma(miGrilla.getNaranja());
+	}
+	
 	public void pedirMostrarEntidades() {
 		miGrilla.mostrarEntidades();
 	}

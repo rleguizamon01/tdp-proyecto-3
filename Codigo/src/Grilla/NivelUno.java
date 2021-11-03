@@ -44,16 +44,23 @@ public class NivelUno extends Nivel{
 				"AWMMMMMMMMMMMMMMMMMMMMMMMMWA",
 				"AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 				"PPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-				"PPPPPPPPPPPPPPPPPPPPPPPPPPPP" //<3
+				"PPPPPPPPPPPPPPPPPPPPPPPPPPPP"
 				};
 	}
 	
 	protected void agregarEntidadesMoviles(Bloque[][] m) {
-		//Entidades Moviles
+		//Pacman:
 		pacman = new Pacman(14, 26, g);
 		EntidadGrafica egPacman = new EntidadGrafica(pacman);
 		pacman.setEntidadGrafica(egPacman);
 		m[14][26].agregarEntidad(pacman);
 		g.agregarLabel(egPacman);
+		
+		//Fantasma Rojo:
+		r = new FantasmaRojo(12, 17, g);
+		EntidadGrafica egRojo = new EntidadGrafica(r);
+		r.setEntidadGrafica(egRojo);
+		m[12][17].agregarEntidad(r);
+		g.agregarLabel(egRojo);
 	}
 }

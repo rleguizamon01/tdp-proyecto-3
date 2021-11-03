@@ -66,6 +66,10 @@ public abstract class Fantasma extends EntidadMovil {
 		return miEstado.caminoImagen();
 	}
 	
+	public Position getEsquinaBuscada() {
+		return esquinaBuscada;
+	}
+	
 	public abstract String getCaminoImagenColor();
 
 }
