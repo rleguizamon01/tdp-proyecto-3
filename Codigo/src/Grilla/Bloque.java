@@ -1,11 +1,13 @@
 package Grilla;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
 import Entidad.Entidad;
 import Utilidad.Position;
 import ResourceHandler.ResourceHandler;
 
-public class Bloque {
+public class Bloque implements Iterable<Entidad> {
 	protected boolean esPared;
 	protected Position pos;
 	protected ArrayList<Entidad> misEntidades;
@@ -68,5 +70,10 @@ public class Bloque {
 	
 	public String toString() {
 		return pos.toString();
+	}
+
+	@Override
+	public Iterator<Entidad> iterator() {
+		return misEntidades.iterator();
 	}
 }

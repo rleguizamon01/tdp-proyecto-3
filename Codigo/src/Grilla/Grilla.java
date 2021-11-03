@@ -1,7 +1,13 @@
 package Grilla;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 import Entidad.*;
 import Utilidad.Position;
+import Utilidad.PositionAdapter;
 import Logica.Juego;
 import ResourceHandler.ResourceHandler;
 
@@ -33,7 +39,7 @@ public class Grilla {
 	}
 	
 	public void sumarPuntos(int p) {
-		System.out.println("Se suman " + p + "puntos! Buen trabajo!");
+		System.out.println("Se suman " + p + " puntos! Buen trabajo!");
 	}
 	
 	public void removerEntidad(Entidad e) {
@@ -48,14 +54,16 @@ public class Grilla {
 	}
 	
 	public void actualizarDireccionPacman(char d) {
-		System.out.println("Pedimos actualizar la dire a: " + d);
 		pacman.setDireccion(d);
 		pacman.getEntidadGrafica().actualizarImagen();
 	}
 	
 	public void moverPacman() {
 		Bloque b = moverEntidad(pacman);
-		//Aca habria que tratar las colisiones.
+		
+		for(Entidad e: entidadesQueColisionan())
+			e.afectar();
+		
 	}
 	
 	private Bloque moverEntidad(EntidadMovil em) {
@@ -95,5 +103,59 @@ public class Grilla {
 			res = !matrizGrilla[f][c].esPared();	  //Nos aseguramos que no sea pared.
 		
 		return res;
+	}
+	
+	public void mostrarEntidades() {
+		Iterable<Entidad> it = entidadesQueColisionan();
+		
+		System.out.println("COLISIONAN: ");
+		
+		for(Entidad e : it)
+			System.out.println(e.getClass() + ": " + e.getPosicionZona());
+	}
+	
+	protected Iterable<Entidad> entidadesQueColisionan() {
+		ArrayList<Entidad> it = new ArrayList<Entidad>();
+
+		Set<Position> zonasPacman = zonasOcupadas(pacman);
+		Bloque aux = null;
+		
+		Position eSIP = pacman.getEsquinaSuperiorIzquierda(); //eSIP = esquina superior izquierda pacman
+		Position eIDP = pacman.getEsquinaInferiorDerecha();   //eIDP = esquina inferior derecha pacman
+		Position eSIE = null;
+		Position eIDE = null;
+		
+		System.out.println("EXISTEN: ");
+		
+		for(Position p : zonasPacman) {
+			aux = matrizGrilla[p.getFila()][p.getColumna()];
+			
+			for(Entidad e : aux) {
+				eSIE = e.getEsquinaSuperiorIzquierda();
+				eIDE = e.getEsquinaInferiorDerecha();
+				
+				//System.out.println(e.getClass() + ": " + e.getPosicionZona() + " ESIE: " + eSIE + " EIDE: " + eIDE);
+				
+				if(PositionAdapter.seSobreponenAdaptado(eSIP, eIDP, eSIE, eIDE)) //eSIP, eIDP, eSIE, eIDE
+					it.add(e);
+			}
+			
+		}
+		
+		return it;
+	}
+	
+	protected Set<Position> zonasOcupadas(Entidad e) {
+		Set<Position> hs = new HashSet<Position>();
+		Position aux = null;
+		
+		for(Position p : e.getEsquinas()) {
+			aux = new Position();
+			aux.setFila(p.getFila() / PIXELES);
+			aux.setColumna(p.getColumna() / PIXELES);
+			hs.add(aux);
+		}
+		
+		return hs;
 	}
 }

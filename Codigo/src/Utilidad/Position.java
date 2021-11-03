@@ -45,6 +45,18 @@ public class Position implements Cloneable {
 	public static boolean seSobreponen(Position l1, Position r1, Position l2, Position r2) {
 		boolean ret = true;
 		
+		/**int xl1 = l1.getColumna();
+		int yl1 = l1.getFila();
+		
+		int xr1 = r1.getColumna();
+		int yr1 = r1.getFila();
+		
+		int xl2 = l2.getColumna();
+		int yl2 = l2.getFila();
+		
+		int xr2 = r2.getColumna();
+		int yr2 = r2.getFila();**/
+		
 		int xl1 = l1.getFila();
 		int yl1 = l1.getColumna();
 		
@@ -70,6 +82,18 @@ public class Position implements Cloneable {
 			ret = false;
 		
 		return ret;
+	}
+	
+	public int hashCode() {
+		return ((Integer) f).hashCode() + ((Integer) c).hashCode();
+	}
+	
+	//TODO: CORREGIR EL PECADO.
+	public boolean equals(Object o) {
+		if(!(o instanceof Position))
+			return false;
+		else
+			return equals((Position) o);
 	}
 	
 }

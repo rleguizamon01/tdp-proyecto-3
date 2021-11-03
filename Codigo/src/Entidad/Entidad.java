@@ -43,6 +43,55 @@ public abstract class Entidad {
 		return alto;
 	}
 	
+	public Position getEsquinaSuperiorIzquierda() {
+		return getPosicionAbsoluta();
+	}
+	
+	public Position getEsquinaSuperiorDerecha() {
+		Position p = posicionAbsoluta.clone();
+		
+		p.setFila(p.getFila()+ancho);
+		
+		return p;
+	}
+	
+	public Position getEsquinaInferiorIzquierda() {
+		Position p = posicionAbsoluta.clone();
+		
+		p.setColumna(p.getColumna()+alto);
+		
+		return p;
+	}
+	
+	public Position getEsquinaInferiorDerecha() {
+		Position p = posicionAbsoluta.clone();
+		
+		p.setFila(p.getFila()+ancho);
+		p.setColumna(p.getColumna()+alto);
+		
+		return p;
+	}
+	
+	public Position[] getEsquinas() {
+		Position[] esq = new Position[4];
+		
+		esq[0] = getEsquinaSuperiorIzquierda();
+		esq[1] = getEsquinaSuperiorDerecha();
+		esq[2] = getEsquinaInferiorIzquierda();
+		esq[3] = getEsquinaInferiorDerecha();
+		
+		return esq;
+	}
+	
+	public Position getCentro() {
+		Position p = posicionAbsoluta.clone();
+		
+		p.setFila(p.getFila()+(ancho/2));
+		p.setColumna(p.getColumna()+(alto/2));
+		
+		return p;
+	}
+	
 	public void setEntidadGrafica(EntidadGrafica entGraf) {
 		eg = entGraf;
 	}

@@ -33,4 +33,8 @@ public class Juego {
 	public void pedirMoverPacman() {
 		miGrilla.moverPacman();
 	}
+	
+	public void pedirMostrarEntidades() {
+		miGrilla.mostrarEntidades();
+	}
 }
