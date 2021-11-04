@@ -28,7 +28,6 @@ public abstract class Estado implements EstadoFantasma {
 		oeste.setFila(oeste.getFila() - miFantasma.getVelocidad());
 		
 		Position[] prioridades = new Position[3];
-		int index = 0;
 		char d = miFantasma.getDireccion();
 		
 		switch (d) {
@@ -79,7 +78,74 @@ public abstract class Estado implements EstadoFantasma {
 				}
 		}
 		
-		return min;
+		return min == null ? miFantasma.getPosicionAbsoluta() : min;
+	}
+	
+	protected Position masLejanoA(Position target) {
+		Position norte = miFantasma.getPosicionAbsoluta().clone();
+		norte.setColumna(norte.getColumna() - miFantasma.getVelocidad());
+		
+		Position sur = miFantasma.getPosicionAbsoluta().clone();
+		sur.setColumna(sur.getColumna() + miFantasma.getVelocidad());
+		
+		Position este = miFantasma.getPosicionAbsoluta().clone();
+		este.setFila(este.getFila() + miFantasma.getVelocidad());
+		
+		Position oeste = miFantasma.getPosicionAbsoluta().clone();
+		oeste.setFila(oeste.getFila() - miFantasma.getVelocidad());
+		
+		Position[] prioridades = new Position[3];
+		char d = miFantasma.getDireccion();
+		
+		switch (d) {
+			case 'N':
+				prioridades[0] = norte;
+				prioridades[1] = este;
+				prioridades[2] = oeste;
+				break;
+				
+			case 'S':
+				prioridades[0] = sur;
+				prioridades[1] = este;
+				prioridades[2] = oeste;
+				break;
+				
+			case 'E':
+				prioridades[0] = norte;
+				prioridades[1] = sur;
+				prioridades[2] = este;
+				break;
+				
+			case 'O':
+				prioridades[0] = norte;
+				prioridades[1] = sur;
+				prioridades[2] = oeste;
+				break;
+		}
+		
+		float distanciaMaxima = Float.MIN_VALUE;
+		Position max = null;
+		float aux = 0;
+		
+		Position pEID;
+		Position pEII;
+		Position pESD;
+		
+		for(Position p : prioridades) {
+			aux = distancia(p, target);
+			
+			pEID = new Position(p.getFila() + miFantasma.getAncho() - 1, p.getColumna() + miFantasma.getAlto() - 1);
+			pEII = new Position(p.getFila(), p.getColumna() + miFantasma.getAlto() - 1);
+			pESD = new Position(p.getFila() + miFantasma.getAncho() - 1, p.getColumna());
+			
+			if(miGrilla.zonaLibre(p) && miGrilla.zonaLibre(pEID) && miGrilla.zonaLibre(pEII) && miGrilla.zonaLibre(pESD))
+				if(aux > distanciaMaxima) {
+					distanciaMaxima = aux;
+					max = p;
+				}
+		}
+		
+		return max == null ? miFantasma.getPosicionAbsoluta() : max;
 	}
 	
 	protected float distancia(Position p1, Position p2) {

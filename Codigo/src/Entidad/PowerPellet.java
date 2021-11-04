@@ -19,8 +19,9 @@ public class PowerPellet extends EntidadFija {
 
 	@Override
 	public void afectar() {
-		// TODO Auto-generated method stub
-
+		//TODO: Ver tema timer para que salgan de run
+		miGrilla.ponerFantasmasEnRun();
+		miGrilla.removerEntidad(this);
 	}
 
 	@Override

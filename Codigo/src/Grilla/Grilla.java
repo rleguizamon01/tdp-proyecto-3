@@ -24,6 +24,7 @@ public class Grilla {
 	protected Fantasma rosa;
 	protected Fantasma azul;
 	protected Fantasma naranja;
+	protected Fantasma[] misFantasmas;
 	
 	protected EstrategiaNivel nivelActual;
 	
@@ -41,10 +42,13 @@ public class Grilla {
 		nivelActual.strategyInitialize(matrizGrilla);
 		
 		pacman = nivelActual.getPacman();
+		
 		rojo = nivelActual.getRojo();
 		rosa = nivelActual.getRosa();
 		azul = nivelActual.getAzul();
 		naranja = nivelActual.getNaranja();
+		
+		misFantasmas = new Fantasma[] {rojo, rosa, azul, naranja};
 		
 		contadorMonedas = nivelActual.getTotalDeMonedasEnNivel();
 	}
@@ -65,6 +69,24 @@ public class Grilla {
 		return naranja;
 	}
 	
+	public void ponerFantasmasEnChase() {
+		for(Fantasma f : misFantasmas)
+			if(f != null)
+				f.ponerEnChase();
+	}
+	
+	public void ponerFantasmasEnScatter() {
+		for(Fantasma f : misFantasmas)
+			if(f != null)
+				f.ponerEnScatter();
+	}
+	
+	public void ponerFantasmasEnRun() {
+		for(Fantasma f : misFantasmas)
+			if(f != null)
+				f.ponerEnRun();
+	}
+
 	public void sumarPuntos(int p) {
 		System.out.println("Se suman " + p + " puntos! Buen trabajo!");
 	}
@@ -88,6 +110,10 @@ public class Grilla {
 	
 	public void actualizarVelocidadPacman(int v) {
 		pacman.setVelocidad(v);
+	}
+	
+	public Position posicionActualPacman() {
+		return pacman.getPosicionAbsoluta();
 	}
 	
 	public int velocidadActualPacman() {

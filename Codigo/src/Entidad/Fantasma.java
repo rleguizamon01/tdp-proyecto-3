@@ -21,7 +21,6 @@ public abstract class Fantasma extends EntidadMovil {
 	
 	public Fantasma(int xAbs, int yAbs, int xZona, int yZona, int w, int h, Grilla g) {
 		super(xAbs, yAbs, xZona, yZona, w, h, g);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Fantasma(int fila, int columna, Grilla g) {
@@ -43,17 +42,23 @@ public abstract class Fantasma extends EntidadMovil {
 	
 	public void ponerEnRun() {
 		miEstado = run;
+		invertirDireccion(); //Esto se hace porque pasa en el pacman de verdad.
 		eg.actualizarImagen();
 	}
 	
 	public void ponerEnDead() {
 		miEstado = dead;
+		invertirDireccion(); //Esto se hace porque pasa en el pacman de verdad.
 		eg.actualizarImagen();
 	}
 	
 	@Override
 	public Position getSiguientePosicion() {
 		return miEstado.siguientePosicion();
+	}
+	
+	public Position getPosicionSpawn() {
+		return posicionDeSpawn;
 	}
 
 	@Override

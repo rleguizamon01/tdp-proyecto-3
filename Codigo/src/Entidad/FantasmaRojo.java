@@ -2,6 +2,7 @@ package Entidad;
 
 import EstadosFantasmas.*;
 import Grilla.Grilla;
+import IAs.ChaseIARoja;
 import ResourceHandler.ResourceHandler;
 import Utilidad.Position;
 
@@ -13,10 +14,10 @@ public class FantasmaRojo extends Fantasma {
 		velocidad = VELOCIDAD_ROJO;
 		esquinaBuscada = new Position(26, 0);
 		
-		chase = null;
+		chase = new EstadoChase(this, miGrilla, new ChaseIARoja(miGrilla));
 		scatter = new EstadoScatter(this, miGrilla);
-		run = null;
-		dead = null;
+		run = new EstadoRun(this, miGrilla);
+		dead = new EstadoDead(this, miGrilla);
 		
 		miEstado = scatter;
 	}

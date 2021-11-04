@@ -43,6 +43,18 @@ public abstract class EntidadMovil extends Entidad {
 		this.velocidad = velocidad;
 	}
 	
+	public void invertirDireccion() {
+		if(direccion == 'N') {
+			direccion = 'S';
+		} else if(direccion == 'S') {
+			direccion = 'N';
+		} else if(direccion == 'E') {
+			direccion = 'O';
+		} else {
+			direccion = 'E';
+		}
+	}
+	
 	public abstract Position getSiguientePosicion();
 
 }
