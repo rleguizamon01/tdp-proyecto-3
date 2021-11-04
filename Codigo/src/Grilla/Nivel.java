@@ -42,6 +42,7 @@ public abstract class Nivel implements EstrategiaNivel{
 				if(c == '.') {
 					e = new Moneda(fila, col, g);
 					eg = new EntidadGrafica(e);
+					e.setEntidadGrafica(eg);
 					aux.agregarEntidad(e);
 					g.agregarLabel(eg);
 					contadorMonedas++;
@@ -52,6 +53,7 @@ public abstract class Nivel implements EstrategiaNivel{
 				if(c == 'W') {
 					e = new PowerPellet(fila, col, g);
 					eg = new EntidadGrafica(e);
+					e.setEntidadGrafica(eg);
 					aux.agregarEntidad(e);
 					g.agregarLabel(eg);
 					System.out.println("Power Pellet en: " + fila + " " + col);
@@ -61,6 +63,7 @@ public abstract class Nivel implements EstrategiaNivel{
 				if(c == 'F') {
 					e = new Fruta(fila, col, g);
 					eg = new EntidadGrafica(e);
+					e.setEntidadGrafica(eg);
 					aux.agregarEntidad(e);
 					g.agregarLabel(eg);
 					System.out.println("Fruta en: " + fila + " " + col);
@@ -71,6 +74,7 @@ public abstract class Nivel implements EstrategiaNivel{
 				if(c == 'B') {
 					e = new PocionBomba(fila, col, g);
 					eg = new EntidadGrafica(e);
+					e.setEntidadGrafica(eg);
 					aux.agregarEntidad(e);
 					g.agregarLabel(eg);
 					System.out.println("Pocion Bomba en: " + fila + " " + col);
@@ -80,6 +84,7 @@ public abstract class Nivel implements EstrategiaNivel{
 				if(c == 'V') {
 					e = new PocionVelocidad(fila, col, g);
 					eg = new EntidadGrafica(e);
+					e.setEntidadGrafica(eg);
 					aux.agregarEntidad(e);
 					g.agregarLabel(eg);
 					System.out.println("Pocion Velocidad en: " + fila + " " + col);

@@ -168,7 +168,13 @@ public class JuegoGUI {
 		j.setVisible(true);
 	}
 	
-	public void agregar(Entidad e) {
+	public void removerLabel(JLabel j) {
+		panelContenedorDeGrilla.remove(j);
+		panelContenedorDeGrilla.revalidate();
+		panelContenedorDeGrilla.repaint();
+	}
+	
+	/**public void agregar(Entidad e) {
 		JLabel j = new JLabel();
 		
 		int x = e.getPosicionAbsoluta().getFila();
@@ -185,7 +191,7 @@ public class JuegoGUI {
 		
 		panelContenedorDeGrilla.add(j);
 		panelContenedorDeGrilla.moveToFront(j);
-	}
+	}**/
 	
 	public void actualizarPiso(Position p, String path) {
 		int f = p.getFila();

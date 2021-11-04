@@ -72,8 +72,9 @@ public class Grilla {
 	public void removerEntidad(Entidad e) {
 		Position pos = e.getPosicionZona();
 		Bloque b = matrizGrilla[pos.getFila()][pos.getColumna()];
+		//e.getEntidadGrafica().desparecer();
+		miJuego.removerLabel(e.getEntidadGrafica());
 		b.eliminarEntidad(e);
-		e.getEntidadGrafica().desparecer();
 	}
 	
 	public void agregarLabel(EntidadGrafica eg) {
@@ -213,5 +214,15 @@ public class Grilla {
 		}
 		
 		return hs;
+	}
+	
+	public void decrementarMonedas() {
+		contadorMonedas--;
+		if(contadorMonedas == 0)
+			gano();
+	}
+	
+	public void gano() {
+		System.out.println("GANASTE!");
 	}
 }

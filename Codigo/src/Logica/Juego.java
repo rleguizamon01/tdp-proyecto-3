@@ -26,6 +26,10 @@ public class Juego {
 		miGUI.agregarLabel(eg.getLabel());
 	}
 	
+	public void removerLabel(EntidadGrafica eg) {
+		miGUI.removerLabel(eg.getLabel());
+	}
+	
 	public void pedirActualizarDireccion(char d) {
 		miGrilla.actualizarDireccionPacman(d);
 	}
