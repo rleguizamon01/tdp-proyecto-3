@@ -8,7 +8,7 @@ public class PowerPellet extends EntidadFija {
 	private static final int PUNTOS_POWER_PELLET = 500;
 	private static final int ANCHO_POWER_PELLET = 19;
 	private static final int ALTO_POWER_PELLET = 19;
-	private static final int DURACION_POWER_PELLET = 16000;
+	private static final int DURACION_POWER_PELLET = 8000;
 	
 	protected int duracion;
 	
