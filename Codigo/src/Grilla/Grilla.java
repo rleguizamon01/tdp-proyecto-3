@@ -86,6 +86,14 @@ public class Grilla {
 		pacman.getEntidadGrafica().actualizarImagen();
 	}
 	
+	public void actualizarVelocidadPacman(int v) {
+		pacman.setVelocidad(v);
+	}
+	
+	public int velocidadActualPacman() {
+		return pacman.getVelocidad();
+	}
+	
 	public void moverPacman() {
 		Bloque b = moverEntidad(pacman);
 		
