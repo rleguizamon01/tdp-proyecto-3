@@ -76,12 +76,13 @@ public class Position implements Cloneable {
 		return ((Integer) f).hashCode() + ((Integer) c).hashCode();
 	}
 	
-	//TODO: CORREGIR EL PECADO.
 	public boolean equals(Object o) {
-		if(!(o instanceof Position))
+		try {
+			Position p = (Position) o;
+			return equals(p);
+		} catch(ClassCastException ex) {
 			return false;
-		else
-			return equals((Position) o);
+		}
 	}
 	
 }
