@@ -15,12 +15,13 @@ public class Fruta extends EntidadFija {
 	
 	public Fruta(int fila, int columna, Grilla g) {
 		super(20*fila+(20-ANCHO_FRUTA)/2, 20*columna+(20-ALTO_FRUTA)/2, fila, columna, ANCHO_FRUTA, ALTO_FRUTA, g);
+		puntos = PUNTOS_FRUTA;
 	}
 
 	@Override
 	public void afectar() {
-		// TODO Auto-generated method stub
-
+		miGrilla.sumarPuntos(puntos);
+		miGrilla.removerEntidad(this);
 	}
 
 	@Override

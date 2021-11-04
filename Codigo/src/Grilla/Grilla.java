@@ -72,8 +72,8 @@ public class Grilla {
 	public void removerEntidad(Entidad e) {
 		Position pos = e.getPosicionZona();
 		Bloque b = matrizGrilla[pos.getFila()][pos.getColumna()];
-		//e.getEntidadGrafica().desparecer();
-		miJuego.removerLabel(e.getEntidadGrafica());
+		//e.getEntidadGrafica().desparecer(); //Genera menos lag, pero es menos efectivo porque la JLabel sigue existiendo
+		miJuego.removerLabel(e.getEntidadGrafica()); //Genera mas lag, pero la JLabel deja de existir.
 		b.eliminarEntidad(e);
 	}
 	
@@ -182,8 +182,6 @@ public class Grilla {
 		Position eSIE = null;
 		Position eIDE = null;
 		
-		System.out.println("EXISTEN: ");
-		
 		for(Position p : zonasPacman) {
 			aux = matrizGrilla[p.getFila()][p.getColumna()];
 			
@@ -191,9 +189,7 @@ public class Grilla {
 				eSIE = e.getEsquinaSuperiorIzquierda();
 				eIDE = e.getEsquinaInferiorDerecha();
 				
-				//System.out.println(e.getClass() + ": " + e.getPosicionZona() + " ESIE: " + eSIE + " EIDE: " + eIDE);
-				
-				if(PositionAdapter.seSobreponenAdaptado(eSIP, eIDP, eSIE, eIDE)) //eSIP, eIDP, eSIE, eIDE
+				if(PositionAdapter.seSobreponenAdaptado(eSIP, eIDP, eSIE, eIDE))
 					it.add(e);
 			}
 			
