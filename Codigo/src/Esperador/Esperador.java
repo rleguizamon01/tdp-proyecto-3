@@ -12,6 +12,7 @@ public abstract class Esperador extends Thread {
 	}
 	
 	public void run() {
+		antesDeEsperar();
 		try {
 			Thread.sleep(tiempoEsperado);
 		} catch (InterruptedException e) {
@@ -19,6 +20,8 @@ public abstract class Esperador extends Thread {
 		}
 		notificar();
 	}
+	
+	protected void antesDeEsperar() {} //Actua como hook.
 	
 	protected abstract void notificar();
 }
