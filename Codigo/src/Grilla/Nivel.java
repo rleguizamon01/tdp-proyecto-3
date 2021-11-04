@@ -39,7 +39,7 @@ public abstract class Nivel implements EstrategiaNivel{
 				aux = new Bloque(fila, col, false);
 				
 				//M de Moneda
-				if(c == 'M') {
+				if(c == '.') {
 					e = new Moneda(fila, col, g);
 					eg = new EntidadGrafica(e);
 					aux.agregarEntidad(e);
