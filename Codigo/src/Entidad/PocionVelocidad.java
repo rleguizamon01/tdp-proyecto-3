@@ -28,6 +28,7 @@ public class PocionVelocidad extends Pocion {
 	
 	@Override
 	public void afectar() {
+		miGrilla.sumarPuntos(puntos);
 		int velocidadActual = miGrilla.velocidadActualPacman();
 		miGrilla.actualizarVelocidadPacman((int) Math.floor(coeficienteDeAceleracion*velocidadActual));
 		(new EsperadorVelocidad(duracion, miGrilla, velocidadActual)).start();
