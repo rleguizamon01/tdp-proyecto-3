@@ -1,6 +1,7 @@
 package Grilla;
 
 import Entidad.EntidadGrafica;
+import Entidad.FantasmaRojo;
 import Entidad.Pacman;
 import Logica.Juego;
 
@@ -52,8 +53,15 @@ public class NivelTres extends Nivel {
 		pacman = new Pacman(15, 26, g);
 		EntidadGrafica egPacman = new EntidadGrafica(pacman);
 		pacman.setEntidadGrafica(egPacman);
-		m[3][3].agregarEntidad(pacman);
+		m[15][26].agregarEntidad(pacman);
 		g.agregarLabel(egPacman);
+		
+		//Fantasma Rojo:
+		r = new FantasmaRojo(13, 17, g);
+		EntidadGrafica egRojo = new EntidadGrafica(r);
+		r.setEntidadGrafica(egRojo);
+		m[13][17].agregarEntidad(r);
+		g.agregarLabel(egRojo);
 	}
 
 }

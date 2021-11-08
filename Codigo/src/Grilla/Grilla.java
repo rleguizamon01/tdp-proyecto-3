@@ -103,6 +103,10 @@ public class Grilla {
 		miJuego.agregarLabel(eg);
 	}
 	
+	public char direccionPacman() {
+		return pacman.getDireccion();
+	}
+	
 	public void actualizarDireccionPacman(char d) {
 		pacman.setDireccion(d);
 		pacman.getEntidadGrafica().actualizarImagen();

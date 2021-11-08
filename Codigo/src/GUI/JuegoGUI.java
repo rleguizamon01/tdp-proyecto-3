@@ -40,6 +40,7 @@ public class JuegoGUI {
 	private JLabel lblEfectoVelocidad;
 	private JLabel lblEfectoPowerPellet;
 	private JLabel lblEfectoBomba;
+	private JLabel lblTituloEfectos;
 	private Juego miJuego;
 
 	public void setJuego(Juego j) {
@@ -122,8 +123,8 @@ public class JuegoGUI {
 		panelInformacion.setBorder(new LineBorder(java.awt.Color.BLACK));
 		frame.getContentPane().add(panelInformacion);
 				
-		puntajeTituloLabel = new JLabel("SCORE");
-		puntajeTituloLabel.setBounds(72, 10, 56, 22);
+		puntajeTituloLabel = new JLabel("SCORE:");
+		puntajeTituloLabel.setBounds(70, 10, 66, 22);
 		puntajeTituloLabel.setVerticalAlignment(SwingConstants.TOP);
 		puntajeTituloLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		panelInformacion.add(puntajeTituloLabel);
@@ -131,10 +132,11 @@ public class JuegoGUI {
 		puntajeLabel = new JLabel("0");
 		puntajeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		puntajeLabel.setFont(new Font("Tahoma", Font.PLAIN, 38));
-		puntajeLabel.setBounds(10, 52, 176, 69);
+		puntajeLabel.setBounds(10, 43, 176, 69);
 		panelInformacion.add(puntajeLabel);
 		
 		panelEfectos = new JPanel();
+		panelEfectos.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelEfectos.setBounds(660, 147, 200, 200);
 		panelEfectos.setLayout(null);
 		frame.getContentPane().add(panelEfectos);
@@ -142,7 +144,7 @@ public class JuegoGUI {
 		String aux = ResourceHandler.getEfectoVelocidadCI();
 		
 		lblEfectoVelocidad = new JLabel();
-		lblEfectoVelocidad.setBounds(10, 11, 40, 40);
+		lblEfectoVelocidad.setBounds(10, 47, 40, 40);
 		lblEfectoVelocidad.setIcon(new ImageIcon(JuegoGUI.class.getResource(aux)));
 		lblEfectoVelocidad.setVisible(false);
 		panelEfectos.add(lblEfectoVelocidad);
@@ -150,7 +152,7 @@ public class JuegoGUI {
 		aux = ResourceHandler.getEfectoPowerPelletCI();
 		
 		lblEfectoPowerPellet = new JLabel();
-		lblEfectoPowerPellet.setBounds(10, 62, 40, 40);
+		lblEfectoPowerPellet.setBounds(10, 98, 40, 40);
 		lblEfectoPowerPellet.setIcon(new ImageIcon(JuegoGUI.class.getResource(aux)));
 		lblEfectoPowerPellet.setVisible(false);
 		panelEfectos.add(lblEfectoPowerPellet);
@@ -158,10 +160,16 @@ public class JuegoGUI {
 		aux = ResourceHandler.getEfectoBombaCI();
 		
 		lblEfectoBomba = new JLabel();
-		lblEfectoBomba.setBounds(10, 113, 40, 40);
+		lblEfectoBomba.setBounds(10, 149, 40, 40);
 		lblEfectoBomba.setIcon(new ImageIcon(JuegoGUI.class.getResource(aux)));
 		lblEfectoBomba.setVisible(false);
 		panelEfectos.add(lblEfectoBomba);
+		
+		lblTituloEfectos = new JLabel("EFFECTS:");
+		lblTituloEfectos.setVerticalAlignment(SwingConstants.TOP);
+		lblTituloEfectos.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblTituloEfectos.setBounds(62, 11, 76, 22);
+		panelEfectos.add(lblTituloEfectos);
 		
 		matrizLabels = new JLabel[ANCHO][ALTO]; //28 x 36
 	}

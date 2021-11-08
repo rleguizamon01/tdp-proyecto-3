@@ -62,5 +62,12 @@ public class NivelUno extends Nivel{
 		r.setEntidadGrafica(egRojo);
 		m[13][17].agregarEntidad(r);
 		g.agregarLabel(egRojo);
+		
+		//Fantasma Rosa:
+		s = new FantasmaRosa(14, 17, g);
+		EntidadGrafica egRosa = new EntidadGrafica(s);
+		s.setEntidadGrafica(egRosa);
+		m[14][17].agregarEntidad(s);
+		g.agregarLabel(egRosa);
 	}
 }
