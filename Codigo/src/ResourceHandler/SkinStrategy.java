@@ -37,4 +37,9 @@ public interface SkinStrategy {
 	public String getPocionVelocidadCI();
 	public String getPocionBombaCI();
 	public String getBombaCI();
+	
+	//Miscelaneo
+	public String getEfectoVelocidadCI();
+	public String getEfectoPowerPelletCI();
+	public String getEfectoBombaCI();
 }

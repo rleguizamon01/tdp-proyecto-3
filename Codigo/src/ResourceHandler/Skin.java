@@ -47,4 +47,16 @@ public abstract class Skin implements SkinStrategy{
 	public String getMonedaCI() {
 		return pathComun + propertiesComun.getProperty("moneda");
 	}
+	
+	public String getEfectoVelocidadCI() {
+		return pathComun + propertiesComun.getProperty("efectoVelocidad");
+	}
+	
+	public String getEfectoPowerPelletCI() {
+		return pathComun + propertiesComun.getProperty("efectoPower");
+	}
+	
+	public String getEfectoBombaCI() {
+		return pathComun + propertiesComun.getProperty("efectoBomba");
+	}
 }

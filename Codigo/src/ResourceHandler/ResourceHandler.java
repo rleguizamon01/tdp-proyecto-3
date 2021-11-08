@@ -21,6 +21,10 @@ public class ResourceHandler {
 		return s.getParedCI();
 	}
 	
+	public static String getEfectoVelocidadCI() {
+		return s.getEfectoVelocidadCI();
+	}
+	
 	//------------------------------------------------------------------//
 	//						ENTIDADES FIJAS								//
 	//------------------------------------------------------------------//
