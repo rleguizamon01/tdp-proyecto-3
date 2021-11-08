@@ -25,6 +25,14 @@ public class ResourceHandler {
 		return s.getEfectoVelocidadCI();
 	}
 	
+	public static String getEfectoBombaCI() {
+		return s.getEfectoBombaCI();
+	}
+	
+	public static String getEfectoPowerPelletCI() {
+		return s.getEfectoPowerPelletCI();
+	}
+	
 	//------------------------------------------------------------------//
 	//						ENTIDADES FIJAS								//
 	//------------------------------------------------------------------//
