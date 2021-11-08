@@ -12,6 +12,7 @@ public class EsperadorVelocidad extends Esperador {
 	
 	@Override
 	protected void notificar() {
+		grillaNotificada.pedirEstablecerEstadoVelocidad(false);
 		grillaNotificada.actualizarVelocidadPacman(velocidadOriginal);
 	}
 

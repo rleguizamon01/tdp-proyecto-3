@@ -1,6 +1,5 @@
 package Logica;
 
-import Entidad.Entidad;
 import Entidad.EntidadGrafica;
 import GUI.JuegoGUI;
 import Grilla.Grilla;
@@ -28,6 +27,18 @@ public class Juego {
 	
 	public void removerLabel(EntidadGrafica eg) {
 		miGUI.removerLabel(eg.getLabel());
+	}
+	
+	public void pedirEstablecerVisibleVelocidad(boolean b) {
+		miGUI.establecerVisible(miGUI.getLabelEfectoVelocidad(), b);
+	}
+	
+	public void pedirEstablecerVisiblePowerPellet(boolean b) {
+		miGUI.establecerVisible(miGUI.getLabelEfectoPowerPellet(), b);
+	}
+	
+	public void pedirEstablecerVisibleBomba(boolean b) {
+		miGUI.establecerVisible(miGUI.getLabelEfectoBomba(), b);
 	}
 	
 	public void pedirActualizarDireccion(char d) {

@@ -24,6 +24,7 @@ public class PowerPellet extends EntidadFija {
 	public void afectar() {
 		miGrilla.sumarPuntos(puntos);
 		miGrilla.ponerFantasmasEnRun();
+		miGrilla.pedirEstablecerEstadoPowerPellet(true);
 		EsperadorPowerPellet es = EsperadorPowerPellet.getEsperadorPowerPellet(DURACION_POWER_PELLET, miGrilla);
 		
 		if(es.estaCorriendo()) { //Si el esperador ya esta corriendo...

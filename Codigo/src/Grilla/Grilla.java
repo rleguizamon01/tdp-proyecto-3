@@ -255,4 +255,16 @@ public class Grilla {
 	public void gano() {
 		System.out.println("GANASTE!");
 	}
+	
+	public void pedirEstablecerEstadoVelocidad(boolean b) {
+		miJuego.pedirEstablecerVisibleVelocidad(b);
+	}
+	
+	public void pedirEstablecerEstadoPowerPellet(boolean b) {
+		miJuego.pedirEstablecerVisiblePowerPellet(b);
+	}
+	
+	public void pedirEstablecerEstadoBomba(boolean b) {
+		miJuego.pedirEstablecerVisibleBomba(b);
+	}
 }

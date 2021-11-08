@@ -32,6 +32,7 @@ public class EsperadorPowerPellet extends Esperador {
 		while(!colaTiempos.isEmpty())
 			dormirTiempoExtra(colaTiempos.poll());
 		
+		grillaNotificada.pedirEstablecerEstadoPowerPellet(false);
 		grillaNotificada.ponerFantasmasEnChase();
 		me = null;
 		estaCorriendo = false;

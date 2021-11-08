@@ -36,20 +36,18 @@ public class JuegoGUI {
 	private JPanel panelInformacion;
 	private JLabel puntajeTituloLabel;
 	private JLabel puntajeLabel;
+	private JPanel panelEfectos;
+	private JLabel lblEfectoVelocidad;
+	private JLabel lblEfectoPowerPellet;
+	private JLabel lblEfectoBomba;
 	private Juego miJuego;
-	
-	/**
-	 * Create the application.
-	 */
-	/**public JuegoGUI() {
-		initialize();
-	}**/
 
 	public void setJuego(Juego j) {
 		miJuego = j;
 	}
 	
 	/**
+	 * Codigo autogenerado por WindowBuilder:
 	 * Initialize the contents of the frame.
 	 * @wbp.parser.entryPoint
 	 */
@@ -100,8 +98,6 @@ public class JuegoGUI {
 			        	miJuego.pedirMoverPacman();
 			        	break;
 			    }
-			    
-			    //txtrCaptadorDeEventos.grabFocus();
 			}
 
 			@Override
@@ -137,6 +133,26 @@ public class JuegoGUI {
 		puntajeLabel.setBounds(10, 52, 176, 69);
 		panelInformacion.add(puntajeLabel);
 		
+		panelEfectos = new JPanel();
+		panelEfectos.setBounds(660, 147, 200, 200);
+		panelEfectos.setLayout(null);
+		frame.getContentPane().add(panelEfectos);
+		
+		lblEfectoVelocidad = new JLabel("\"vel\"");
+		lblEfectoVelocidad.setBounds(10, 11, 40, 40);
+		lblEfectoVelocidad.setVisible(false);
+		panelEfectos.add(lblEfectoVelocidad);
+		
+		lblEfectoPowerPellet = new JLabel("\"pow\"");
+		lblEfectoPowerPellet.setBounds(10, 62, 40, 40);
+		lblEfectoPowerPellet.setVisible(false);
+		panelEfectos.add(lblEfectoPowerPellet);
+		
+		lblEfectoBomba = new JLabel("\"bom\"");
+		lblEfectoBomba.setBounds(10, 113, 40, 40);
+		lblEfectoBomba.setVisible(false);
+		panelEfectos.add(lblEfectoBomba);
+		
 		matrizLabels = new JLabel[ANCHO][ALTO]; //28 x 36
 	}
 	
@@ -168,30 +184,27 @@ public class JuegoGUI {
 		j.setVisible(true);
 	}
 	
+	public JLabel getLabelEfectoVelocidad() {
+		return lblEfectoVelocidad;
+	}
+	
+	public JLabel getLabelEfectoPowerPellet() {
+		return lblEfectoPowerPellet;
+	}
+	
+	public JLabel getLabelEfectoBomba() {
+		return lblEfectoBomba;
+	}
+	
+	public void establecerVisible(JLabel j, boolean b) {
+		j.setVisible(b);
+	}
+	
 	public void removerLabel(JLabel j) {
 		panelContenedorDeGrilla.remove(j);
 		panelContenedorDeGrilla.revalidate();
 		panelContenedorDeGrilla.repaint();
 	}
-	
-	/**public void agregar(Entidad e) {
-		JLabel j = new JLabel();
-		
-		int x = e.getPosicionAbsoluta().getFila();
-		int y = e.getPosicionAbsoluta().getColumna();
-		int w = e.getAncho();
-		int h = e.getAlto();
-		
-		j.setBounds(x, y, w, h);
-		
-		ImageIcon img = new ImageIcon(JuegoGUI.class.getResource(e.getCaminoImagen()));
-		
-		j.setIcon(img);
-		j.setVisible(true);
-		
-		panelContenedorDeGrilla.add(j);
-		panelContenedorDeGrilla.moveToFront(j);
-	}**/
 	
 	public void actualizarPiso(Position p, String path) {
 		int f = p.getFila();
