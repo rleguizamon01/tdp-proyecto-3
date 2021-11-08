@@ -92,6 +92,7 @@ public class JuegoGUI {
 			        case KeyEvent.VK_F:
 			        	System.out.println("FANTASMA");
 			        	miJuego.pedirMoverRojo();
+			        	miJuego.pedirMoverRosa();
 			            break;
 			        case KeyEvent.VK_SPACE:
 			        	System.out.println("ESPACIO");
@@ -138,18 +139,27 @@ public class JuegoGUI {
 		panelEfectos.setLayout(null);
 		frame.getContentPane().add(panelEfectos);
 		
-		lblEfectoVelocidad = new JLabel("\"vel\"");
+		String aux = ResourceHandler.getEfectoVelocidadCI();
+		
+		lblEfectoVelocidad = new JLabel();
 		lblEfectoVelocidad.setBounds(10, 11, 40, 40);
+		lblEfectoVelocidad.setIcon(new ImageIcon(JuegoGUI.class.getResource(aux)));
 		lblEfectoVelocidad.setVisible(false);
 		panelEfectos.add(lblEfectoVelocidad);
 		
-		lblEfectoPowerPellet = new JLabel("\"pow\"");
+		aux = ResourceHandler.getEfectoPowerPelletCI();
+		
+		lblEfectoPowerPellet = new JLabel();
 		lblEfectoPowerPellet.setBounds(10, 62, 40, 40);
+		lblEfectoPowerPellet.setIcon(new ImageIcon(JuegoGUI.class.getResource(aux)));
 		lblEfectoPowerPellet.setVisible(false);
 		panelEfectos.add(lblEfectoPowerPellet);
 		
-		lblEfectoBomba = new JLabel("\"bom\"");
+		aux = ResourceHandler.getEfectoBombaCI();
+		
+		lblEfectoBomba = new JLabel();
 		lblEfectoBomba.setBounds(10, 113, 40, 40);
+		lblEfectoBomba.setIcon(new ImageIcon(JuegoGUI.class.getResource(aux)));
 		lblEfectoBomba.setVisible(false);
 		panelEfectos.add(lblEfectoBomba);
 		
