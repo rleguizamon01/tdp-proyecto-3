@@ -61,6 +61,10 @@ public class ResourceHandler {
 		return s.getPocionBombaCI();
 	}
 	
+	public static String getPortalCI() {
+		return s.getPortalCI();
+	}
+	
 	//------------------------------------------------------------------//
 	//						ENTIDADES MOVILES							//
 	//------------------------------------------------------------------//

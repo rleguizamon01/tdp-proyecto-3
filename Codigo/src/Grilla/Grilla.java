@@ -131,6 +131,31 @@ public class Grilla {
 			e.afectar();
 	}
 	
+	public void teletransportarPacman(Portal destino) {
+		Position posAbsolutaInicial = pacman.getPosicionAbsoluta();
+		Position posAbsolutaFinal = destino.getPosicionAbsoluta();
+		
+		Bloque zonaInicial = matrizGrilla[posAbsolutaInicial.getFila() / 20][posAbsolutaInicial.getColumna() / 20];
+		Bloque zonaFinal = matrizGrilla[posAbsolutaFinal.getFila() / 20][posAbsolutaFinal.getColumna() / 20];
+		
+		if(posAbsolutaInicial != posAbsolutaFinal) {
+			pacman.setPosicionAbsoluta(posAbsolutaFinal);
+			pacman.getEntidadGrafica().actualizar(posAbsolutaFinal.getFila(), posAbsolutaFinal.getColumna());
+		}
+		
+		Position posZonaNueva = new Position(posAbsolutaFinal.getFila() / 20, posAbsolutaFinal.getColumna() / 20);
+		pacman.setPosicionZona(posZonaNueva);
+		
+		if(zonaInicial != zonaFinal) {
+			zonaInicial.eliminarEntidad(pacman); //Si las zonas son distintas, ponemos
+			zonaFinal.agregarEntidad(pacman);    //a la entidad en el iterable correcto.
+		}
+		
+		
+		zonaFinal.agregarEntidad(pacman);    //a la entidad en el iterable correcto.
+	}
+	
+	
 	public void moverFantasma(Fantasma f) {
 		Position posVieja = f.getPosicionAbsoluta();
 		moverEntidad(f);
@@ -271,4 +296,6 @@ public class Grilla {
 	public void pedirEstablecerEstadoBomba(boolean b) {
 		miJuego.pedirEstablecerVisibleBomba(b);
 	}
+	
+	
 }

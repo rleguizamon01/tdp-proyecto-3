@@ -32,6 +32,8 @@ public abstract class Nivel implements EstrategiaNivel{
 		Entidad e = null;
 		EntidadGrafica eg = null;
 		
+		Portal anterior =null;
+		
 		int col = 0;
 		for(int fila = 0; fila < qFilas; fila++) {
 			for(col = 0; col < qColumnas; col++) {
@@ -97,6 +99,26 @@ public abstract class Nivel implements EstrategiaNivel{
 				} else {
 					ju.actualizar(new Position(fila, col), ResourceHandler.getPisoCI());
 				}
+				
+				//0 de p0rtal
+				if(c == '0') {
+					e = new Portal(fila, col, g);
+					
+					if(anterior==null) {
+						anterior=(Portal) e;
+					}else {
+						anterior.setPortalDestino( (Portal) e);
+						((Portal) e).setPortalDestino(anterior);
+						anterior=null;
+					}
+					
+					eg = new EntidadGrafica(e);
+					e.setEntidadGrafica(eg);
+					aux.agregarEntidad(e);
+					g.agregarLabel(eg);
+					System.out.println("Portal: " + fila + " " + col);
+				}
+				
 				
 				m[fila][col] = aux;
 			}
