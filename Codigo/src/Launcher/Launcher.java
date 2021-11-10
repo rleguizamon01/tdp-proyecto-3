@@ -20,7 +20,7 @@ public class Launcher {
 		JGUI.initializeMatrix();
 		
 		Grilla grilla = new Grilla(juego);
-		grilla.setNivelActual(new NivelDos(juego, grilla));
+		grilla.setNivelActual(new NivelTres(juego, grilla));
 		grilla.inicializar();
 		
 		juego.setGrilla(grilla);

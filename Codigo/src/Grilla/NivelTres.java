@@ -2,6 +2,7 @@ package Grilla;
 
 import Entidad.EntidadGrafica;
 import Entidad.FantasmaAzul;
+import Entidad.FantasmaNaranja;
 import Entidad.FantasmaRojo;
 import Entidad.FantasmaRosa;
 import Entidad.Pacman;
@@ -78,6 +79,13 @@ public class NivelTres extends Nivel {
 		a.setEntidadGrafica(egAzul);
 		m[13][16].agregarEntidad(a);
 		g.agregarLabel(egAzul);
+		
+		//Fantasma Naranja
+		n = new FantasmaNaranja(14, 16, g);
+		EntidadGrafica egNaranja = new EntidadGrafica(n);
+		n.setEntidadGrafica(egNaranja);
+		m[14][16].agregarEntidad(n);
+		g.agregarLabel(egNaranja);
 	}
 
 }
