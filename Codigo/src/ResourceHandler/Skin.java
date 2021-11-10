@@ -64,4 +64,8 @@ public abstract class Skin implements SkinStrategy{
 	public String getPortalCI() {
 		return pathComun + propertiesComun.getProperty("portal");
 	}
+	
+	public String getPinchosCI() {
+		return pathComun + propertiesComun.getProperty("pinchos");
+	}
 }

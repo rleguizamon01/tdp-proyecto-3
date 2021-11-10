@@ -24,7 +24,7 @@ public class NivelUno extends Nivel{
 				"AAAAAA.AAAAA AA AAAAA.AAAAAA",
 				"     A.AAAAA AA AAAAA.A     ",
 				"     A.AA          AA.A     ",
-				"     A.AA AAA  AAA AA.A     ",
+				"     A.AA AAA^^AAA AA.A     ",
 				"AAAAAA.AA A      A AA.AAAAAA",
 				"0     .   A      A   .     0",
 				"AAAAAA.AA A      A AA.AAAAAA",

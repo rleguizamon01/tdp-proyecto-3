@@ -28,7 +28,7 @@ public class NivelTres extends Nivel {
 				"0....AAAA.AAAAAAAA.AAAA....0",
 				"A.AA.AAAA.AAAAAAAA.AAAA.AA.A",
 				"A.AA....................AA.A",
-				"A.AAAA.AA.AAA  AAA.AA.AAAA.A",
+				"A.AAAA.AA.AAA^^AAA.AA.AAAA.A",
 				"A.AAAA.AA.A      A.AA.AAAA.A",
 				"A......AA.A      A.AA......A",
 				"A.AA.AAAA.A      A.AAAA.AA.A",

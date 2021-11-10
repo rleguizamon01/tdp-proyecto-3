@@ -65,6 +65,10 @@ public class ResourceHandler {
 		return s.getPortalCI();
 	}
 	
+	public static String getPinchosCI() {
+		return s.getPinchosCI();
+	}
+	
 	//------------------------------------------------------------------//
 	//						ENTIDADES MOVILES							//
 	//------------------------------------------------------------------//

@@ -92,6 +92,16 @@ public abstract class Nivel implements EstrategiaNivel{
 					System.out.println("Pocion Velocidad en: " + fila + " " + col);
 				}
 				
+				//^ porque parece un Pincho
+				if(c == '^') {
+					e = new Pinchos(fila, col, g);
+					eg = new EntidadGrafica(e);
+					e.setEntidadGrafica(eg);
+					aux.agregarEntidad(e);
+					g.agregarLabel(eg);
+					System.out.println("Pinchos en: " + fila + " " + col);
+				}
+				
 				//A de pAred
 				if(c == 'A') {
 					aux.estadoPared(true);

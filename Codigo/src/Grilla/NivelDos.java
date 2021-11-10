@@ -28,7 +28,7 @@ public class NivelDos extends Nivel {
 				"A.AAAAA.AAAA.AA.AAAA.AAAAA.A",
 				"A.AAAAA.AAAA.AA.AAAA.AAAAA.A",
 				"A....AA......  ......AA....A",
-				"AAAA.AAAA AAA  AAA AAAA.AAAA",
+				"AAAA.AAAA AAA^^AAA AAAA.AAAA",
 				"AAAA.AAAA A      A AAAA.AAAA",
 				"0 AA.     A      A     .AA 0",
 				"A AA.AAAA A      A AAAA.AA A",
