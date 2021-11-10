@@ -74,17 +74,17 @@ public class NivelTres extends Nivel {
 		g.agregarLabel(egRosa);
 		
 		//Fantasma Azul
-		a = new FantasmaAzul(13, 16, g);
+		a = new FantasmaAzul(14, 16, g);
 		EntidadGrafica egAzul = new EntidadGrafica(a);
 		a.setEntidadGrafica(egAzul);
-		m[13][16].agregarEntidad(a);
+		m[14][16].agregarEntidad(a);
 		g.agregarLabel(egAzul);
 		
 		//Fantasma Naranja
-		n = new FantasmaNaranja(14, 16, g);
+		n = new FantasmaNaranja(13, 16, g);
 		EntidadGrafica egNaranja = new EntidadGrafica(n);
 		n.setEntidadGrafica(egNaranja);
-		m[14][16].agregarEntidad(n);
+		m[13][16].agregarEntidad(n);
 		g.agregarLabel(egNaranja);
 	}
 

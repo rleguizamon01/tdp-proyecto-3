@@ -5,7 +5,7 @@ import Grilla.Grilla;
 import Utilidad.Position;
 
 public class EstadoScatter extends Estado {
-	protected static Position posSalirDeGhostPen = new Position(15, 0);
+	protected static Position posSalirDeGhostPen = new Position(17, 0);
 	protected Position esquinaBuscada;
 	protected int pixelesCelda = 20;
 	protected boolean salioDeGhostPen;
@@ -41,7 +41,7 @@ public class EstadoScatter extends Estado {
 		aux.setFila(aux.getFila()*pixelesCelda);
 		aux.setColumna(aux.getColumna()*pixelesCelda);
 		
-		return Position.distancia(aux, miFantasma.getPosicionAbsoluta()) <= 2*pixelesCelda;
+		return Position.distancia(aux, miFantasma.getPosicionAbsoluta()) <= 2.2*pixelesCelda;
 	}
 	
 	public boolean estaMuerto() {
