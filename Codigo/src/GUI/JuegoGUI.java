@@ -94,6 +94,7 @@ public class JuegoGUI {
 			        	System.out.println("FANTASMA");
 			        	miJuego.pedirMoverRojo();
 			        	miJuego.pedirMoverRosa();
+			        	miJuego.pedirMoverAzul();
 			            break;
 			        case KeyEvent.VK_SPACE:
 			        	System.out.println("ESPACIO");

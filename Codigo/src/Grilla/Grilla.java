@@ -155,33 +155,34 @@ public class Grilla {
 		zonaFinal.agregarEntidad(pacman);    //a la entidad en el iterable correcto.
 	}
 	
-	
 	public void moverFantasma(Fantasma f) {
-		Position posVieja = f.getPosicionAbsoluta();
-		moverEntidad(f);
-		Position posNueva = f.getPosicionAbsoluta();
-		
-		int fv = posVieja.getFila();
-		int fn = posNueva.getFila();
-		int cv = posVieja.getColumna();
-		int cn = posNueva.getColumna();
-		
-		int diferenciaF = fv - fn;
-		int diferenciaC = cv - cn;
-		
-		if(diferenciaF != 0 || diferenciaC != 0) { //Si ambas son cero, la EM no se movio, por lo que no actualizamos su direccion.
-			if(diferenciaF == 0) {
-				if(diferenciaC > 0)
-					f.setDireccion('N');
-				else
-					f.setDireccion('S');
-			}
+		if(f != null) {
+			Position posVieja = f.getPosicionAbsoluta();
+			moverEntidad(f);
+			Position posNueva = f.getPosicionAbsoluta();
 			
-			if(diferenciaC == 0) {
-				if(diferenciaF > 0)
-					f.setDireccion('O');
-				else
-					f.setDireccion('E');
+			int fv = posVieja.getFila();
+			int fn = posNueva.getFila();
+			int cv = posVieja.getColumna();
+			int cn = posNueva.getColumna();
+			
+			int diferenciaF = fv - fn;
+			int diferenciaC = cv - cn;
+			
+			if(diferenciaF != 0 || diferenciaC != 0) { //Si ambas son cero, la EM no se movio, por lo que no actualizamos su direccion.
+				if(diferenciaF == 0) {
+					if(diferenciaC > 0)
+						f.setDireccion('N');
+					else
+						f.setDireccion('S');
+				}
+				
+				if(diferenciaC == 0) {
+					if(diferenciaF > 0)
+						f.setDireccion('O');
+					else
+						f.setDireccion('E');
+				}
 			}
 		}
 	}

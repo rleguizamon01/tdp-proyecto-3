@@ -1,7 +1,9 @@
 package Grilla;
 
 import Entidad.EntidadGrafica;
+import Entidad.FantasmaAzul;
 import Entidad.FantasmaRojo;
+import Entidad.FantasmaRosa;
 import Entidad.Pacman;
 import Logica.Juego;
 
@@ -62,6 +64,19 @@ public class NivelDos extends Nivel {
 		r.setEntidadGrafica(egRojo);
 		m[13][18].agregarEntidad(r);
 		g.agregarLabel(egRojo);
+		
+		//Fantasma Rosa:
+		s = new FantasmaRosa(14, 18, g);
+		EntidadGrafica egRosa = new EntidadGrafica(s);
+		s.setEntidadGrafica(egRosa);
+		m[14][18].agregarEntidad(s);
+		g.agregarLabel(egRosa);
+		
+		a = new FantasmaAzul(13, 19, g);
+		EntidadGrafica egAzul = new EntidadGrafica(a);
+		a.setEntidadGrafica(egAzul);
+		m[13][19].agregarEntidad(a);
+		g.agregarLabel(egAzul);
 	}
 
 }
