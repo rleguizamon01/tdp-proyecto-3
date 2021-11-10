@@ -18,8 +18,7 @@ public class EstadoChase extends Estado {
 	}
 
 	public void afectar() {
-		// TODO Auto-generated method stub
-		System.out.println("Perdiste!");
+		miGrilla.perdio();
 	}
 
 	public String caminoImagen() {

@@ -286,6 +286,10 @@ public class Grilla {
 		System.out.println("GANASTE!");
 	}
 	
+	public void perdio() {
+		System.out.println("F");
+	}
+
 	public void pedirEstablecerEstadoVelocidad(boolean b) {
 		miJuego.pedirEstablecerVisibleVelocidad(b);
 	}

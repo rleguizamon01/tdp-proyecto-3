@@ -8,12 +8,12 @@ import EstadosFantasmas.*;
 
 
 public class FantasmaAzul extends Fantasma {
-	private static final int VELOCIDAD_AZUL = 1;
+	private static final int VELOCIDAD_AZUL = 2;
 	
 	public FantasmaAzul(int fila, int columna, Grilla g) {
 		super(fila, columna, g);
 		velocidad = VELOCIDAD_AZUL;
-		esquinaBuscada = new Position(31, 27);
+		esquinaBuscada = new Position(27, 31);
 		
 		chase = new EstadoChase(this, miGrilla, new ChaseIAAzul(miGrilla));
 		scatter = new EstadoScatter(this, miGrilla);

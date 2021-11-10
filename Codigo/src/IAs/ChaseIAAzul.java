@@ -4,8 +4,8 @@ import Grilla.Grilla;
 import Utilidad.Position;
 
 public class ChaseIAAzul implements ChaseIA {
-	protected int cantFilas = 28;
-	protected int cantColum = 36;
+	protected int cantFilas = 36;
+	protected int cantColum = 28;
 	protected Grilla miGrilla;
 	
 	public ChaseIAAzul(Grilla g) {
@@ -23,8 +23,8 @@ public class ChaseIAAzul implements ChaseIA {
 		//Abstraemos el concepto de Position al de "vector bidimensional" donde fila = primera componente
 		//y columna = segunda componente.
 		Position vectorRojoPacman = new Position();
-		vectorRojoPacman.setFila(posRojo.getFila() - posPac.getFila());
-		vectorRojoPacman.setColumna(posRojo.getColumna() - posPac.getColumna());
+		vectorRojoPacman.setFila(posPac.getFila() - posRojo.getFila());
+		vectorRojoPacman.setColumna(posPac.getColumna() - posRojo.getColumna());
 
 		/*Para rotarlo, aplicamos una transformacion lineal: multiplicamos por la matriz
 		*  ----------

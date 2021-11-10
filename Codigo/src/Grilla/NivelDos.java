@@ -72,10 +72,11 @@ public class NivelDos extends Nivel {
 		m[14][18].agregarEntidad(s);
 		g.agregarLabel(egRosa);
 		
-		a = new FantasmaAzul(13, 19, g);
+		//Fantasma Azul:
+		a = new FantasmaAzul(13, 17, g);
 		EntidadGrafica egAzul = new EntidadGrafica(a);
 		a.setEntidadGrafica(egAzul);
-		m[13][19].agregarEntidad(a);
+		m[13][17].agregarEntidad(a);
 		g.agregarLabel(egAzul);
 	}
 
