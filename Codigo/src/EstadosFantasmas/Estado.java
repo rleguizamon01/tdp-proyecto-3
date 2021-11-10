@@ -65,7 +65,7 @@ public abstract class Estado implements EstadoFantasma {
 		Position pESD;
 		
 		for(Position p : prioridades) {
-			aux = distancia(p, target);
+			aux = Position.distancia(p, target);
 			
 			pEID = new Position(p.getFila() + miFantasma.getAncho() - 1, p.getColumna() + miFantasma.getAlto() - 1);
 			pEII = new Position(p.getFila(), p.getColumna() + miFantasma.getAlto() - 1);
@@ -132,7 +132,7 @@ public abstract class Estado implements EstadoFantasma {
 		Position pESD;
 		
 		for(Position p : prioridades) {
-			aux = distancia(p, target);
+			aux = Position.distancia(p, target);
 			
 			pEID = new Position(p.getFila() + miFantasma.getAncho() - 1, p.getColumna() + miFantasma.getAlto() - 1);
 			pEII = new Position(p.getFila(), p.getColumna() + miFantasma.getAlto() - 1);
@@ -146,17 +146,5 @@ public abstract class Estado implements EstadoFantasma {
 		}
 		
 		return max == null ? miFantasma.getPosicionAbsoluta() : max;
-	}
-	
-	protected float distancia(Position p1, Position p2) {
-		int f1 = p1.getFila();
-		int f2 = p2.getFila();
-		int c1 = p1.getColumna();
-		int c2 = p2.getColumna();
-		
-		float fCuadrado = (f1-f2)*(f1-f2);
-		float cCuadrado = (c1-c2)*(c1-c2);
-		
-		return (float) Math.sqrt(fCuadrado + cCuadrado);
 	}
 }

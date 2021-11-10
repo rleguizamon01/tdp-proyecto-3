@@ -72,6 +72,18 @@ public class Position implements Cloneable {
 		return ret;
 	}
 	
+	public static float distancia(Position p1, Position p2) {
+		int f1 = p1.getFila();
+		int f2 = p2.getFila();
+		int c1 = p1.getColumna();
+		int c2 = p2.getColumna();
+		
+		float fCuadrado = (f1-f2)*(f1-f2);
+		float cCuadrado = (c1-c2)*(c1-c2);
+		
+		return (float) Math.sqrt(fCuadrado + cCuadrado);
+	}
+	
 	public int hashCode() {
 		return ((Integer) f).hashCode() + ((Integer) c).hashCode();
 	}
