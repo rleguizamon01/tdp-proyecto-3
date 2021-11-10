@@ -72,19 +72,22 @@ public class Grilla {
 	public void ponerFantasmasEnChase() {
 		for(Fantasma f : misFantasmas)
 			if(f != null)
-				f.ponerEnChase();
+				if(!f.estaMuerto())
+					f.ponerEnChase();
 	}
 	
 	public void ponerFantasmasEnScatter() {
 		for(Fantasma f : misFantasmas)
 			if(f != null)
-				f.ponerEnScatter();
+				if(!f.estaMuerto())
+					f.ponerEnScatter();
 	}
 	
 	public void ponerFantasmasEnRun() {
 		for(Fantasma f : misFantasmas)
 			if(f != null)
-				f.ponerEnRun();
+				if(!f.estaMuerto())
+					f.ponerEnRun();
 	}
 
 	public void sumarPuntos(int p) {
@@ -157,10 +160,12 @@ public class Grilla {
 	
 	public void moverFantasma(Fantasma f) {
 		if(f != null) {
+			//Movimiento como tal:
 			Position posVieja = f.getPosicionAbsoluta();
 			moverEntidad(f);
 			Position posNueva = f.getPosicionAbsoluta();
 			
+			//Actualizacion de la direccion:
 			int fv = posVieja.getFila();
 			int fn = posNueva.getFila();
 			int cv = posVieja.getColumna();
@@ -184,6 +189,10 @@ public class Grilla {
 						f.setDireccion('E');
 				}
 			}
+			
+			//Respawn:
+			if(f.getPosicionZona().equals(f.getPosicionSpawn()) && f.estaMuerto())
+				f.ponerEnChase();
 		}
 	}
 	

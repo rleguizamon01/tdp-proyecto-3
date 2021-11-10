@@ -24,5 +24,9 @@ public class EstadoChase extends Estado {
 	public String caminoImagen() {
 		return miFantasma.getCaminoImagenColor();
 	}
+	
+	public boolean estaMuerto() {
+		return false;
+	}
 
 }

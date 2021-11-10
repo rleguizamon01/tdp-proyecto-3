@@ -43,5 +43,9 @@ public class EstadoScatter extends Estado {
 		
 		return Position.distancia(aux, miFantasma.getPosicionAbsoluta()) <= 2*pixelesCelda;
 	}
+	
+	public boolean estaMuerto() {
+		return false;
+	}
 
 }

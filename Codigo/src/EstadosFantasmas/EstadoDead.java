@@ -27,4 +27,8 @@ public class EstadoDead extends Estado {
 		return ResourceHandler.getFantasmaMuertoCI(miFantasma.getDireccion());
 	}
 
+	public boolean estaMuerto() {
+		return true;
+	}
+	
 }

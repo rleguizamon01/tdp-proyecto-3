@@ -62,6 +62,10 @@ public class Pacman extends EntidadMovil {
 	public void afectar() {
 		//Pacman no hace nada.
 	}
+	
+	public boolean estaMuerto() {
+		return false; //Si pacman esta muerto, el jugador ya perdio, por lo que esta consulta no se haria.
+	}
 
 	@Override
 	public String getCaminoImagen() {

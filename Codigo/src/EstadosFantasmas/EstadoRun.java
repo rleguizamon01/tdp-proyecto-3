@@ -26,5 +26,9 @@ public class EstadoRun extends Estado {
 	public String caminoImagen() {
 		return ResourceHandler.getFantasmaVulnerableCI(miFantasma.getDireccion());
 	}
+	
+	public boolean estaMuerto() {
+		return false;
+	}
 
 }

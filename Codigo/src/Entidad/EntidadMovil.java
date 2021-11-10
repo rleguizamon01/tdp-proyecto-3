@@ -56,5 +56,5 @@ public abstract class EntidadMovil extends Entidad {
 	}
 	
 	public abstract Position getSiguientePosicion();
-
+	public abstract boolean estaMuerto();
 }

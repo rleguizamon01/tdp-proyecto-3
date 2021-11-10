@@ -6,4 +6,5 @@ public interface EstadoFantasma {
 	public Position siguientePosicion();
 	public void afectar();
 	public String caminoImagen();
+	public boolean estaMuerto();
 }
