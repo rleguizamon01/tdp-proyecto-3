@@ -19,6 +19,8 @@ public abstract class Fantasma extends EntidadMovil {
 	protected EstadoFantasma scatter;
 	protected EstadoFantasma dead;
 	
+	protected int pasosEnElMismoLugar;
+	
 	public Fantasma(int xAbs, int yAbs, int xZona, int yZona, int w, int h, Grilla g) {
 		super(xAbs, yAbs, xZona, yZona, w, h, g);
 	}
@@ -28,6 +30,7 @@ public abstract class Fantasma extends EntidadMovil {
 		posicionDeSpawn = posicionZona.clone();
 		paso = PASO_FANTASMAS;
 		direccion = 'E';
+		pasosEnElMismoLugar = 0;
 	}
 	
 	public void ponerEnChase() {
@@ -54,7 +57,21 @@ public abstract class Fantasma extends EntidadMovil {
 	
 	@Override
 	public Position getSiguientePosicion() {
-		return miEstado.siguientePosicion();
+		Position sig = miEstado.siguientePosicion();
+		
+		pasosEnElMismoLugar = sig.equals(posicionAbsoluta) ? pasosEnElMismoLugar + 1 : 0;
+		
+		/**
+		 * Para evitar que los fantasmas queden atascados permanentemente en ciertos tuneles
+		 * Por ejemplo, en los tueneles de los teletransportadores
+		 * Hacemos que inviertan su direccion si pasan 25 "pasos" en el mismo lugar.
+		 */
+		if(pasosEnElMismoLugar >= 25) { 
+			invertirDireccion();
+			pasosEnElMismoLugar = 0;
+		}
+		
+		return sig;
 	}
 	
 	public Position getPosicionSpawn() {
