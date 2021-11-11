@@ -8,7 +8,7 @@ public class Pacman extends EntidadMovil {
 	private static final int ANCHO_PACMAN = 15;
 	private static final int ALTO_PACMAN = 18;
 	private static final int VELOCIDAD_PACMAN = 4;
-	private static final int PASO_PACMAN = 8;
+	private static final int PASO_PACMAN = 24;
 	
 	protected Pocion estadoAlterado;
 	

@@ -29,6 +29,8 @@ public class JuegoGUI {
 	private static final int ANCHO = 28;//Cantidad de columnas en la grilla
 	private static final int PIXELES = 20;//Tamaño en px de cada celda.
 	
+	private static int TEMPORAL = 0;
+	
 	private JFrame frame;
 	private JLayeredPane panelContenedorDeGrilla; //Seran el piso y las paredes del laberinto
 	private JLabel[][] matrizLabels;
@@ -87,8 +89,16 @@ public class JuegoGUI {
 			        	miJuego.pedirActualizarDireccion('E');
 			            break;
 			        case KeyEvent.VK_Q:
-			        	System.out.println("ESQUINAS");
-			        	miJuego.pedirMostrarEntidades();
+			        	if(TEMPORAL % 2 == 0) {
+				        	System.out.println("INICIAR");
+			        		miJuego.iniciarPartida();
+			        	} else {
+			        		System.out.println("FINALIZAR");
+			        		miJuego.finalizarPartida();
+			        	}
+			        	
+			        	TEMPORAL = (TEMPORAL + 1) % 2;
+			        	
 			            break;
 			        case KeyEvent.VK_F:
 			        	System.out.println("FANTASMA");

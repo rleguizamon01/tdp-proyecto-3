@@ -3,18 +3,35 @@ package Logica;
 import Entidad.EntidadGrafica;
 import GUI.JuegoGUI;
 import Grilla.Grilla;
+import Reloj.*;
 import Utilidad.*;
 
 public class Juego {
 	protected JuegoGUI miGUI;
 	protected Grilla miGrilla;
+	protected Reloj relojPacman;
+	protected Reloj relojFantasmas;
 	
 	public Juego(JuegoGUI gui) {
 		miGUI = gui;
+		relojPacman = new RelojPacman(true, 1000, this);
+		relojFantasmas = new RelojFantasmas(true, 1000, this);
 	}
 	
 	public void setGrilla(Grilla g) {
 		miGrilla = g;
+	}
+	
+	public void iniciarPartida() {
+		relojPacman.setIntervalo(1000 / miGrilla.pasoPacman());
+		relojFantasmas.setIntervalo(1000 / miGrilla.getRojo().getPaso());
+		relojPacman.start();
+		relojFantasmas.start();
+	}
+	
+	public void finalizarPartida() {
+		relojPacman.stop();
+		relojFantasmas.stop();
 	}
 	
 	public void actualizar(Position p, String path) {
@@ -63,9 +80,5 @@ public class Juego {
 	
 	public void pedirMoverNaranja() {
 		miGrilla.moverFantasma(miGrilla.getNaranja());
-	}
-	
-	public void pedirMostrarEntidades() {
-		miGrilla.mostrarEntidades();
 	}
 }

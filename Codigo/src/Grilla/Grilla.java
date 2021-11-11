@@ -131,6 +131,10 @@ public class Grilla {
 		return pacman.getVelocidad();
 	}
 	
+	public int pasoPacman() {
+		return pacman.getPaso();
+	}
+	
 	public void moverPacman() {
 		Bloque b = moverEntidad(pacman);
 		
@@ -162,7 +166,7 @@ public class Grilla {
 		zonaFinal.agregarEntidad(pacman);    //a la entidad en el iterable correcto.
 	}
 	
-	public void moverFantasma(Fantasma f) {
+	public synchronized void moverFantasma(Fantasma f) {
 		if(f != null) {
 			//Movimiento como tal:
 			Position posVieja = f.getPosicionAbsoluta();

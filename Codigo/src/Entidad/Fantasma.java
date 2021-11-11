@@ -7,7 +7,7 @@ import EstadosFantasmas.*;
 public abstract class Fantasma extends EntidadMovil {
 	protected static final int ANCHO_FANTASMAS = 20;
 	protected static final int ALTO_FANTASMAS = 20;
-	protected static final int PASO_FANTASMAS = 8;
+	protected static final int PASO_FANTASMAS = 24;
 
 	protected EstadoFantasma miEstado;
 	

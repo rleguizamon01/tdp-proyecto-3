@@ -1,7 +1,9 @@
 package Grilla;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import Entidad.Entidad;
 import Utilidad.Position;
@@ -10,7 +12,7 @@ import ResourceHandler.ResourceHandler;
 public class Bloque implements Iterable<Entidad> {
 	protected boolean esPared;
 	protected Position pos;
-	protected ArrayList<Entidad> misEntidades;
+	protected List<Entidad> misEntidades;
 	
 	public Bloque() {
 		pos = null;
@@ -18,28 +20,10 @@ public class Bloque implements Iterable<Entidad> {
 		misEntidades = null;
 	}
 	
-	public Bloque(Position p, boolean pared, ArrayList<Entidad> iterable) {
-		pos = p;
-		esPared = pared;
-		misEntidades = (ArrayList<Entidad>) iterable.clone(); //Sin este casteo no compila.
-	}
-	
-	public Bloque(Position p, boolean pared) {
-		pos = p;
-		esPared = pared;
-		misEntidades = new ArrayList<Entidad>();
-	}
-	
-	public Bloque(Position p) {
-		pos = p;
-		esPared = false;
-		misEntidades = new ArrayList<Entidad>();
-	}
-	
 	public Bloque(int f, int c, boolean p) {
 		pos = new Position(f, c);
 		esPared = p;
-		misEntidades = new ArrayList<Entidad>();
+		misEntidades = Collections.synchronizedList(new ArrayList<Entidad>());
 	}
 	
 	public void estadoPared(boolean p) {
