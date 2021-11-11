@@ -27,17 +27,13 @@ public class Pacman extends EntidadMovil {
 	@Override
 	public Position getSiguientePosicion() {
 		Position posicionNueva = posicionAbsoluta.clone();
-		Position posicionPegadoPared = posicionAbsoluta.clone();
 		
 		switch (direccion) {
 		case 'O':
 			posicionNueva.setFila(posicionNueva.getFila() - velocidad);
-			posicionPegadoPared.setFila((posicionPegadoPared.getFila() / 20) * 20);
 			break;
 		case 'E':
 			posicionNueva.setFila(posicionNueva.getFila() + velocidad);
-			posicionPegadoPared.setFila((posicionPegadoPared.getFila() / 20) * 20);
-			posicionPegadoPared.setFila(posicionPegadoPared.getFila() + 20 - ancho);
 			break;
 		case 'S':
 			posicionNueva.setColumna(posicionNueva.getColumna() + velocidad);
@@ -47,12 +43,16 @@ public class Pacman extends EntidadMovil {
 			break;
 		}
 		
-		Position PosicionNoSobreponerse = new Position(); //Es la esquina inferior izquierda del pacman ya movido.
-		PosicionNoSobreponerse.setFila(posicionNueva.getFila() + ancho - 1);
-		PosicionNoSobreponerse.setColumna(posicionNueva.getColumna() + alto - 1);
+		Position posicionNoSobreponerse = new Position(); //Es la esquina inferior izquierda del pacman ya movido.
+		posicionNoSobreponerse.setFila(posicionNueva.getFila() + ancho - 1);
+		posicionNoSobreponerse.setColumna(posicionNueva.getColumna() + alto - 1);
 		
-		if(!miGrilla.zonaLibre(posicionNueva) || !miGrilla.zonaLibre(PosicionNoSobreponerse)) {
-			posicionNueva = posicionPegadoPared;
+		if(!miGrilla.zonaLibre(posicionNueva) || !miGrilla.zonaLibre(posicionNoSobreponerse)) {
+			int f = posicionNueva.getFila() / 20;
+			int c = posicionNueva.getColumna() / 20;
+			Position centrado = new Position(20*f+(20-ancho)/2, 20*c+(20-alto)/2);
+			
+			posicionNueva = miGrilla.zonaLibre(centrado) ? centrado : posicionAbsoluta;
 		}
 		
 		return posicionNueva;
