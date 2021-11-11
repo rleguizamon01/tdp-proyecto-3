@@ -10,11 +10,14 @@ public class Pacman extends EntidadMovil {
 	private static final int VELOCIDAD_PACMAN = 4;
 	private static final int PASO_PACMAN = 8;
 	
+	protected Pocion estadoAlterado;
+	
 	public Pacman(int xAbs, int yAbs, int xZona, int yZona, int w, int h, Grilla g, int v, int p, char d) {
 		super(xAbs, yAbs, xZona, yZona, w, h, g);
 		velocidad = v;
 		paso = p;
 		direccion = d;
+		estadoAlterado = null;
 	}
 	
 	public Pacman(int fila, int columna, Grilla g) {
@@ -69,7 +72,12 @@ public class Pacman extends EntidadMovil {
 
 	@Override
 	public String getCaminoImagen() {
-		return ResourceHandler.getPacmanCI(direccion);
+		return estadoAlterado == null ? ResourceHandler.getPacmanCI(direccion) : estadoAlterado.getPacmanAlteradoCI();
 	}
 
+	public void alterarEstado(Pocion p) {
+		estadoAlterado = p;
+		eg.actualizarImagen();
+	}
+	
 }

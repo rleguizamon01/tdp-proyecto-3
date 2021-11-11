@@ -9,5 +9,7 @@ public abstract class Pocion extends EntidadFija{
 	public Pocion(int xAbs, int yAbs, int xZona, int yZona, int w, int h, Grilla g) {
 		super(xAbs, yAbs, xZona, yZona, w, h, g);
 	}
+	
+	protected abstract String getPacmanAlteradoCI();
 
 }

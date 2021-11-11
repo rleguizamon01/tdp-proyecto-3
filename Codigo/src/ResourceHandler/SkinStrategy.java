@@ -7,6 +7,16 @@ public interface SkinStrategy {
 	public String getPacmanECI();
 	public String getPacmanOCI();
 	
+	public String getPacmanVelocidadNCI();
+	public String getPacmanVelocidadSCI();
+	public String getPacmanVelocidadECI();
+	public String getPacmanVelocidadOCI();
+	
+	public String getPacmanBombaNCI();
+	public String getPacmanBombaSCI();
+	public String getPacmanBombaECI();
+	public String getPacmanBombaOCI();
+	
 	//Fantasmas:
 	public String getFantasmaRojoDCI();
 	public String getFantasmaRojoICI();

@@ -32,10 +32,15 @@ public class PocionVelocidad extends Pocion {
 		miGrilla.pedirEstablecerEstadoVelocidad(true);
 		int velocidadActual = miGrilla.velocidadActualPacman();
 		miGrilla.actualizarVelocidadPacman((int) Math.floor(coeficienteDeAceleracion*velocidadActual));
+		miGrilla.actualizarEstadoAfectadoPacman(this);
 		(new EsperadorVelocidad(duracion, miGrilla, velocidadActual)).start();
 		miGrilla.removerEntidad(this);
 	}
 
+	public String getPacmanAlteradoCI() {
+		return ResourceHandler.getPacmanVelocidadCI(miGrilla.direccionPacman());
+	}
+	
 	@Override
 	public String getCaminoImagen() {
 		return ResourceHandler.getPocionVelocidadCI();

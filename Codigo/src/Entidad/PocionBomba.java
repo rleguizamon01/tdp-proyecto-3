@@ -22,6 +22,10 @@ public class PocionBomba extends Pocion{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public String getPacmanAlteradoCI() {
+		return ResourceHandler.getPacmanBombaCI(miGrilla.direccionPacman());
+	}
 
 	@Override
 	public String getCaminoImagen() {

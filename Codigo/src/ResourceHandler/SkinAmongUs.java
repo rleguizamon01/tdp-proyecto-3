@@ -39,6 +39,46 @@ public class SkinAmongUs extends Skin {
 	public String getPacmanOCI() {
 		return path + p.getProperty("pacmanI");
 	}
+	
+	@Override
+	public String getPacmanVelocidadNCI() {
+		return path + p.getProperty("pacmanVD");
+	}
+
+	@Override
+	public String getPacmanVelocidadSCI() {
+		return path + p.getProperty("pacmanVI");
+	}
+
+	@Override
+	public String getPacmanVelocidadECI() {
+		return path + p.getProperty("pacmanVD");
+	}
+
+	@Override
+	public String getPacmanVelocidadOCI() {
+		return path + p.getProperty("pacmanVI");
+	}
+
+	@Override
+	public String getPacmanBombaNCI() {
+		return path + p.getProperty("pacmanBD");
+	}
+
+	@Override
+	public String getPacmanBombaSCI() {
+		return path + p.getProperty("pacmanBI");
+	}
+
+	@Override
+	public String getPacmanBombaECI() {
+		return path + p.getProperty("pacmanBD");
+	}
+
+	@Override
+	public String getPacmanBombaOCI() {
+		return path + p.getProperty("pacmanBI");
+	}
 
 	@Override
 	public String getFantasmaRojoDCI() {

@@ -19,7 +19,7 @@ public class Grilla {
 	
 	protected int contadorMonedas;
 	
-	protected EntidadMovil pacman;
+	protected Pacman pacman;
 	protected Fantasma rojo;
 	protected Fantasma rosa;
 	protected Fantasma azul;
@@ -117,6 +117,10 @@ public class Grilla {
 	
 	public void actualizarVelocidadPacman(int v) {
 		pacman.setVelocidad(v);
+	}
+	
+	public void actualizarEstadoAfectadoPacman(Pocion p) {
+		pacman.alterarEstado(p);
 	}
 	
 	public Position posicionActualPacman() {

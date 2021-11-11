@@ -94,6 +94,48 @@ public class ResourceHandler {
 		return ci;
 	}
 	
+	public static String getPacmanVelocidadCI(char d) {
+		String ci = "";
+		
+		switch(d) {
+		case 'N':
+			ci = s.getPacmanVelocidadNCI();
+			break;
+		case 'S':
+			ci = s.getPacmanVelocidadSCI();
+			break;
+		case 'E':
+			ci = s.getPacmanVelocidadECI();
+			break;
+		case 'O':
+			ci = s.getPacmanVelocidadOCI();
+			break;
+		}
+		
+		return ci;
+	}
+	
+	public static String getPacmanBombaCI(char d) {
+		String ci = "";
+		
+		switch(d) {
+		case 'N':
+			ci = s.getPacmanBombaNCI();
+			break;
+		case 'S':
+			ci = s.getPacmanBombaSCI();
+			break;
+		case 'E':
+			ci = s.getPacmanBombaECI();
+			break;
+		case 'O':
+			ci = s.getPacmanBombaOCI();
+			break;
+		}
+		
+		return ci;
+	}
+	
 	public static String getFantasmaRojoCI(char d) {
 		String ci = "";
 		
