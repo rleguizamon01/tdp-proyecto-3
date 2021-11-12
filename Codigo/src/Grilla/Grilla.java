@@ -101,7 +101,7 @@ public class Grilla {
 	}
 
 	public void sumarPuntos(int p) {
-		System.out.println("Se suman " + p + " puntos! Buen trabajo!");
+		miJuego.sumarPuntos(p);
 	}
 	
 	public void removerEntidad(Entidad e) {

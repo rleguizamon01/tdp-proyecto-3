@@ -13,16 +13,30 @@ public class Juego {
 	protected Reloj relojPacman;
 	protected Reloj relojFantasmas;
 	
+	protected int puntaje;
+	
 	public Juego(JuegoGUI gui) {
 		miGUI = gui;
+		
 		relojPacman = new RelojPacman(true, 1000, this);
 		relojFantasmas = new RelojFantasmas(true, 1000, this);
+		
+		puntaje = 0;
 	}
 	
 	public void setGrilla(Grilla g) {
 		miGrilla = g;
 	}
 	
+	public void sumarPuntos(int p) {
+		puntaje += p;
+		pedirActualizarPuntos();
+	}
+	
+	public void pedirActualizarPuntos() {
+		miGUI.actualizarPuntaje(puntaje + "");
+	}
+
 	public void iniciarPartida() {
 		relojPacman.setIntervalo(1000 / miGrilla.getPacman().getPaso());
 		relojFantasmas.setIntervalo(1000 / miGrilla.getRojo().getPaso());
