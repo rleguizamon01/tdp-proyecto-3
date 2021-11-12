@@ -22,14 +22,14 @@ import javax.swing.JLayeredPane;
 
 public class JuegoGUI {
 	//Constantes del tamaño de la ventana:
-	private static final int W = 1330;
+	private static final int W = 900;
 	private static final int H = 730;
 
 	private static final int ALTO = 36; //Cantidad de filas en la grilla.
 	private static final int ANCHO = 28;//Cantidad de columnas en la grilla
 	private static final int PIXELES = 20;//Tamaño en px de cada celda.
 	
-	private static int TEMPORAL = 0;
+	private static boolean TEMPORAL = false;
 	
 	private JFrame frame;
 	private JLayeredPane panelContenedorDeGrilla; //Seran el piso y las paredes del laberinto
@@ -59,6 +59,7 @@ public class JuegoGUI {
 		frame.setBounds(22, 0, W, H);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setBackground(java.awt.Color.BLACK);
 		
 		txtrCaptadorDeEventos = new JTextArea();
 		txtrCaptadorDeEventos.setBounds(0, 0, 1, 1);
@@ -89,7 +90,7 @@ public class JuegoGUI {
 			        	miJuego.pedirActualizarDireccion('E');
 			            break;
 			        case KeyEvent.VK_Q:
-			        	if(TEMPORAL % 2 == 0) {
+			        	if(!TEMPORAL) {
 				        	System.out.println("INICIAR");
 			        		miJuego.iniciarPartida();
 			        	} else {
@@ -97,7 +98,7 @@ public class JuegoGUI {
 			        		miJuego.finalizarPartida();
 			        	}
 			        	
-			        	TEMPORAL = (TEMPORAL + 1) % 2;
+			        	TEMPORAL = !TEMPORAL;
 			        	
 			            break;
 			        case KeyEvent.VK_F:
@@ -124,18 +125,20 @@ public class JuegoGUI {
 		});
 		
 		panelContenedorDeGrilla = new JLayeredPane();
-		panelContenedorDeGrilla.setBounds(10, 11, ANCHO*PIXELES, ALTO*PIXELES);
-		panelContenedorDeGrilla.setBorder(new LineBorder(java.awt.Color.BLACK));
+		panelContenedorDeGrilla.setBounds(12, 10, ANCHO*PIXELES, ALTO*PIXELES);
+		panelContenedorDeGrilla.setBorder(new LineBorder(java.awt.Color.WHITE));
 		frame.getContentPane().add(panelContenedorDeGrilla);
 		panelContenedorDeGrilla.setLayout(null);
 		
 		panelInformacion = new JPanel();
+		panelInformacion.setBackground(java.awt.Color.BLACK);
 		panelInformacion.setBounds(ANCHO*PIXELES+100, 11, 200, 125);
 		panelInformacion.setLayout(null);
-		panelInformacion.setBorder(new LineBorder(java.awt.Color.BLACK));
+		panelInformacion.setBorder(new LineBorder(java.awt.Color.WHITE));
 		frame.getContentPane().add(panelInformacion);
 				
 		puntajeTituloLabel = new JLabel("SCORE");
+		puntajeTituloLabel.setForeground(java.awt.Color.WHITE);
 		puntajeTituloLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		puntajeTituloLabel.setBounds(10, 11, 176, 38);
 		puntajeTituloLabel.setFont(DataHandler.FUENTE_H3);
@@ -144,11 +147,13 @@ public class JuegoGUI {
 		puntajeLabel = new JLabel("0");
 		puntajeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		puntajeLabel.setFont(DataHandler.FUENTE_H3);
+		puntajeLabel.setForeground(java.awt.Color.WHITE);
 		puntajeLabel.setBounds(10, 60, 176, 54);
 		panelInformacion.add(puntajeLabel);
 		
 		panelEfectos = new JPanel();
-		panelEfectos.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panelEfectos.setBackground(java.awt.Color.BLACK);
+		panelEfectos.setBorder(new LineBorder(java.awt.Color.WHITE));
 		panelEfectos.setBounds(660, 147, 200, 200);
 		panelEfectos.setLayout(null);
 		frame.getContentPane().add(panelEfectos);
@@ -180,6 +185,7 @@ public class JuegoGUI {
 		lblTituloEfectos = new JLabel("EFFECTS");
 		lblTituloEfectos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTituloEfectos.setFont(DataHandler.FUENTE_H3);
+		lblTituloEfectos.setForeground(java.awt.Color.WHITE);
 		lblTituloEfectos.setBounds(10, 11, 180, 32);
 		panelEfectos.add(lblTituloEfectos);
 		
