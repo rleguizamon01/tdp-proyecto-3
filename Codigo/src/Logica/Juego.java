@@ -6,12 +6,18 @@ import GUI.JuegoGUI;
 import Grilla.Grilla;
 import Reloj.*;
 import Utilidad.*;
+import Highscore.*;
+import Datos.DataHandler;
 
 public class Juego {
 	protected JuegoGUI miGUI;
 	protected Grilla miGrilla;
+	
 	protected Reloj relojPacman;
 	protected Reloj relojFantasmas;
+	
+	protected Jugador jugador;
+	protected Highscores highscores;
 	
 	protected int puntaje;
 	
@@ -22,6 +28,10 @@ public class Juego {
 		relojFantasmas = new RelojFantasmas(true, 1000, this);
 		
 		puntaje = 0;
+		
+		jugador = new Jugador("pepe2");
+		highscores = DataHandler.getHighscore();
+		
 	}
 	
 	public void setGrilla(Grilla g) {
@@ -48,6 +58,11 @@ public class Juego {
 	public void finalizarPartida() {
 		relojPacman.stop();
 		relojFantasmas.stop();
+		
+		jugador.setPuntaje(puntaje);
+		highscores.agregarJugador(jugador);
+		System.out.println(highscores);
+		DataHandler.guardar(highscores, Highscores.SCORE_PATH);
 	}
 	
 	public void actualizar(Position p, String path) {
