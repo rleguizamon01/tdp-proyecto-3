@@ -8,7 +8,6 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import Entidad.Entidad;
 import Logica.Juego;
 
 import java.awt.Color;
@@ -16,6 +15,7 @@ import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import Datos.DataHandler;
 import ResourceHandler.ResourceHandler;
 import Utilidad.Position;
 import javax.swing.JLayeredPane;
@@ -135,16 +135,16 @@ public class JuegoGUI {
 		panelInformacion.setBorder(new LineBorder(java.awt.Color.BLACK));
 		frame.getContentPane().add(panelInformacion);
 				
-		puntajeTituloLabel = new JLabel("SCORE:");
-		puntajeTituloLabel.setBounds(70, 10, 66, 22);
-		puntajeTituloLabel.setVerticalAlignment(SwingConstants.TOP);
-		puntajeTituloLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		puntajeTituloLabel = new JLabel("SCORE");
+		puntajeTituloLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		puntajeTituloLabel.setBounds(10, 11, 176, 38);
+		puntajeTituloLabel.setFont(DataHandler.FUENTE_H3);
 		panelInformacion.add(puntajeTituloLabel);
 		
 		puntajeLabel = new JLabel("0");
 		puntajeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		puntajeLabel.setFont(new Font("Tahoma", Font.PLAIN, 38));
-		puntajeLabel.setBounds(10, 43, 176, 69);
+		puntajeLabel.setFont(DataHandler.FUENTE_H3);
+		puntajeLabel.setBounds(10, 60, 176, 54);
 		panelInformacion.add(puntajeLabel);
 		
 		panelEfectos = new JPanel();
@@ -177,10 +177,10 @@ public class JuegoGUI {
 		lblEfectoBomba.setVisible(false);
 		panelEfectos.add(lblEfectoBomba);
 		
-		lblTituloEfectos = new JLabel("EFFECTS:");
-		lblTituloEfectos.setVerticalAlignment(SwingConstants.TOP);
-		lblTituloEfectos.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblTituloEfectos.setBounds(62, 11, 76, 22);
+		lblTituloEfectos = new JLabel("EFFECTS");
+		lblTituloEfectos.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTituloEfectos.setFont(DataHandler.FUENTE_H3);
+		lblTituloEfectos.setBounds(10, 11, 180, 32);
 		panelEfectos.add(lblTituloEfectos);
 		
 		matrizLabels = new JLabel[ANCHO][ALTO]; //28 x 36

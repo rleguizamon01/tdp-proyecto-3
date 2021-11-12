@@ -1,5 +1,6 @@
 package Launcher;
 
+import Datos.DataHandler;
 import GUI.*;
 import Grilla.*;
 import ResourceHandler.ResourceHandler;
@@ -8,7 +9,7 @@ import Logica.*;
 public class Launcher {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		DataHandler.cargarFuentes();
 		ResourceHandler.setStrategy(ResourceHandler.SKIN_AMONG_US);
 		
 		JuegoGUI JGUI = new JuegoGUI();
