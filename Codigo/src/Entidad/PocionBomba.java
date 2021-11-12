@@ -24,7 +24,7 @@ public class PocionBomba extends Pocion{
 	}
 	
 	public String getPacmanAlteradoCI() {
-		return ResourceHandler.getPacmanBombaCI(miGrilla.direccionPacman());
+		return ResourceHandler.getPacmanBombaCI(miGrilla.getPacman().getDireccion());
 	}
 
 	@Override

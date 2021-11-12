@@ -18,7 +18,7 @@ public class ChaseIAAzul implements ChaseIA {
 		Position tb = new Position();
 		
 		Position posRojo = miGrilla.getRojo().getPosicionAbsoluta();
-		Position posPac = miGrilla.posicionActualPacman();
+		Position posPac = miGrilla.getPacman().getPosicionAbsoluta();
 		
 		//Abstraemos el concepto de Position al de "vector bidimensional" donde fila = primera componente
 		//y columna = segunda componente.

@@ -24,7 +24,7 @@ public class ChaseIANaranja implements ChaseIA {
 		aux.setFila(aux.getFila()*pixelesCelda);
 		aux.setColumna(aux.getColumna()*pixelesCelda);
 		
-		Position pacman = miGrilla.posicionActualPacman();
+		Position pacman = miGrilla.getPacman().getPosicionAbsoluta();
 		
 		if(Position.distancia(miFantasma.getPosicionAbsoluta(), pacman) <= rangoMiedo*pixelesCelda) {
 			tb = aux;

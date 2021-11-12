@@ -13,9 +13,9 @@ public class ChaseIARosa implements ChaseIA {
 	public Position getTargetBlock() {
 		int pixelesDeCelda = 20;
 		Position tb = new Position(); //tb: target block
-		Position posicionPacman = miGrilla.posicionActualPacman();
+		Position posicionPacman = miGrilla.getPacman().getPosicionAbsoluta();
 		
-		switch(miGrilla.direccionPacman()) {
+		switch(miGrilla.getPacman().getDireccion()) {
 			case 'N':
 				tb.setFila(posicionPacman.getFila() - 2*pixelesDeCelda);
 				tb.setColumna(posicionPacman.getColumna() - 2*pixelesDeCelda);

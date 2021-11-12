@@ -30,15 +30,15 @@ public class PocionVelocidad extends Pocion {
 	public void afectar() {
 		miGrilla.sumarPuntos(puntos);
 		miGrilla.pedirEstablecerEstadoVelocidad(true);
-		int velocidadActual = miGrilla.velocidadActualPacman();
-		miGrilla.actualizarVelocidadPacman((int) Math.floor(coeficienteDeAceleracion*velocidadActual));
-		miGrilla.actualizarEstadoAfectadoPacman(this);
+		int velocidadActual = miGrilla.getPacman().getVelocidad();
+		miGrilla.getPacman().setVelocidad((int) Math.floor(coeficienteDeAceleracion*velocidadActual));
+		miGrilla.getPacman().alterarEstado(this);
 		(new EsperadorVelocidad(duracion, miGrilla, velocidadActual)).start();
 		miGrilla.removerEntidad(this);
 	}
 
 	public String getPacmanAlteradoCI() {
-		return ResourceHandler.getPacmanVelocidadCI(miGrilla.direccionPacman());
+		return ResourceHandler.getPacmanVelocidadCI(miGrilla.getPacman().getDireccion());
 	}
 	
 	@Override

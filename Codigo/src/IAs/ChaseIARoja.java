@@ -12,7 +12,7 @@ public class ChaseIARoja implements ChaseIA {
 	}
 	
 	public Position getTargetBlock() {
-		return miGrilla.posicionActualPacman();
+		return miGrilla.getPacman().getPosicionAbsoluta();
 	}
 
 }

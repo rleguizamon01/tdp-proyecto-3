@@ -23,7 +23,7 @@ public class Juego {
 	}
 	
 	public void iniciarPartida() {
-		relojPacman.setIntervalo(1000 / miGrilla.pasoPacman());
+		relojPacman.setIntervalo(1000 / miGrilla.getPacman().getPaso());
 		relojFantasmas.setIntervalo(1000 / miGrilla.getRojo().getPaso());
 		relojPacman.start();
 		relojFantasmas.start();

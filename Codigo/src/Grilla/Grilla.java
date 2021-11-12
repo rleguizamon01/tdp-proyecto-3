@@ -69,6 +69,10 @@ public class Grilla {
 		return naranja;
 	}
 	
+	public Pacman getPacman() {
+		return pacman;
+	}
+	
 	public void ponerFantasmasEnChase() {
 		for(Fantasma f : misFantasmas)
 			if(f != null)
@@ -106,16 +110,16 @@ public class Grilla {
 		miJuego.agregarLabel(eg);
 	}
 	
-	public char direccionPacman() {
+	/**public char direccionPacman() {
 		return pacman.getDireccion();
-	}
+	}**/
 	
 	public void actualizarDireccionPacman(char d) {
 		pacman.setDireccion(d);
 		pacman.getEntidadGrafica().actualizarImagen();
 	}
 	
-	public void actualizarVelocidadPacman(int v) {
+	/**public void actualizarVelocidadPacman(int v) {
 		pacman.setVelocidad(v);
 	}
 	
@@ -133,7 +137,7 @@ public class Grilla {
 	
 	public int pasoPacman() {
 		return pacman.getPaso();
-	}
+	}**/
 	
 	public void moverPacman() {
 		Bloque b = moverEntidad(pacman);

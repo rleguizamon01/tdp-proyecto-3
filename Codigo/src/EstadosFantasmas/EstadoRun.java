@@ -13,7 +13,7 @@ public class EstadoRun extends Estado {
 
 	@Override
 	public Position siguientePosicion() {
-		return masLejanoA(miGrilla.posicionActualPacman());
+		return masLejanoA(miGrilla.getPacman().getPosicionAbsoluta());
 	}
 
 	@Override
