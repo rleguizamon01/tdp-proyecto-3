@@ -5,9 +5,13 @@ import Entidad.*;
 import Logica.Juego;
 
 public class NivelUno extends Nivel{
-	
+	/*
+	 * Definimos ciclo scatter como el tiempo que tarda el fantasma mas lento del nivel
+	 * en llegar al punto en el cual "da vueltas" y dar una vuelta completa. 
+	 */
 	public NivelUno(Juego j, Grilla g) {
 		super(j, g);
+		milisegundosEnScatter = 22000; //22 segundos son 2 ciclos Scatter.
 		mapa = new String[]{
 				"                            ",
 				"                            ",

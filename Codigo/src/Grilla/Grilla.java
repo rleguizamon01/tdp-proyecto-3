@@ -18,6 +18,7 @@ public class Grilla {
 	protected Juego miJuego;
 	
 	protected int contadorMonedas;
+	protected int tiempoEnScatter;
 	
 	protected Pacman pacman;
 	protected Fantasma rojo;
@@ -51,6 +52,7 @@ public class Grilla {
 		misFantasmas = new Fantasma[] {rojo, rosa, azul, naranja};
 		
 		contadorMonedas = nivelActual.getTotalDeMonedasEnNivel();
+		tiempoEnScatter = nivelActual.getMilisegundosEnScatter();
 	}
 	
 	public Fantasma getRojo() {
@@ -73,6 +75,10 @@ public class Grilla {
 		return pacman;
 	}
 	
+	public int getMilisegundosEnScatter() {
+		return tiempoEnScatter;
+	}
+
 	public void ponerFantasmasEnChase() {
 		for(Fantasma f : misFantasmas)
 			if(f != null)
@@ -110,34 +116,10 @@ public class Grilla {
 		miJuego.agregarLabel(eg);
 	}
 	
-	/**public char direccionPacman() {
-		return pacman.getDireccion();
-	}**/
-	
 	public void actualizarDireccionPacman(char d) {
 		pacman.setDireccion(d);
 		pacman.getEntidadGrafica().actualizarImagen();
 	}
-	
-	/**public void actualizarVelocidadPacman(int v) {
-		pacman.setVelocidad(v);
-	}
-	
-	public void actualizarEstadoAfectadoPacman(Pocion p) {
-		pacman.alterarEstado(p);
-	}
-	
-	public Position posicionActualPacman() {
-		return pacman.getPosicionAbsoluta();
-	}
-	
-	public int velocidadActualPacman() {
-		return pacman.getVelocidad();
-	}
-	
-	public int pasoPacman() {
-		return pacman.getPaso();
-	}**/
 	
 	public void moverPacman() {
 		Bloque b = moverEntidad(pacman);
@@ -247,15 +229,6 @@ public class Grilla {
 		return res;
 	}
 	
-	public void mostrarEntidades() {
-		Iterable<Entidad> it = entidadesQueColisionan();
-		
-		System.out.println("COLISIONAN: ");
-		
-		for(Entidad e : it)
-			System.out.println(e.getClass() + ": " + e.getPosicionZona());
-	}
-	
 	protected Iterable<Entidad> entidadesQueColisionan() {
 		ArrayList<Entidad> it = new ArrayList<Entidad>();
 
@@ -322,6 +295,6 @@ public class Grilla {
 	public void pedirEstablecerEstadoBomba(boolean b) {
 		miJuego.pedirEstablecerVisibleBomba(b);
 	}
-	
+
 	
 }

@@ -1,6 +1,7 @@
 package Logica;
 
 import Entidad.EntidadGrafica;
+import Esperador.EsperadorChase;
 import GUI.JuegoGUI;
 import Grilla.Grilla;
 import Reloj.*;
@@ -27,6 +28,7 @@ public class Juego {
 		relojFantasmas.setIntervalo(1000 / miGrilla.getRojo().getPaso());
 		relojPacman.start();
 		relojFantasmas.start();
+		(new EsperadorChase(miGrilla.getMilisegundosEnScatter(), miGrilla)).start();
 	}
 	
 	public void finalizarPartida() {

@@ -11,6 +11,7 @@ public class NivelDos extends Nivel {
 
 	public NivelDos(Juego j, Grilla g) {
 		super(j, g);
+		milisegundosEnScatter = 29000; //29 segundos es 1 ciclo Scatter
 		mapa = new String[]{
 				"                            ",
 				"                            ",

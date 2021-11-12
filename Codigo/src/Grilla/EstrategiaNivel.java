@@ -12,4 +12,5 @@ public interface EstrategiaNivel {
 	public Fantasma getNaranja();
 	
 	public int getTotalDeMonedasEnNivel();
+	public int getMilisegundosEnScatter();
 }

@@ -10,6 +10,7 @@ public abstract class Nivel implements EstrategiaNivel{
 	protected Grilla g;
 	protected String[] mapa;
 	protected int contadorMonedas;
+	protected int milisegundosEnScatter;
 	
 	protected Pacman pacman;
 	
@@ -118,6 +119,10 @@ public abstract class Nivel implements EstrategiaNivel{
 	
 	public int getTotalDeMonedasEnNivel() {
 		return contadorMonedas;
+	}
+	
+	public int getMilisegundosEnScatter() {
+		return milisegundosEnScatter;
 	}
 	
 	protected void vincularEntidadGrafica(Entidad e) {
