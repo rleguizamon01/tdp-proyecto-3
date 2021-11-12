@@ -2,6 +2,7 @@ package ResourceHandler;
 
 public class ResourceHandler {
 	public static final SkinStrategy SKIN_AMONG_US = SkinAmongUs.getSkinAmongUs();
+	public static final SkinStrategy SKIN_CARPINCHO = SkinCarpincho.getSkinCarpincho();
 	
 	private static SkinStrategy s;
 	

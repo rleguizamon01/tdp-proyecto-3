@@ -3,6 +3,7 @@ package ResourceHandler;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Skin implements SkinStrategy{
 	protected Properties propertiesComun;
@@ -67,5 +68,18 @@ public abstract class Skin implements SkinStrategy{
 	
 	public String getPinchosCI() {
 		return pathComun + propertiesComun.getProperty("pinchos");
+	}
+	
+	@Override
+	public String getFrutaCI() {
+		int rand = ThreadLocalRandom.current().nextInt(1, 4);
+		
+		if(rand % 3 == 0)
+			return pathComun + propertiesComun.getProperty("fruta1");
+		else if(rand % 3 == 1)
+			return pathComun + propertiesComun.getProperty("fruta2");
+		else
+			return pathComun + propertiesComun.getProperty("fruta3");
+		
 	}
 }

@@ -17,7 +17,6 @@ public class Launcher {
 	public static void main(String[] args) {
 		DataHandler.cargarFuentes();
 		new MenuGUI();
-		
 		//lanzarJuego(ResourceHandler.SKIN_AMONG_US);
 	}
 	

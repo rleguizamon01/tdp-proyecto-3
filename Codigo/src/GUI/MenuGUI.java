@@ -45,7 +45,7 @@ public class MenuGUI {
 		pares = new ArrayList<Par<ImageIcon, SkinStrategy>>();
 		
 		pares.add(new Par<ImageIcon, SkinStrategy>(new ImageIcon(MenuGUI.class.getResource(PATH_AMONG_US)), ResourceHandler.SKIN_AMONG_US));
-		pares.add(new Par<ImageIcon, SkinStrategy>(new ImageIcon(MenuGUI.class.getResource(PATH_CARPINCHO)), ResourceHandler.SKIN_AMONG_US));
+		pares.add(new Par<ImageIcon, SkinStrategy>(new ImageIcon(MenuGUI.class.getResource(PATH_CARPINCHO)), ResourceHandler.SKIN_CARPINCHO));
 		
 		int cantImagenes = pares.size();
 		

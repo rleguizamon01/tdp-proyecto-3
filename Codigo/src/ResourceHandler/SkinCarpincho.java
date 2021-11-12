@@ -5,16 +5,16 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class SkinAmongUs extends Skin {
-	private static SkinAmongUs me;
+public class SkinCarpincho extends Skin {
+	private static SkinCarpincho me;
 
-	private SkinAmongUs() {
-		super("/RecursosAmongUs/", "skinAmongUs.properties");
+	private SkinCarpincho() {
+		super("/RecursosCarpincho/", "skinCarpincho.properties");
 	}
 	
-	public static SkinAmongUs getSkinAmongUs() {
+	public static SkinCarpincho getSkinCarpincho() {
 		if(me == null) {
-			me = new SkinAmongUs();
+			me = new SkinCarpincho();
 		}
 		
 		return me;
