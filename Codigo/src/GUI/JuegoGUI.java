@@ -44,6 +44,8 @@ public class JuegoGUI {
 	private JLabel lblEfectoBomba;
 	private JLabel lblTituloEfectos;
 	private Juego miJuego;
+	private JLabel lblPocionBomba;
+	private JLabel lblPocionBombaCant;
 
 	public void setJuego(Juego j) {
 		miJuego = j;
@@ -111,6 +113,10 @@ public class JuegoGUI {
 			        case KeyEvent.VK_SPACE:
 			        	System.out.println("ESPACIO");
 			        	miJuego.pedirMoverPacman();
+			        	break;
+			        case KeyEvent.VK_B:
+			        	System.out.println("LETRA B");
+			        	miJuego.consumirPocionBomba();
 			        	break;
 			    }
 			}
@@ -189,6 +195,38 @@ public class JuegoGUI {
 		lblTituloEfectos.setBounds(10, 11, 180, 32);
 		panelEfectos.add(lblTituloEfectos);
 		
+		JPanel panelPociones = new JPanel();
+		panelPociones.setBorder(new LineBorder(Color.WHITE));
+		panelPociones.setBackground(Color.BLACK);
+		panelPociones.setBounds(660, 367, 200, 107);
+		frame.getContentPane().add(panelPociones);
+		panelPociones.setLayout(null);
+		
+		lblPocionBombaCant = new JLabel();
+		lblPocionBombaCant.setForeground(Color.BLACK);
+		lblPocionBombaCant.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPocionBombaCant.setBackground(Color.WHITE);
+		lblPocionBombaCant.setOpaque(true);
+		lblPocionBombaCant.setBounds(27, 63, 25, 25);
+		lblPocionBombaCant.setVisible(false);
+		lblPocionBombaCant.setFont(DataHandler.FUENTE_H4);
+		panelPociones.add(lblPocionBombaCant);
+		
+		JLabel lblTituloPociones = new JLabel("POTIONS");
+		lblTituloPociones.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTituloPociones.setForeground(Color.WHITE);
+		lblTituloPociones.setFont(DataHandler.FUENTE_H3);
+		lblTituloPociones.setBounds(10, 10, 180, 32);
+		panelPociones.add(lblTituloPociones);
+		
+		aux = ResourceHandler.getBombaCI();
+		
+		lblPocionBomba = new JLabel();
+		lblPocionBomba.setBounds(10, 52, 40, 40);
+		lblPocionBomba.setIcon(new ImageIcon(JuegoGUI.class.getResource(aux)));
+		lblPocionBomba.setVisible(false);
+		panelPociones.add(lblPocionBomba);
+		
 		matrizLabels = new JLabel[ANCHO][ALTO]; //28 x 36
 	}
 	
@@ -232,6 +270,14 @@ public class JuegoGUI {
 		return lblEfectoBomba;
 	}
 	
+	public JLabel getLabelPocionBomba() {
+		return lblPocionBomba;
+	}
+	
+	public JLabel getLabelPocionBombaCant() {
+		return lblPocionBombaCant;
+	}
+	
 	public void establecerVisible(JLabel j, boolean b) {
 		j.setVisible(b);
 	}
@@ -254,4 +300,6 @@ public class JuegoGUI {
 	public void actualizarPuntaje(String p) {
 		puntajeLabel.setText(p);
 	}
+	
+	
 }

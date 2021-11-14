@@ -84,6 +84,13 @@ public class Position implements Cloneable {
 		return (float) Math.sqrt(fCuadrado + cCuadrado);
 	}
 	
+	public boolean estaEntrePosiciones(Position esquinaInicial, Position esquinaFinal) {
+		if(esquinaInicial.getFila() <= f && f <= esquinaFinal.getFila())
+			if(esquinaInicial.getColumna() <= c && c <= esquinaFinal.getColumna())
+				return true;
+		return false;
+	}
+	
 	public int hashCode() {
 		return ((Integer) f).hashCode() + ((Integer) c).hashCode();
 	}

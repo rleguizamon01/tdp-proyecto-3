@@ -20,6 +20,7 @@ public class Juego {
 	protected Highscores highscores;
 	
 	protected int puntaje;
+	protected int cantPocionesBomba;
 	
 	public Juego(JuegoGUI gui) {
 		miGUI = gui;
@@ -28,6 +29,7 @@ public class Juego {
 		relojFantasmas = new RelojFantasmas(true, 1000, this);
 		
 		puntaje = 0;
+		cantPocionesBomba = 0;
 		
 		jugador = new Jugador("pepe2");
 		highscores = DataHandler.getHighscore();
@@ -87,6 +89,33 @@ public class Juego {
 	
 	public void pedirEstablecerVisibleBomba(boolean b) {
 		miGUI.establecerVisible(miGUI.getLabelEfectoBomba(), b);
+	}
+	
+	public void pedirAlmacenarBomba() {
+		cantPocionesBomba++;
+		miGUI.establecerVisible(miGUI.getLabelPocionBomba(), true);
+		miGUI.establecerVisible(miGUI.getLabelPocionBombaCant(), true);
+		miGUI.getLabelPocionBombaCant().setText(cantPocionesBomba + "");
+	}
+	
+	public void consumirPocionBomba() {
+		
+		
+		switch(cantPocionesBomba) {
+			case 0:
+				return;
+			case 1: {
+				miGUI.establecerVisible(miGUI.getLabelPocionBomba(), false);
+				miGUI.establecerVisible(miGUI.getLabelPocionBombaCant(), false);
+			}
+			default:
+				miGUI.getLabelPocionBombaCant().setText(cantPocionesBomba - 1 + "");
+		}
+
+		System.out.println("Consumió exitosamente la bomba");
+		cantPocionesBomba--;			
+		pedirEstablecerVisibleBomba(true);
+		miGrilla.posicionarPocionBomba();
 	}
 	
 	public void pedirActualizarDireccion(char d) {

@@ -45,6 +45,6 @@ public class Portal extends EntidadFija {
 	}
 	
 	private void descargarDestino() {
-		PORTAL_DESTINO.setRecargado(0);;
+		PORTAL_DESTINO.setRecargado(0);
 	}
 }

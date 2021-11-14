@@ -26,6 +26,7 @@ public class Grilla {
 	protected Fantasma azul;
 	protected Fantasma naranja;
 	protected Fantasma[] misFantasmas;
+	protected ArrayList<PocionBomba> pocionesBombaActivas;
 	
 	protected EstrategiaNivel nivelActual;
 	
@@ -33,6 +34,7 @@ public class Grilla {
 		matrizGrilla = new Bloque[ANCHO][ALTO];
 		contadorMonedas = 0;
 		miJuego = j;
+		pocionesBombaActivas = new ArrayList<PocionBomba>();
 	}
 	
 	public void setNivelActual(EstrategiaNivel e) {
@@ -308,6 +310,80 @@ public class Grilla {
 	
 	public void pedirEstablecerEstadoBomba(boolean b) {
 		miJuego.pedirEstablecerVisibleBomba(b);
+	}
+	
+	public void pedirAlmacenarBomba() {
+		miJuego.pedirAlmacenarBomba();
+	}
+	
+	public void posicionarPocionBomba() {
+		Position posPacmanZona = pacman.getPosicionZona();
+		Bloque bloquePacman = matrizGrilla[posPacmanZona.getFila()][posPacmanZona.getColumna()];
+
+		PocionBomba pocionBomba = new PocionBomba(posPacmanZona.getFila(), posPacmanZona.getColumna(), this, true);
+		pocionBomba.setEntidadGrafica(new EntidadGrafica(pocionBomba));
+		bloquePacman.agregarEntidad(pocionBomba);
+		agregarLabel(pocionBomba.getEntidadGrafica());
+		
+		pocionesBombaActivas.add(pocionBomba);
+		pocionBomba.consumir();
+	}
+	
+	public void pedirExplotarBomba(PocionBomba pocionBombaExplotar) {
+		pocionesBombaActivas.remove(pocionBombaExplotar);
+		if(pocionesBombaActivas.isEmpty())
+			pacman.alterarEstado(null);
+		
+		Position esquinaInicial = esquinaInicialExplosion(pocionBombaExplotar);
+		Position esquinaFinal = esquinaFinalExplosion(pocionBombaExplotar);
+		
+		for(Fantasma fantasma: misFantasmas) {
+			System.out.println("+ Fantasma: " + fantasma);
+			if(fantasma != null) {
+				Position posicionFantasma = fantasma.getPosicionZona();
+				if(posicionFantasma.estaEntrePosiciones(esquinaInicial, esquinaFinal))
+					fantasma.ponerEnDead();
+			}
+		}
+		
+		miJuego.pedirEstablecerVisibleBomba(false);
+		removerEntidad(pocionBombaExplotar);
+		
+		
+	}
+	
+	private Position esquinaInicialExplosion(PocionBomba pocionBomba) {
+		// Por defecto asumo que la esquina inicial es el comienzo de la grilla
+		Position esquinaInicial = new Position(0, 0);
+		
+		int filaInicialExplosion = pocionBomba.getPosicionZona().getFila() - pocionBomba.getRadioExplosion();
+		int columnaInicialExplosion = pocionBomba.getPosicionZona().getColumna() - pocionBomba.getRadioExplosion();
+		
+		// Si la esquina de la explosión no está por fuera de los bordes de la matriz, le asignamos ese valor
+		if(filaInicialExplosion > 0 ) 
+			esquinaInicial.setFila(filaInicialExplosion);
+		
+		if(columnaInicialExplosion > 0)
+			esquinaInicial.setColumna(columnaInicialExplosion);
+
+		return esquinaInicial;
+	}
+	
+	private Position esquinaFinalExplosion(PocionBomba pocionBomba) {
+		// Por defecto asumo que la esquina final es el final de la grilla
+		Position esquinaFinal = new Position(matrizGrilla.length, matrizGrilla[0].length);
+		
+		int filaFinalExplosion = pocionBomba.getPosicionZona().getFila() + pocionBomba.getRadioExplosion();
+		int columnaFinalExplosion = pocionBomba.getPosicionZona().getColumna() + pocionBomba.getRadioExplosion();
+		
+		// Si la esquina de la explosión es válida, le asignamos ese valor
+		if(filaFinalExplosion < matrizGrilla.length ) 
+			esquinaFinal.setFila(filaFinalExplosion);
+		
+		if(columnaFinalExplosion < matrizGrilla[0].length)
+			esquinaFinal.setColumna(columnaFinalExplosion);
+		
+		return esquinaFinal;
 	}
 
 	
