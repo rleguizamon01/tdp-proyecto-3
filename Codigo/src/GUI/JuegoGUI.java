@@ -89,6 +89,14 @@ public class JuegoGUI {
 			        	System.out.println("DERECHA");
 			        	miJuego.pedirActualizarDireccion('E');
 			            break;
+			        case KeyEvent.VK_J:
+			        	System.out.println("ARRANCAR MUSICA");
+			        	miJuego.iniciarMusica();
+			        	break;
+			        case KeyEvent.VK_K:
+			        	System.out.println("PAUSAR MUSICA");
+			        	miJuego.pausarMusica();
+			        	break;
 			        case KeyEvent.VK_Q:
 			        	if(!TEMPORAL) {
 				        	System.out.println("INICIAR");

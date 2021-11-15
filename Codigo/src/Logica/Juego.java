@@ -7,6 +7,8 @@ import Grilla.Grilla;
 import Reloj.*;
 import Utilidad.*;
 import Highscore.*;
+import Audio.MusicHandler;
+import Audio.MusicPlayer;
 import Datos.DataHandler;
 
 public class Juego {
@@ -19,7 +21,11 @@ public class Juego {
 	protected Jugador jugador;
 	protected Highscores highscores;
 	
+	protected MusicPlayer miMP;
+	
 	protected int puntaje;
+	
+	protected boolean arrancoMusica;
 	
 	public Juego(JuegoGUI gui) {
 		miGUI = gui;
@@ -32,6 +38,9 @@ public class Juego {
 		jugador = new Jugador("pepe2");
 		highscores = DataHandler.getHighscore();
 		
+		miMP = new MusicPlayer();
+		MusicHandler.inicializarReproductor(miMP);
+		arrancoMusica = false;
 	}
 	
 	public void setGrilla(Grilla g) {
@@ -63,6 +72,21 @@ public class Juego {
 		highscores.agregarJugador(jugador);
 		System.out.println(highscores);
 		DataHandler.guardar(highscores, Highscores.SCORE_PATH);
+	}
+	
+	public void iniciarMusica() {
+		if(arrancoMusica) {
+			miMP.skip();
+			miMP = miMP.clone();
+		} else {
+			arrancoMusica = true;
+		}
+			
+		miMP.start();
+	}
+	
+	public void pausarMusica() {
+		miMP.stop();
 	}
 	
 	public void actualizar(Position p, String path) {
