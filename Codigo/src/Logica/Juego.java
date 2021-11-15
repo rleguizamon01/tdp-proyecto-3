@@ -27,15 +27,12 @@ public class Juego {
 	
 	protected boolean arrancoMusica;
 	
-	public Juego(JuegoGUI gui) {
+	public Juego(JuegoGUI gui, Jugador j) {
 		miGUI = gui;
 		
-		relojPacman = new RelojPacman(true, 1000, this);
-		relojFantasmas = new RelojFantasmas(true, 1000, this);
+		jugador = j;
+		puntaje = jugador.getPuntaje();
 		
-		puntaje = 0;
-		
-		jugador = new Jugador("pepe2");
 		highscores = DataHandler.getHighscore();
 		
 		miMP = new MusicPlayer();
@@ -57,6 +54,11 @@ public class Juego {
 	}
 
 	public void iniciarPartida() {
+		pedirActualizarPuntos();
+		
+		relojPacman = new RelojPacman(true, 1000, this);
+		relojFantasmas = new RelojFantasmas(true, 1000, this);
+		
 		relojPacman.setIntervalo(1000 / miGrilla.getPacman().getPaso());
 		relojFantasmas.setIntervalo(1000 / miGrilla.getRojo().getPaso());
 		relojPacman.start();
@@ -64,10 +66,18 @@ public class Juego {
 		(new EsperadorChase(miGrilla.getMilisegundosEnScatter(), miGrilla)).start();
 	}
 	
-	public void finalizarPartida() {
+	public void cargarlePuntosAlJugador() {
+		jugador.setPuntaje(puntaje);
+	}
+	
+	public void frenarTodosLosRelojes() {
 		relojPacman.stop();
 		relojFantasmas.stop();
-		
+		miMP.stop();
+	}
+	
+	public void finalizarPartida() {
+		frenarTodosLosRelojes();
 		jugador.setPuntaje(puntaje);
 		highscores.agregarJugador(jugador);
 		System.out.println(highscores);

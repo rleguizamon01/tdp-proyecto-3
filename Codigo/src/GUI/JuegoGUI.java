@@ -24,7 +24,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class JuegoGUI {
-	private static final boolean MUSICA_POR_DEFECTO = true; //Si la musica se vuelve pesada al corregir, cambiar esta constante a false!
+	private static final boolean MUSICA_POR_DEFECTO = false; //Si la musica se vuelve pesada al corregir, cambiar esta constante a false!
 	
 	//Constantes del tamaño de la ventana:
 	private static final int W = 900;
@@ -102,20 +102,19 @@ public class JuegoGUI {
 			        	System.out.println("DERECHA");
 			        	miJuego.pedirActualizarDireccion('E');
 			            break;
+			        case KeyEvent.VK_P:
+			        	Launcher.Launcher.siguienteNivel();
+			        	break;
 			        case KeyEvent.VK_M:
 			        	invertirMusica();
 			        	break;
 			        case KeyEvent.VK_Q:
-			        	if(!TEMPORAL) {
-				        	System.out.println("INICIAR");
-			        		miJuego.iniciarPartida();
-			        	} else {
-			        		System.out.println("FINALIZAR");
-			        		miJuego.finalizarPartida();
-			        	}
-			        	
-			        	TEMPORAL = !TEMPORAL;
-			        	
+			        	System.out.println("INICIAR");
+		        		miJuego.iniciarPartida();
+		        		break;
+			        case KeyEvent.VK_E:
+		        		System.out.println("FINALIZAR");
+		        		miJuego.finalizarPartida();
 			            break;
 			        case KeyEvent.VK_F:
 			        	System.out.println("FANTASMA");
@@ -309,5 +308,10 @@ public class JuegoGUI {
 	
 	public void actualizarPuntaje(String p) {
 		puntajeLabel.setText(p);
+	}
+	
+	public void cerrar() {
+		frame.setVisible(false);
+		frame.dispose(); //Cierra la ventana.
 	}
 }
