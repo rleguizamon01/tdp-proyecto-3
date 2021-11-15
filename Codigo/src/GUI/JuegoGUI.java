@@ -222,15 +222,18 @@ public class JuegoGUI {
 		actualizarIconoBoton();
 		panelMusica.add(btnMusica);
 		
+		if(hayMusica)
+			miJuego.iniciarMusica();
+		
 		matrizLabels = new JLabel[ANCHO][ALTO]; //28 x 36
 	}
 	
 	protected void invertirMusica() {
 		//Patron Command!
 		if(hayMusica) {
-			miJuego.iniciarMusica();
-		} else {
 			miJuego.pausarMusica();
+		} else {
+			miJuego.iniciarMusica();
 		}
 		
 		hayMusica = !hayMusica;
