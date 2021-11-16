@@ -7,6 +7,8 @@ import Grilla.Grilla;
 import Reloj.*;
 import Utilidad.*;
 import Highscore.*;
+import Audio.MusicHandler;
+import Audio.MusicPlayer;
 import Datos.DataHandler;
 
 public class Juego {
@@ -19,10 +21,14 @@ public class Juego {
 	protected Jugador jugador;
 	protected Highscores highscores;
 	
+	protected MusicPlayer miMP;
+	
 	protected int puntaje;
 	protected int cantPocionesBomba;
 	
-	public Juego(JuegoGUI gui) {
+	protected boolean arrancoMusica;
+	
+	public Juego(JuegoGUI gui, Jugador j) {
 		miGUI = gui;
 		
 		relojPacman = new RelojPacman(true, 1000, this);
@@ -30,10 +36,15 @@ public class Juego {
 		
 		puntaje = 0;
 		cantPocionesBomba = 0;
+
+		jugador = j;
+		puntaje = jugador.getPuntaje();
 		
-		jugador = new Jugador("pepe2");
 		highscores = DataHandler.getHighscore();
 		
+		miMP = new MusicPlayer();
+		MusicHandler.inicializarReproductor(miMP);
+		arrancoMusica = false;
 	}
 	
 	public void setGrilla(Grilla g) {
@@ -50,6 +61,11 @@ public class Juego {
 	}
 
 	public void iniciarPartida() {
+		pedirActualizarPuntos();
+		
+		relojPacman = new RelojPacman(true, 1000, this);
+		relojFantasmas = new RelojFantasmas(true, 1000, this);
+		
 		relojPacman.setIntervalo(1000 / miGrilla.getPacman().getPaso());
 		relojFantasmas.setIntervalo(1000 / miGrilla.getRojo().getPaso());
 		relojPacman.start();
@@ -57,14 +73,37 @@ public class Juego {
 		(new EsperadorChase(miGrilla.getMilisegundosEnScatter(), miGrilla)).start();
 	}
 	
-	public void finalizarPartida() {
+	public void cargarlePuntosAlJugador() {
+		jugador.setPuntaje(puntaje);
+	}
+	
+	public void frenarTodosLosRelojes() {
 		relojPacman.stop();
 		relojFantasmas.stop();
-		
+		miMP.stop();
+	}
+	
+	public void finalizarPartida() {
+		frenarTodosLosRelojes();
 		jugador.setPuntaje(puntaje);
 		highscores.agregarJugador(jugador);
 		System.out.println(highscores);
 		DataHandler.guardar(highscores, Highscores.SCORE_PATH);
+	}
+	
+	public void iniciarMusica() {
+		if(arrancoMusica) {
+			miMP.skip();
+			miMP = miMP.clone();
+		} else {
+			arrancoMusica = true;
+		}
+			
+		miMP.start();
+	}
+	
+	public void pausarMusica() {
+		miMP.stop();
 	}
 	
 	public void actualizar(Position p, String path) {
@@ -99,8 +138,6 @@ public class Juego {
 	}
 	
 	public void consumirPocionBomba() {
-		
-		
 		switch(cantPocionesBomba) {
 			case 0:
 				return;

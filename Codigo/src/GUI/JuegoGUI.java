@@ -19,8 +19,13 @@ import Datos.DataHandler;
 import ResourceHandler.ResourceHandler;
 import Utilidad.Position;
 import javax.swing.JLayeredPane;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JuegoGUI {
+	private static final boolean MUSICA_POR_DEFECTO = false; //Si la musica se vuelve pesada al corregir, cambiar esta constante a false!
+	
 	//Constantes del tamaño de la ventana:
 	private static final int W = 900;
 	private static final int H = 730;
@@ -43,9 +48,16 @@ public class JuegoGUI {
 	private JLabel lblEfectoPowerPellet;
 	private JLabel lblEfectoBomba;
 	private JLabel lblTituloEfectos;
+	private JPanel panelMusica;
+	private JButton btnMusica;
 	private Juego miJuego;
+
 	private JLabel lblPocionBomba;
 	private JLabel lblPocionBombaCant;
+
+	private static final String PATH_PLAY = "/RecursosMenu/play.png";
+	private static final String PATH_PAUSE = "/RecursosMenu/pause.png";
+	private boolean hayMusica;
 
 	public void setJuego(Juego j) {
 		miJuego = j;
@@ -57,6 +69,8 @@ public class JuegoGUI {
 	 * @wbp.parser.entryPoint
 	 */
 	public void initialize() {
+		hayMusica = MUSICA_POR_DEFECTO;
+		
 		frame = new JFrame();
 		frame.setBounds(22, 0, W, H);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -91,17 +105,19 @@ public class JuegoGUI {
 			        	System.out.println("DERECHA");
 			        	miJuego.pedirActualizarDireccion('E');
 			            break;
+			        case KeyEvent.VK_P:
+			        	Launcher.Launcher.siguienteNivel();
+			        	break;
+			        case KeyEvent.VK_M:
+			        	invertirMusica();
+			        	break;
 			        case KeyEvent.VK_Q:
-			        	if(!TEMPORAL) {
-				        	System.out.println("INICIAR");
-			        		miJuego.iniciarPartida();
-			        	} else {
-			        		System.out.println("FINALIZAR");
-			        		miJuego.finalizarPartida();
-			        	}
-			        	
-			        	TEMPORAL = !TEMPORAL;
-			        	
+			        	System.out.println("INICIAR");
+		        		miJuego.iniciarPartida();
+		        		break;
+			        case KeyEvent.VK_E:
+		        		System.out.println("FINALIZAR");
+		        		miJuego.finalizarPartida();
 			            break;
 			        case KeyEvent.VK_F:
 			        	System.out.println("FANTASMA");
@@ -226,8 +242,48 @@ public class JuegoGUI {
 		lblPocionBomba.setIcon(new ImageIcon(JuegoGUI.class.getResource(aux)));
 		lblPocionBomba.setVisible(false);
 		panelPociones.add(lblPocionBomba);
+
+		panelMusica = new JPanel();
+		panelMusica.setBackground(Color.BLACK);
+		panelMusica.setBounds(660, 646, 214, 40);
+		frame.getContentPane().add(panelMusica);
+		panelMusica.setLayout(null);
+		
+		btnMusica = new JButton("");
+		btnMusica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				invertirMusica();
+				txtrCaptadorDeEventos.grabFocus();
+			}
+		});
+		btnMusica.setBounds(174, 0, 40, 40);
+		actualizarIconoBoton();
+		panelMusica.add(btnMusica);
+		
+		if(hayMusica)
+			miJuego.iniciarMusica();
 		
 		matrizLabels = new JLabel[ANCHO][ALTO]; //28 x 36
+	}
+	
+	protected void invertirMusica() {
+		//Patron Command!
+		if(hayMusica) {
+			miJuego.pausarMusica();
+		} else {
+			miJuego.iniciarMusica();
+		}
+		
+		hayMusica = !hayMusica;
+		actualizarIconoBoton();
+	}
+	
+	protected void actualizarIconoBoton() {
+		if(hayMusica) {
+			btnMusica.setIcon(new ImageIcon(JuegoGUI.class.getResource(PATH_PAUSE)));
+		} else {
+			btnMusica.setIcon(new ImageIcon(JuegoGUI.class.getResource(PATH_PLAY)));
+		}
 	}
 	
 	public void initializeMatrix() {
@@ -301,5 +357,8 @@ public class JuegoGUI {
 		puntajeLabel.setText(p);
 	}
 	
-	
+	public void cerrar() {
+		frame.setVisible(false);
+		frame.dispose(); //Cierra la ventana.
+	}
 }

@@ -3,6 +3,7 @@ package Launcher;
 import Datos.DataHandler;
 import GUI.*;
 import Grilla.*;
+import Highscore.Jugador;
 import ResourceHandler.ResourceHandler;
 import ResourceHandler.SkinStrategy;
 import Logica.*;
@@ -11,6 +12,7 @@ public class Launcher {
 	private static JuegoGUI JGUI;
 	private static Juego juego;
 	private static Grilla grilla;
+	private static Jugador jugador;
 	private static int index;
 	private static EstrategiaNivel[] niveles;
 	
@@ -20,13 +22,10 @@ public class Launcher {
 		//lanzarJuego(ResourceHandler.SKIN_AMONG_US);
 	}
 	
-	public static void lanzarJuego(SkinStrategy skinElegida) {
-		ResourceHandler.setStrategy(skinElegida);
-		index = 0;
-		
+	protected static void lanzar() {
 		JGUI = new JuegoGUI();
 		
-		juego = new Juego(JGUI);
+		juego = new Juego(JGUI, jugador);
 		
 		JGUI.setJuego(juego);
 		JGUI.initialize();
@@ -42,6 +41,27 @@ public class Launcher {
 		juego.setGrilla(grilla);
 		
 		JGUI.abrir();
+	}
+	
+	public static void lanzarJuego(SkinStrategy skinElegida) {
+		ResourceHandler.setStrategy(skinElegida);
+		index = 0;
+		jugador = new Jugador("pepe supremo");
+		
+		lanzar();
+	}
+	
+	public static void siguienteNivel() {
+		index++;
+		
+		if(index == niveles.length)
+			index = 0;
+		
+		juego.cargarlePuntosAlJugador();
+		juego.frenarTodosLosRelojes();
+		JGUI.cerrar();
+		
+		lanzar();
 	}
 
 }

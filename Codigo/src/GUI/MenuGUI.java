@@ -124,5 +124,6 @@ public class MenuGUI {
 		frame.getContentPane().add(lblSkin);
 		
 		frame.setVisible(true);
+		frame.getRootPane().setDefaultButton(btnJugar);
 	}
 }
