@@ -24,12 +24,19 @@ public class Juego {
 	protected MusicPlayer miMP;
 	
 	protected int puntaje;
+	protected int cantPocionesBomba;
 	
 	protected boolean arrancoMusica;
 	
 	public Juego(JuegoGUI gui, Jugador j) {
 		miGUI = gui;
 		
+		relojPacman = new RelojPacman(true, 1000, this);
+		relojFantasmas = new RelojFantasmas(true, 1000, this);
+		
+		puntaje = 0;
+		cantPocionesBomba = 0;
+
 		jugador = j;
 		puntaje = jugador.getPuntaje();
 		
@@ -121,6 +128,31 @@ public class Juego {
 	
 	public void pedirEstablecerVisibleBomba(boolean b) {
 		miGUI.establecerVisible(miGUI.getLabelEfectoBomba(), b);
+	}
+	
+	public void pedirAlmacenarBomba() {
+		cantPocionesBomba++;
+		miGUI.establecerVisible(miGUI.getLabelPocionBomba(), true);
+		miGUI.establecerVisible(miGUI.getLabelPocionBombaCant(), true);
+		miGUI.getLabelPocionBombaCant().setText(cantPocionesBomba + "");
+	}
+	
+	public void consumirPocionBomba() {
+		switch(cantPocionesBomba) {
+			case 0:
+				return;
+			case 1: {
+				miGUI.establecerVisible(miGUI.getLabelPocionBomba(), false);
+				miGUI.establecerVisible(miGUI.getLabelPocionBombaCant(), false);
+			}
+			default:
+				miGUI.getLabelPocionBombaCant().setText(cantPocionesBomba - 1 + "");
+		}
+
+		System.out.println("Consumió exitosamente la bomba");
+		cantPocionesBomba--;			
+		pedirEstablecerVisibleBomba(true);
+		miGrilla.posicionarPocionBomba();
 	}
 	
 	public void pedirActualizarDireccion(char d) {

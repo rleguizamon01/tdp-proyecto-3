@@ -51,7 +51,10 @@ public class JuegoGUI {
 	private JPanel panelMusica;
 	private JButton btnMusica;
 	private Juego miJuego;
-	
+
+	private JLabel lblPocionBomba;
+	private JLabel lblPocionBombaCant;
+
 	private static final String PATH_PLAY = "/RecursosMenu/play.png";
 	private static final String PATH_PAUSE = "/RecursosMenu/pause.png";
 	private boolean hayMusica;
@@ -126,6 +129,10 @@ public class JuegoGUI {
 			        case KeyEvent.VK_SPACE:
 			        	System.out.println("ESPACIO");
 			        	miJuego.pedirMoverPacman();
+			        	break;
+			        case KeyEvent.VK_B:
+			        	System.out.println("LETRA B");
+			        	miJuego.consumirPocionBomba();
 			        	break;
 			    }
 			}
@@ -204,6 +211,38 @@ public class JuegoGUI {
 		lblTituloEfectos.setBounds(10, 11, 180, 32);
 		panelEfectos.add(lblTituloEfectos);
 		
+		JPanel panelPociones = new JPanel();
+		panelPociones.setBorder(new LineBorder(Color.WHITE));
+		panelPociones.setBackground(Color.BLACK);
+		panelPociones.setBounds(660, 367, 200, 107);
+		frame.getContentPane().add(panelPociones);
+		panelPociones.setLayout(null);
+		
+		lblPocionBombaCant = new JLabel();
+		lblPocionBombaCant.setForeground(Color.BLACK);
+		lblPocionBombaCant.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPocionBombaCant.setBackground(Color.WHITE);
+		lblPocionBombaCant.setOpaque(true);
+		lblPocionBombaCant.setBounds(27, 63, 25, 25);
+		lblPocionBombaCant.setVisible(false);
+		lblPocionBombaCant.setFont(DataHandler.FUENTE_H4);
+		panelPociones.add(lblPocionBombaCant);
+		
+		JLabel lblTituloPociones = new JLabel("POTIONS");
+		lblTituloPociones.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTituloPociones.setForeground(Color.WHITE);
+		lblTituloPociones.setFont(DataHandler.FUENTE_H3);
+		lblTituloPociones.setBounds(10, 10, 180, 32);
+		panelPociones.add(lblTituloPociones);
+		
+		aux = ResourceHandler.getBombaCI();
+		
+		lblPocionBomba = new JLabel();
+		lblPocionBomba.setBounds(10, 52, 40, 40);
+		lblPocionBomba.setIcon(new ImageIcon(JuegoGUI.class.getResource(aux)));
+		lblPocionBomba.setVisible(false);
+		panelPociones.add(lblPocionBomba);
+
 		panelMusica = new JPanel();
 		panelMusica.setBackground(Color.BLACK);
 		panelMusica.setBounds(660, 646, 214, 40);
@@ -285,6 +324,14 @@ public class JuegoGUI {
 	
 	public JLabel getLabelEfectoBomba() {
 		return lblEfectoBomba;
+	}
+	
+	public JLabel getLabelPocionBomba() {
+		return lblPocionBomba;
+	}
+	
+	public JLabel getLabelPocionBombaCant() {
+		return lblPocionBombaCant;
 	}
 	
 	public void establecerVisible(JLabel j, boolean b) {
