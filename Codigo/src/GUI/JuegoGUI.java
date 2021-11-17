@@ -34,8 +34,6 @@ public class JuegoGUI {
 	private static final int ANCHO = 28;//Cantidad de columnas en la grilla
 	private static final int PIXELES = 20;//Tamaño en px de cada celda.
 	
-	private static boolean TEMPORAL = false;
-	
 	private JFrame frame;
 	private JLayeredPane panelContenedorDeGrilla; //Seran el piso y las paredes del laberinto
 	private JLabel[][] matrizLabels;
@@ -50,13 +48,15 @@ public class JuegoGUI {
 	private JLabel lblTituloEfectos;
 	private JPanel panelMusica;
 	private JButton btnMusica;
+	private JLabel lblMusicIcon;
 	private Juego miJuego;
 
 	private JLabel lblPocionBomba;
 	private JLabel lblPocionBombaCant;
 
-	private static final String PATH_PLAY = "/RecursosMenu/play.png";
-	private static final String PATH_PAUSE = "/RecursosMenu/pause.png";
+	private static final String PATH_MUSIC = "/RecursosMenu/musicSymbol.png";
+	private static final String PATH_PLAY = "/RecursosMenu/playButton.png";
+	private static final String PATH_PAUSE = "/RecursosMenu/pauseButton.png";
 	private boolean hayMusica;
 
 	public void setJuego(Juego j) {
@@ -259,6 +259,11 @@ public class JuegoGUI {
 		btnMusica.setBounds(174, 0, 40, 40);
 		actualizarIconoBoton();
 		panelMusica.add(btnMusica);
+		
+		lblMusicIcon = new JLabel("");
+		lblMusicIcon.setBounds(128, 0, 40, 40);
+		lblMusicIcon.setIcon(new ImageIcon(JuegoGUI.class.getResource(PATH_MUSIC)));
+		panelMusica.add(lblMusicIcon);
 		
 		if(hayMusica)
 			miJuego.iniciarMusica();
