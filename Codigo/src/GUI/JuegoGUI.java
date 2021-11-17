@@ -50,13 +50,15 @@ public class JuegoGUI {
 	private JButton btnMusica;
 	private JLabel lblMusicIcon;
 	private Juego miJuego;
-
+	private JPanel panelNiveles;
+	private JLabel lblTituloNiveles;
+	private JButton btnNiveles;
 	private JLabel lblPocionBomba;
 	private JLabel lblPocionBombaCant;
 
 	private static final String PATH_MUSIC = "/RecursosMenu/musicSymbol.png";
 	private static final String PATH_PLAY = "/RecursosMenu/playButton.png";
-	private static final String PATH_PAUSE = "/RecursosMenu/pauseButton.png";
+	private static final String PATH_PAUSE = "/RecursosMenu/stopButton.png";
 	private boolean hayMusica;
 
 	public void setJuego(Juego j) {
@@ -105,30 +107,8 @@ public class JuegoGUI {
 			        	System.out.println("DERECHA");
 			        	miJuego.pedirActualizarDireccion('E');
 			            break;
-			        case KeyEvent.VK_P:
-			        	Launcher.Launcher.siguienteNivel();
-			        	break;
 			        case KeyEvent.VK_M:
 			        	invertirMusica();
-			        	break;
-			        case KeyEvent.VK_Q:
-			        	System.out.println("INICIAR");
-		        		miJuego.iniciarPartida();
-		        		break;
-			        case KeyEvent.VK_E:
-		        		System.out.println("FINALIZAR");
-		        		miJuego.finalizarPartida();
-			            break;
-			        case KeyEvent.VK_F:
-			        	System.out.println("FANTASMA");
-			        	miJuego.pedirMoverRojo();
-			        	miJuego.pedirMoverRosa();
-			        	miJuego.pedirMoverAzul();
-			        	miJuego.pedirMoverNaranja();
-			            break;
-			        case KeyEvent.VK_SPACE:
-			        	System.out.println("ESPACIO");
-			        	miJuego.pedirMoverPacman();
 			        	break;
 			        case KeyEvent.VK_B:
 			        	System.out.println("LETRA B");
@@ -265,6 +245,36 @@ public class JuegoGUI {
 		lblMusicIcon.setIcon(new ImageIcon(JuegoGUI.class.getResource(PATH_MUSIC)));
 		panelMusica.add(lblMusicIcon);
 		
+		panelNiveles = new JPanel();
+		panelNiveles.setBackground(Color.BLACK);
+		panelNiveles.setForeground(Color.WHITE);
+		panelNiveles.setBorder(new LineBorder(Color.WHITE));
+		panelNiveles.setBounds(660, 485, 200, 147);
+		frame.getContentPane().add(panelNiveles);
+		panelNiveles.setLayout(null);
+		
+		lblTituloNiveles = new JLabel("¿Listo?");
+		lblTituloNiveles.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTituloNiveles.setForeground(Color.WHITE);
+		lblTituloNiveles.setFont(DataHandler.FUENTE_H4);
+		lblTituloNiveles.setBounds(10, 11, 180, 32);
+		panelNiveles.add(lblTituloNiveles);
+		
+		btnNiveles = new JButton("Iniciar");
+		btnNiveles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				miJuego.iniciarPartida();
+				lblTituloNiveles.setVisible(false);
+				btnNiveles.setVisible(false);
+				panelNiveles.setVisible(false);
+			}
+		});
+		btnNiveles.setBackground(Color.DARK_GRAY);
+		btnNiveles.setForeground(Color.WHITE);
+		btnNiveles.setFont(DataHandler.FUENTE_H4);
+		btnNiveles.setBounds(10, 54, 180, 82);
+		panelNiveles.add(btnNiveles);
+		
 		if(hayMusica)
 			miJuego.iniciarMusica();
 		
@@ -365,5 +375,48 @@ public class JuegoGUI {
 	public void cerrar() {
 		frame.setVisible(false);
 		frame.dispose(); //Cierra la ventana.
+	}
+	
+	public void mostrarBotonesPerdio() {
+		lblTituloNiveles.setText("Nivel fallido");
+		btnNiveles.setText("Continuar...");
+		
+		eliminarTodosActionListeners(btnNiveles);
+		btnNiveles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Launcher.Launcher.lanzarPantallaPerdiste();
+			}
+		});
+		
+		panelNiveles.setVisible(true);
+		lblTituloNiveles.setVisible(true);
+		btnNiveles.setVisible(true);
+		
+		miJuego.finalizarPartida();
+	}
+	
+	public void mostrarBotonesGano() {
+		lblTituloNiveles.setText("Nivel superado");
+		btnNiveles.setText("Continuar...");
+		
+		eliminarTodosActionListeners(btnNiveles);
+		btnNiveles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Launcher.Launcher.siguienteNivel();
+			}
+		});
+		
+		panelNiveles.setVisible(true);
+		lblTituloNiveles.setVisible(true);
+		btnNiveles.setVisible(true);
+		
+		miJuego.finalizarPartida();
+	}
+	
+	private void eliminarTodosActionListeners(JButton b) {
+		ActionListener[] aux = b.getActionListeners();
+		
+		for(ActionListener a : aux)
+			b.removeActionListener(a);
 	}
 }

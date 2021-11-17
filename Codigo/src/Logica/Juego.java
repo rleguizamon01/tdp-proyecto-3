@@ -27,12 +27,10 @@ public class Juego {
 	protected int cantPocionesBomba;
 	
 	protected boolean arrancoMusica;
+	protected boolean partidaEnCurso;
 	
 	public Juego(JuegoGUI gui, Jugador j) {
 		miGUI = gui;
-		
-		relojPacman = new RelojPacman(true, 1000, this);
-		relojFantasmas = new RelojFantasmas(true, 1000, this);
 		
 		puntaje = 0;
 		cantPocionesBomba = 0;
@@ -44,7 +42,9 @@ public class Juego {
 		
 		miMP = new MusicPlayer();
 		MusicHandler.inicializarReproductor(miMP);
+		
 		arrancoMusica = false;
+		partidaEnCurso = false;
 	}
 	
 	public void setGrilla(Grilla g) {
@@ -61,34 +61,49 @@ public class Juego {
 	}
 
 	public void iniciarPartida() {
-		pedirActualizarPuntos();
-		
-		relojPacman = new RelojPacman(true, 1000, this);
-		relojFantasmas = new RelojFantasmas(true, 1000, this);
-		
-		relojPacman.setIntervalo(1000 / miGrilla.getPacman().getPaso());
-		relojFantasmas.setIntervalo(1000 / miGrilla.getRojo().getPaso());
-		relojPacman.start();
-		relojFantasmas.start();
-		(new EsperadorChase(miGrilla.getMilisegundosEnScatter(), miGrilla)).start();
+		if(!partidaEnCurso) {
+			pedirActualizarPuntos();
+			
+			relojPacman = new RelojPacman(true, 1000, this);
+			relojFantasmas = new RelojFantasmas(true, 1000, this);
+			
+			relojPacman.setIntervalo(1000 / miGrilla.getPacman().getPaso());
+			relojFantasmas.setIntervalo(1000 / miGrilla.getRojo().getPaso());
+			relojPacman.start();
+			relojFantasmas.start();
+			(new EsperadorChase(miGrilla.getMilisegundosEnScatter(), miGrilla)).start();
+			
+			partidaEnCurso = true;
+		}
 	}
 	
-	public void cargarlePuntosAlJugador() {
+	protected void cargarlePuntosAlJugador() {
 		jugador.setPuntaje(puntaje);
 	}
 	
-	public void frenarTodosLosRelojes() {
-		relojPacman.stop();
-		relojFantasmas.stop();
-		miMP.stop();
+	protected void frenarTodosLosRelojes() {
+		if(partidaEnCurso) {
+			relojFantasmas.stop();
+			relojPacman.stop();
+		}
+		
+		if(arrancoMusica) {
+			miMP.stop();
+		}
 	}
 	
 	public void finalizarPartida() {
+		cargarlePuntosAlJugador();
 		frenarTodosLosRelojes();
-		jugador.setPuntaje(puntaje);
-		highscores.agregarJugador(jugador);
-		System.out.println(highscores);
-		DataHandler.guardar(highscores, Highscores.SCORE_PATH);
+		partidaEnCurso = false;
+	}
+	
+	public void perdio() {
+		miGUI.mostrarBotonesPerdio();
+	}
+	
+	public void gano() {
+		miGUI.mostrarBotonesGano();
 	}
 	
 	public void iniciarMusica() {

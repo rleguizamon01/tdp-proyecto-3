@@ -293,11 +293,11 @@ public class Grilla {
 	}
 	
 	public void gano() {
-		System.out.println("GANASTE!");
+		miJuego.gano();
 	}
 	
 	public void perdio() {
-		System.out.println("F");
+		miJuego.perdio();
 	}
 
 	public void pedirEstablecerEstadoVelocidad(boolean b) {

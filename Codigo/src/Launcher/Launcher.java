@@ -57,9 +57,6 @@ public class Launcher {
 	
 	public static void siguienteNivel() {
 		index++;
-		
-		juego.cargarlePuntosAlJugador();
-		juego.frenarTodosLosRelojes();
 		JGUI.cerrar();
 		
 		if(index == niveles.length) {
@@ -78,6 +75,7 @@ public class Launcher {
 	}
 	
 	protected static void lanzarPantallaFinal(String fin, java.awt.Color c) {
+		JGUI.cerrar();
 		new FinalPartidaGUI(fin, jugador, c);
 	}
 
