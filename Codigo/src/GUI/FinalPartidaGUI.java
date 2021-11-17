@@ -160,7 +160,7 @@ public class FinalPartidaGUI {
 		textArea.setForeground(Color.WHITE);
 		textArea.setBackground(Color.DARK_GRAY);
 		textArea.setFont(DataHandler.FUENTE_H4);
-		textArea.setBounds(10, 104, 434, 424);
+		textArea.setBounds(10, 104, 434, 380);
 		panelHighscores.add(textArea);
 		
 		lblTituloHighscores = new JLabel("HIGHSCORES");
@@ -169,6 +169,20 @@ public class FinalPartidaGUI {
 		lblTituloHighscores.setFont(DataHandler.FUENTE_H2);
 		lblTituloHighscores.setBounds(10, 11, 434, 82);
 		panelHighscores.add(lblTituloHighscores);
+		
+		JButton btnReiniciar = new JButton("Borrar todos los puntajes");
+		btnReiniciar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DataHandler.reiniciarHighscores();
+				hs = DataHandler.getHighscore();
+				mostrarHighscores();
+			}
+		});
+		btnReiniciar.setForeground(Color.WHITE);
+		btnReiniciar.setFont(DataHandler.FUENTE_H4);
+		btnReiniciar.setBackground(Color.DARK_GRAY);
+		btnReiniciar.setBounds(10, 491, 434, 37);
+		panelHighscores.add(btnReiniciar);
 		
 		frmFinal.getRootPane().setDefaultButton(btnCargar);
 		

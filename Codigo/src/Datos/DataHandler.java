@@ -83,4 +83,9 @@ public class DataHandler {
 		
 		return hs;
 	}
+	
+	public static void reiniciarHighscores() {
+		Highscores hs = new Highscores();
+		guardar(hs, Highscores.SCORE_PATH);
+	}
 }
