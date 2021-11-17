@@ -19,12 +19,14 @@ public abstract class Nivel implements EstrategiaNivel{
 	protected Fantasma a;
 	protected Fantasma n;
 	
-	Portal portalAnterior;
+	Portal portalAnterior1;
+	Portal portalAnterior2;
 	
 	public Nivel(Juego j, Grilla g) {
 		ju = j;
 		this.g = g;
-		portalAnterior = null;
+		portalAnterior1 = null;
+		portalAnterior2 = null;
 	}
 	
 	public void strategyInitialize(Bloque[][] m) {
@@ -69,7 +71,11 @@ public abstract class Nivel implements EstrategiaNivel{
 						aux.agregarEntidad(e);
 						break;
 					case '0':
-						e = crearPortal(fila, col);
+						e = crearPortal(fila, col,1);
+						aux.agregarEntidad(e);
+						break;
+					case 'O':
+						e = crearPortal(fila, col,2);
 						aux.agregarEntidad(e);
 						break;
 					case 'A':
@@ -187,16 +193,26 @@ public abstract class Nivel implements EstrategiaNivel{
 		return p;
 	}
 	
-	protected Entidad crearPortal(int fila, int col) {
+	protected Entidad crearPortal(int fila, int col,int num) {
 		Portal p = new Portal(fila, col, g);
-		
-		if(portalAnterior == null) {
-			portalAnterior = p;
+		if(num==1) {
+			if(portalAnterior1 == null) {
+				portalAnterior1 = p;
+			}else {
+				portalAnterior1.setPortalDestino(p);
+				p.setPortalDestino(portalAnterior1);
+				portalAnterior1 = null;
+			}
 		}else {
-			portalAnterior.setPortalDestino(p);
-			p.setPortalDestino(portalAnterior);
-			portalAnterior = null;
+			if(portalAnterior2 == null) {
+				portalAnterior2 = p;
+			}else {
+				portalAnterior2.setPortalDestino(p);
+				p.setPortalDestino(portalAnterior2);
+				portalAnterior2 = null;
+			}
 		}
+		
 		
 		vincularEntidadGrafica(p);
 		
@@ -213,8 +229,11 @@ public abstract class Nivel implements EstrategiaNivel{
 	}
 
 	protected void verificarPortales() {
-		if(portalAnterior != null) { //Se da solo si tenemos una cantidad impar de portales
-			g.removerEntidad(portalAnterior); //Ya no tenemos una cantidad impar de portales :)
+		if(portalAnterior1 != null ) { //Se da solo si tenemos una cantidad impar de portales
+			g.removerEntidad(portalAnterior1); //Ya no tenemos una cantidad impar de portales :)
+		}
+		if(portalAnterior2 != null ) { //Se da solo si tenemos una cantidad impar de portales
+			g.removerEntidad(portalAnterior2); //Ya no tenemos una cantidad impar de portales :)
 		}
 	}
 	
