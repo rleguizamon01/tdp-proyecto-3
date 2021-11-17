@@ -82,13 +82,13 @@ public class Juego {
 	}
 	
 	protected void frenarTodosLosRelojes() {
+		if(arrancoMusica) {
+			miMP.stop();
+		}
+		
 		if(partidaEnCurso) {
 			relojFantasmas.stop();
 			relojPacman.stop();
-		}
-		
-		if(arrancoMusica) {
-			miMP.stop();
 		}
 	}
 	
