@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import Datos.DataHandler;
+import Datos.FontHandler;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -31,7 +31,6 @@ public class MenuGUI {
 	 * Create the application.
 	 */
 	public MenuGUI() {
-		DataHandler.cargarFuentes();
 		initialize();
 	}
 
@@ -59,7 +58,7 @@ public class MenuGUI {
 		frmMenu.getContentPane().setBackground(java.awt.Color.BLACK);
 		
 		JLabel lblTitulo = new JLabel("PACMAN");
-		lblTitulo.setFont(DataHandler.FUENTE_H1);
+		lblTitulo.setFont(FontHandler.FUENTE_H1);
 		lblTitulo.setForeground(java.awt.Color.WHITE);
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setBounds(10, 11, 414, 48);
@@ -83,7 +82,7 @@ public class MenuGUI {
 				lblImagenSkin.setIcon(pares.get(index).getPrimeraComponente());
 			}
 		});
-		btnRight.setFont(DataHandler.FUENTE_H4);
+		btnRight.setFont(FontHandler.FUENTE_H4);
 		btnRight.setBounds(370, 203, 54, 181);
 		frmMenu.getContentPane().add(btnRight);
 		
@@ -99,7 +98,7 @@ public class MenuGUI {
 				lblImagenSkin.setIcon(pares.get(index).getPrimeraComponente());
 			}
 		});
-		btnLeft.setFont(DataHandler.FUENTE_H4);
+		btnLeft.setFont(FontHandler.FUENTE_H4);
 		btnLeft.setBounds(10, 203, 54, 181);
 		frmMenu.getContentPane().add(btnLeft);
 		
@@ -114,14 +113,14 @@ public class MenuGUI {
 		btnJugar.setBackground(Color.DARK_GRAY);
 		btnJugar.setMnemonic(',');
 		btnJugar.setForeground(Color.WHITE);
-		btnJugar.setFont(DataHandler.FUENTE_H2);
+		btnJugar.setFont(FontHandler.FUENTE_H2);
 		btnJugar.setBounds(72, 448, 288, 77);
 		frmMenu.getContentPane().add(btnJugar);
 		
 		JLabel lblSkin = new JLabel("SELECCIONE SKIN");
 		lblSkin.setForeground(java.awt.Color.WHITE);
 		lblSkin.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSkin.setFont(DataHandler.FUENTE_H3);
+		lblSkin.setFont(FontHandler.FUENTE_H3);
 		lblSkin.setBounds(10, 90, 414, 48);
 		frmMenu.getContentPane().add(lblSkin);
 		

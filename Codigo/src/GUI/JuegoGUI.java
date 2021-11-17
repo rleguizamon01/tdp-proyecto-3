@@ -15,7 +15,7 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import Datos.DataHandler;
+import Datos.FontHandler;
 import ResourceHandler.ResourceHandler;
 import Utilidad.Position;
 import javax.swing.JLayeredPane;
@@ -146,12 +146,12 @@ public class JuegoGUI {
 		puntajeTituloLabel.setForeground(java.awt.Color.WHITE);
 		puntajeTituloLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		puntajeTituloLabel.setBounds(10, 11, 176, 38);
-		puntajeTituloLabel.setFont(DataHandler.FUENTE_H3);
+		puntajeTituloLabel.setFont(FontHandler.FUENTE_H3);
 		panelInformacion.add(puntajeTituloLabel);
 		
 		puntajeLabel = new JLabel("0");
 		puntajeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		puntajeLabel.setFont(DataHandler.FUENTE_H3);
+		puntajeLabel.setFont(FontHandler.FUENTE_H3);
 		puntajeLabel.setForeground(java.awt.Color.WHITE);
 		puntajeLabel.setBounds(10, 60, 176, 54);
 		panelInformacion.add(puntajeLabel);
@@ -189,7 +189,7 @@ public class JuegoGUI {
 		
 		lblTituloEfectos = new JLabel("EFFECTS");
 		lblTituloEfectos.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTituloEfectos.setFont(DataHandler.FUENTE_H3);
+		lblTituloEfectos.setFont(FontHandler.FUENTE_H3);
 		lblTituloEfectos.setForeground(java.awt.Color.WHITE);
 		lblTituloEfectos.setBounds(10, 11, 180, 32);
 		panelEfectos.add(lblTituloEfectos);
@@ -208,13 +208,13 @@ public class JuegoGUI {
 		lblPocionBombaCant.setOpaque(true);
 		lblPocionBombaCant.setBounds(27, 63, 25, 25);
 		lblPocionBombaCant.setVisible(false);
-		lblPocionBombaCant.setFont(DataHandler.FUENTE_H4);
+		lblPocionBombaCant.setFont(FontHandler.FUENTE_H4);
 		panelPociones.add(lblPocionBombaCant);
 		
 		JLabel lblTituloPociones = new JLabel("POTIONS");
 		lblTituloPociones.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTituloPociones.setForeground(Color.WHITE);
-		lblTituloPociones.setFont(DataHandler.FUENTE_H3);
+		lblTituloPociones.setFont(FontHandler.FUENTE_H3);
 		lblTituloPociones.setBounds(10, 10, 180, 32);
 		panelPociones.add(lblTituloPociones);
 		
@@ -259,7 +259,7 @@ public class JuegoGUI {
 		lblTituloNiveles = new JLabel("¿Listo?");
 		lblTituloNiveles.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTituloNiveles.setForeground(Color.WHITE);
-		lblTituloNiveles.setFont(DataHandler.FUENTE_H4);
+		lblTituloNiveles.setFont(FontHandler.FUENTE_H4);
 		lblTituloNiveles.setBounds(10, 11, 180, 32);
 		panelNiveles.add(lblTituloNiveles);
 		
@@ -275,7 +275,7 @@ public class JuegoGUI {
 		});
 		btnNiveles.setBackground(Color.DARK_GRAY);
 		btnNiveles.setForeground(Color.WHITE);
-		btnNiveles.setFont(DataHandler.FUENTE_H4);
+		btnNiveles.setFont(FontHandler.FUENTE_H4);
 		btnNiveles.setBounds(10, 54, 180, 82);
 		panelNiveles.add(btnNiveles);
 		

@@ -1,6 +1,6 @@
 package Launcher;
 
-import Datos.DataHandler;
+import Datos.FontHandler;
 import GUI.*;
 import Grilla.*;
 import Highscore.Jugador;
@@ -17,9 +17,8 @@ public class Launcher {
 	private static EstrategiaNivel[] niveles;
 	
 	public static void main(String[] args) {
-		DataHandler.cargarFuentes();
+		FontHandler.cargarFuentes();
 		lanzarMenu();
-		//lanzarJuego(ResourceHandler.SKIN_AMONG_US);
 	}
 	
 	public static void lanzarMenu() {

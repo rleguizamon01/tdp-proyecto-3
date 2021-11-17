@@ -13,6 +13,7 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
 import Datos.DataHandler;
+import Datos.FontHandler;
 import Highscore.Highscores;
 import Highscore.Jugador;
 import Launcher.Launcher;
@@ -91,7 +92,7 @@ public class FinalPartidaGUI {
 		textPane.setBorder(new LineBorder(Color.WHITE));
 		textPane.setForeground(Color.WHITE);
 		textPane.setBackground(Color.DARK_GRAY);
-		textPane.setFont(DataHandler.FUENTE_H3);
+		textPane.setFont(FontHandler.FUENTE_H3);
 		textPane.setBounds(10, 254, 380, 37);
 		
 		//Para centrar el texto:
@@ -106,7 +107,7 @@ public class FinalPartidaGUI {
 		lblPuntajeFue = new JLabel("Tu puntaje fue");
 		lblPuntajeFue.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPuntajeFue.setForeground(Color.WHITE);
-		lblPuntajeFue.setFont(DataHandler.FUENTE_H3);
+		lblPuntajeFue.setFont(FontHandler.FUENTE_H3);
 		lblPuntajeFue.setBounds(10, 11, 380, 82);
 		panelInformacion.add(lblPuntajeFue);
 		
@@ -114,14 +115,14 @@ public class FinalPartidaGUI {
 		lblPuntaje.setBorder(new LineBorder(Color.WHITE));
 		lblPuntaje.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPuntaje.setForeground(Color.WHITE);
-		lblPuntaje.setFont(DataHandler.FUENTE_H3);
+		lblPuntaje.setFont(FontHandler.FUENTE_H3);
 		lblPuntaje.setBounds(10, 104, 380, 52);
 		panelInformacion.add(lblPuntaje);
 		
 		lblIngresaNombre = new JLabel("Tu nombre");
 		lblIngresaNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIngresaNombre.setForeground(Color.WHITE);
-		lblIngresaNombre.setFont(DataHandler.FUENTE_H3);
+		lblIngresaNombre.setFont(FontHandler.FUENTE_H3);
 		lblIngresaNombre.setBounds(10, 161, 380, 82);
 		panelInformacion.add(lblIngresaNombre);
 		
@@ -129,7 +130,7 @@ public class FinalPartidaGUI {
 		btnCargar.setBounds(10, 302, 380, 37);
 		btnCargar.setBackground(Color.DARK_GRAY);
 		btnCargar.setForeground(Color.WHITE);
-		btnCargar.setFont(DataHandler.FUENTE_H4);
+		btnCargar.setFont(FontHandler.FUENTE_H4);
 		btnCargar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cargarHighscore();
@@ -146,7 +147,7 @@ public class FinalPartidaGUI {
 		lblTitulo = new JLabel(titulo);
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setForeground(colorTitulo);
-		lblTitulo.setFont(DataHandler.FUENTE_H1);
+		lblTitulo.setFont(FontHandler.FUENTE_H1);
 		lblTitulo.setBounds(10, 11, 844, 67);
 		panelTitulos.add(lblTitulo);
 		
@@ -159,14 +160,14 @@ public class FinalPartidaGUI {
 		textArea = new JTextArea();
 		textArea.setForeground(Color.WHITE);
 		textArea.setBackground(Color.DARK_GRAY);
-		textArea.setFont(DataHandler.FUENTE_H4);
+		textArea.setFont(FontHandler.FUENTE_H4);
 		textArea.setBounds(10, 104, 434, 380);
 		panelHighscores.add(textArea);
 		
 		lblTituloHighscores = new JLabel("HIGHSCORES");
 		lblTituloHighscores.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTituloHighscores.setForeground(Color.WHITE);
-		lblTituloHighscores.setFont(DataHandler.FUENTE_H2);
+		lblTituloHighscores.setFont(FontHandler.FUENTE_H2);
 		lblTituloHighscores.setBounds(10, 11, 434, 82);
 		panelHighscores.add(lblTituloHighscores);
 		
@@ -179,7 +180,7 @@ public class FinalPartidaGUI {
 			}
 		});
 		btnReiniciar.setForeground(Color.WHITE);
-		btnReiniciar.setFont(DataHandler.FUENTE_H4);
+		btnReiniciar.setFont(FontHandler.FUENTE_H4);
 		btnReiniciar.setBackground(Color.DARK_GRAY);
 		btnReiniciar.setBounds(10, 491, 434, 37);
 		panelHighscores.add(btnReiniciar);
@@ -194,7 +195,7 @@ public class FinalPartidaGUI {
 			}
 		});
 		btnJugarDeNuevo.setForeground(Color.WHITE);
-		btnJugarDeNuevo.setFont(DataHandler.FUENTE_H3);
+		btnJugarDeNuevo.setFont(FontHandler.FUENTE_H3);
 		btnJugarDeNuevo.setBackground(Color.DARK_GRAY);
 		btnJugarDeNuevo.setBounds(10, 446, 380, 82);
 		panelInformacion.add(btnJugarDeNuevo);
