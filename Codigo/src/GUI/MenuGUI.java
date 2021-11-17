@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Toolkit;
 
 import Launcher.Launcher;
 import ResourceHandler.ResourceHandler;
@@ -22,7 +23,7 @@ public class MenuGUI {
 	private static final String PATH_AMONG_US = "/RecursosMenu/amogus.jpg";
 	private static final String PATH_CARPINCHO = "/RecursosMenu/capy.png";
 	
-	private JFrame frame;
+	private JFrame frmMenu;
 	
 	private int index;
 
@@ -48,25 +49,27 @@ public class MenuGUI {
 		
 		int cantImagenes = pares.size();
 		
-		frame = new JFrame();
-		frame.setResizable(false);
-		frame.setBounds(100, 100, 450, 610);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		frame.getContentPane().setBackground(java.awt.Color.BLACK);
+		frmMenu = new JFrame();
+		frmMenu.setTitle("MENU");
+		frmMenu.setResizable(false);
+		frmMenu.setIconImage(Toolkit.getDefaultToolkit().getImage(JuegoGUI.class.getResource("/RecursosMenu/mati.png")));
+		frmMenu.setBounds(100, 100, 450, 610);
+		frmMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMenu.getContentPane().setLayout(null);
+		frmMenu.getContentPane().setBackground(java.awt.Color.BLACK);
 		
 		JLabel lblTitulo = new JLabel("PACMAN");
 		lblTitulo.setFont(DataHandler.FUENTE_H1);
 		lblTitulo.setForeground(java.awt.Color.WHITE);
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setBounds(10, 11, 414, 48);
-		frame.getContentPane().add(lblTitulo);
+		frmMenu.getContentPane().add(lblTitulo);
 		
 		JLabel lblImagenSkin = new JLabel();
 		lblImagenSkin.setIcon(pares.get(index).getPrimeraComponente());
 		lblImagenSkin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblImagenSkin.setBounds(72, 149, 288, 288);
-		frame.getContentPane().add(lblImagenSkin);
+		frmMenu.getContentPane().add(lblImagenSkin);
 		
 		JButton btnRight = new JButton(")");
 		btnRight.setBackground(Color.DARK_GRAY);
@@ -82,7 +85,7 @@ public class MenuGUI {
 		});
 		btnRight.setFont(DataHandler.FUENTE_H4);
 		btnRight.setBounds(370, 203, 54, 181);
-		frame.getContentPane().add(btnRight);
+		frmMenu.getContentPane().add(btnRight);
 		
 		JButton btnLeft = new JButton("(");
 		btnLeft.setMnemonic(',');
@@ -98,13 +101,13 @@ public class MenuGUI {
 		});
 		btnLeft.setFont(DataHandler.FUENTE_H4);
 		btnLeft.setBounds(10, 203, 54, 181);
-		frame.getContentPane().add(btnLeft);
+		frmMenu.getContentPane().add(btnLeft);
 		
 		JButton btnJugar = new JButton("JUGAR");
 		btnJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.setVisible(false);
-				frame.dispose(); //Cierra la ventana.
+				frmMenu.setVisible(false);
+				frmMenu.dispose(); //Cierra la ventana.
 				Launcher.lanzarJuego(pares.get(index).getSegundaComponente());
 			}
 		});
@@ -113,16 +116,16 @@ public class MenuGUI {
 		btnJugar.setForeground(Color.WHITE);
 		btnJugar.setFont(DataHandler.FUENTE_H2);
 		btnJugar.setBounds(72, 448, 288, 77);
-		frame.getContentPane().add(btnJugar);
+		frmMenu.getContentPane().add(btnJugar);
 		
 		JLabel lblSkin = new JLabel("SELECCIONE SKIN");
 		lblSkin.setForeground(java.awt.Color.WHITE);
 		lblSkin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSkin.setFont(DataHandler.FUENTE_H3);
 		lblSkin.setBounds(10, 90, 414, 48);
-		frame.getContentPane().add(lblSkin);
+		frmMenu.getContentPane().add(lblSkin);
 		
-		frame.setVisible(true);
-		frame.getRootPane().setDefaultButton(btnJugar);
+		frmMenu.setVisible(true);
+		frmMenu.getRootPane().setDefaultButton(btnJugar);
 	}
 }

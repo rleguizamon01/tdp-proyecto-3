@@ -22,6 +22,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class JuegoGUI {
 	private static final boolean MUSICA_POR_DEFECTO = false; //Si la musica se vuelve pesada al corregir, cambiar esta constante a false!
@@ -34,7 +35,7 @@ public class JuegoGUI {
 	private static final int ANCHO = 28;//Cantidad de columnas en la grilla
 	private static final int PIXELES = 20;//Tamaño en px de cada celda.
 	
-	private JFrame frame;
+	private JFrame frmPacman;
 	private JLayeredPane panelContenedorDeGrilla; //Seran el piso y las paredes del laberinto
 	private JLabel[][] matrizLabels;
 	private JTextArea txtrCaptadorDeEventos;
@@ -73,15 +74,17 @@ public class JuegoGUI {
 	public void initialize() {
 		hayMusica = MUSICA_POR_DEFECTO;
 		
-		frame = new JFrame();
-		frame.setBounds(22, 0, W, H);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		frame.getContentPane().setBackground(java.awt.Color.BLACK);
+		frmPacman = new JFrame();
+		frmPacman.setIconImage(Toolkit.getDefaultToolkit().getImage(JuegoGUI.class.getResource("/RecursosMenu/mati.png")));
+		frmPacman.setTitle("PACMAN!");
+		frmPacman.setBounds(22, 0, W, H);
+		frmPacman.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmPacman.getContentPane().setLayout(null);
+		frmPacman.getContentPane().setBackground(java.awt.Color.BLACK);
 		
 		txtrCaptadorDeEventos = new JTextArea();
 		txtrCaptadorDeEventos.setBounds(0, 0, 1, 1);
-		frame.getContentPane().add(txtrCaptadorDeEventos);
+		frmPacman.getContentPane().add(txtrCaptadorDeEventos);
 		txtrCaptadorDeEventos.grabFocus();
 		
 		txtrCaptadorDeEventos.addKeyListener(new KeyListener() {
@@ -129,7 +132,7 @@ public class JuegoGUI {
 		panelContenedorDeGrilla = new JLayeredPane();
 		panelContenedorDeGrilla.setBounds(12, 10, ANCHO*PIXELES, ALTO*PIXELES);
 		panelContenedorDeGrilla.setBorder(new LineBorder(java.awt.Color.WHITE));
-		frame.getContentPane().add(panelContenedorDeGrilla);
+		frmPacman.getContentPane().add(panelContenedorDeGrilla);
 		panelContenedorDeGrilla.setLayout(null);
 		
 		panelInformacion = new JPanel();
@@ -137,7 +140,7 @@ public class JuegoGUI {
 		panelInformacion.setBounds(ANCHO*PIXELES+100, 11, 200, 125);
 		panelInformacion.setLayout(null);
 		panelInformacion.setBorder(new LineBorder(java.awt.Color.WHITE));
-		frame.getContentPane().add(panelInformacion);
+		frmPacman.getContentPane().add(panelInformacion);
 				
 		puntajeTituloLabel = new JLabel("SCORE");
 		puntajeTituloLabel.setForeground(java.awt.Color.WHITE);
@@ -158,7 +161,7 @@ public class JuegoGUI {
 		panelEfectos.setBorder(new LineBorder(java.awt.Color.WHITE));
 		panelEfectos.setBounds(660, 147, 200, 200);
 		panelEfectos.setLayout(null);
-		frame.getContentPane().add(panelEfectos);
+		frmPacman.getContentPane().add(panelEfectos);
 		
 		String aux = ResourceHandler.getEfectoVelocidadCI();
 		
@@ -195,7 +198,7 @@ public class JuegoGUI {
 		panelPociones.setBorder(new LineBorder(Color.WHITE));
 		panelPociones.setBackground(Color.BLACK);
 		panelPociones.setBounds(660, 367, 200, 107);
-		frame.getContentPane().add(panelPociones);
+		frmPacman.getContentPane().add(panelPociones);
 		panelPociones.setLayout(null);
 		
 		lblPocionBombaCant = new JLabel();
@@ -226,7 +229,7 @@ public class JuegoGUI {
 		panelMusica = new JPanel();
 		panelMusica.setBackground(Color.BLACK);
 		panelMusica.setBounds(660, 646, 214, 40);
-		frame.getContentPane().add(panelMusica);
+		frmPacman.getContentPane().add(panelMusica);
 		panelMusica.setLayout(null);
 		
 		btnMusica = new JButton("");
@@ -250,7 +253,7 @@ public class JuegoGUI {
 		panelNiveles.setForeground(Color.WHITE);
 		panelNiveles.setBorder(new LineBorder(Color.WHITE));
 		panelNiveles.setBounds(660, 485, 200, 147);
-		frame.getContentPane().add(panelNiveles);
+		frmPacman.getContentPane().add(panelNiveles);
 		panelNiveles.setLayout(null);
 		
 		lblTituloNiveles = new JLabel("¿Listo?");
@@ -280,7 +283,7 @@ public class JuegoGUI {
 			miJuego.iniciarMusica();
 		
 		btnNiveles.grabFocus();
-		frame.getRootPane().setDefaultButton(btnNiveles);
+		frmPacman.getRootPane().setDefaultButton(btnNiveles);
 		
 		matrizLabels = new JLabel[ANCHO][ALTO]; //28 x 36
 	}
@@ -324,7 +327,7 @@ public class JuegoGUI {
 	}
 	
 	public void abrir() {
-		frame.setVisible(true);
+		frmPacman.setVisible(true);
 	}
 	
 	public void agregarLabel(JLabel j) {
@@ -377,8 +380,8 @@ public class JuegoGUI {
 	}
 	
 	public void cerrar() {
-		frame.setVisible(false);
-		frame.dispose(); //Cierra la ventana.
+		frmPacman.setVisible(false);
+		frmPacman.dispose(); //Cierra la ventana.
 	}
 	
 	public void mostrarBotonesPerdio() {

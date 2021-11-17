@@ -2,6 +2,8 @@ package GUI;
 
 import javax.swing.JFrame;
 import java.awt.Color;
+import java.awt.Toolkit;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -35,7 +37,7 @@ public class FinalPartidaGUI {
 	private int longitudMinima;
 	private Color colorTitulo;
 	
-	private JFrame frame;
+	private JFrame frmFinal;
 	private JTextArea textArea;
 	private JPanel panelInformacion;
 	private JLabel lblPuntaje;
@@ -64,23 +66,25 @@ public class FinalPartidaGUI {
 		longitudMinima = 3;
 		
 		initialize();
-		frame.setVisible(true);
+		frmFinal.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.BLACK);
-		frame.getContentPane().setLayout(null);
-		frame.setBounds(100, 100, 900, 700);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmFinal = new JFrame();
+		frmFinal.setTitle("FINAL");
+		frmFinal.setIconImage(Toolkit.getDefaultToolkit().getImage(JuegoGUI.class.getResource("/RecursosMenu/mati.png")));
+		frmFinal.getContentPane().setBackground(Color.BLACK);
+		frmFinal.getContentPane().setLayout(null);
+		frmFinal.setBounds(100, 100, 900, 700);
+		frmFinal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		panelInformacion = new JPanel();
 		panelInformacion.setBackground(Color.BLACK);
 		panelInformacion.setBounds(10, 111, 400, 539);
-		frame.getContentPane().add(panelInformacion);
+		frmFinal.getContentPane().add(panelInformacion);
 		panelInformacion.setLayout(null);
 		
 		textPane = new JTextPane();
@@ -136,7 +140,7 @@ public class FinalPartidaGUI {
 		panelTitulos = new JPanel();
 		panelTitulos.setBackground(Color.BLACK);
 		panelTitulos.setBounds(10, 11, 864, 89);
-		frame.getContentPane().add(panelTitulos);
+		frmFinal.getContentPane().add(panelTitulos);
 		panelTitulos.setLayout(null);
 		
 		lblTitulo = new JLabel(titulo);
@@ -149,7 +153,7 @@ public class FinalPartidaGUI {
 		panelHighscores = new JPanel();
 		panelHighscores.setBackground(Color.BLACK);
 		panelHighscores.setBounds(420, 111, 454, 539);
-		frame.getContentPane().add(panelHighscores);
+		frmFinal.getContentPane().add(panelHighscores);
 		panelHighscores.setLayout(null);
 		
 		textArea = new JTextArea();
@@ -166,7 +170,7 @@ public class FinalPartidaGUI {
 		lblTituloHighscores.setBounds(10, 11, 434, 82);
 		panelHighscores.add(lblTituloHighscores);
 		
-		frame.getRootPane().setDefaultButton(btnCargar);
+		frmFinal.getRootPane().setDefaultButton(btnCargar);
 		
 		btnJugarDeNuevo = new JButton("Jugar de nuevo");
 		btnJugarDeNuevo.addActionListener(new ActionListener() {
@@ -205,7 +209,7 @@ public class FinalPartidaGUI {
 	}
 	
 	private void mostrarPopUpInformacion(String mensaje) {
-		JOptionPane.showMessageDialog(frame, mensaje, "Informacion", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(frmFinal, mensaje, "Informacion", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	private void mostrarHighscores() {
@@ -214,7 +218,7 @@ public class FinalPartidaGUI {
 	}
 	
 	private void cerrar() {
-		frame.setVisible(false);
-		frame.dispose(); //Cierra la ventana.
+		frmFinal.setVisible(false);
+		frmFinal.dispose(); //Cierra la ventana.
 	}
 }
