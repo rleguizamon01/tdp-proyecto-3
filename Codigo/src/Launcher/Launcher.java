@@ -18,8 +18,12 @@ public class Launcher {
 	
 	public static void main(String[] args) {
 		DataHandler.cargarFuentes();
-		new MenuGUI();
+		lanzarMenu();
 		//lanzarJuego(ResourceHandler.SKIN_AMONG_US);
+	}
+	
+	public static void lanzarMenu() {
+		new MenuGUI();
 	}
 	
 	protected static void lanzar() {
@@ -46,7 +50,7 @@ public class Launcher {
 	public static void lanzarJuego(SkinStrategy skinElegida) {
 		ResourceHandler.setStrategy(skinElegida);
 		index = 0;
-		jugador = new Jugador("pepe supremo");
+		jugador = new Jugador("");
 		
 		lanzar();
 	}
@@ -54,14 +58,27 @@ public class Launcher {
 	public static void siguienteNivel() {
 		index++;
 		
-		if(index == niveles.length)
-			index = 0;
-		
 		juego.cargarlePuntosAlJugador();
 		juego.frenarTodosLosRelojes();
 		JGUI.cerrar();
 		
-		lanzar();
+		if(index == niveles.length) {
+			lanzarPantallaGanaste();
+		} else {
+			lanzar();
+		}
+	}
+	
+	public static void lanzarPantallaGanaste() {
+		lanzarPantallaFinal("¡GANASTE!", FinalPartidaGUI.COLOR_GANAR);
+	}
+	
+	public static void lanzarPantallaPerdiste() {
+		lanzarPantallaFinal("PERDISTE :(", FinalPartidaGUI.COLOR_PERDER);
+	}
+	
+	protected static void lanzarPantallaFinal(String fin, java.awt.Color c) {
+		new FinalPartidaGUI(fin, jugador, c);
 	}
 
 }
