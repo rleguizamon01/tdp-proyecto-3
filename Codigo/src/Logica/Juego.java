@@ -100,10 +100,12 @@ public class Juego {
 	
 	public void perdio() {
 		miGUI.mostrarBotonesPerdio();
+		finalizarPartida();
 	}
 	
 	public void gano() {
 		miGUI.mostrarBotonesGano();
+		finalizarPartida();
 	}
 	
 	public void iniciarMusica() {

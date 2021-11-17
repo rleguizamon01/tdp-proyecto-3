@@ -55,6 +55,13 @@ public class Launcher {
 		lanzar();
 	}
 	
+	public static void relanzarJuego() {
+		index = 0;
+		jugador = new Jugador("");
+		
+		lanzar();
+	}
+	
 	public static void siguienteNivel() {
 		index++;
 		JGUI.cerrar();

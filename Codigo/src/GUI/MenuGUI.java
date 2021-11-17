@@ -15,7 +15,6 @@ import java.awt.Color;
 
 import Launcher.Launcher;
 import ResourceHandler.ResourceHandler;
-import ResourceHandler.Skin;
 import ResourceHandler.SkinStrategy;
 import Utilidad.Par;
 

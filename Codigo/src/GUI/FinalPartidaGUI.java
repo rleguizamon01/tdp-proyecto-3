@@ -13,6 +13,7 @@ import javax.swing.text.StyledDocument;
 import Datos.DataHandler;
 import Highscore.Highscores;
 import Highscore.Jugador;
+import Launcher.Launcher;
 
 import javax.swing.JTextPane;
 import java.awt.event.ActionEvent;
@@ -46,6 +47,7 @@ public class FinalPartidaGUI {
 	private JLabel lblPuntajeFue;
 	private JPanel panelHighscores;
 	private JLabel lblTituloHighscores;
+	private JButton btnJugarDeNuevo;
 	
 	/**
 	 * Create the application.
@@ -139,7 +141,7 @@ public class FinalPartidaGUI {
 		
 		lblTitulo = new JLabel(titulo);
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitulo.setForeground(Color.WHITE);
+		lblTitulo.setForeground(colorTitulo);
 		lblTitulo.setFont(DataHandler.FUENTE_H1);
 		lblTitulo.setBounds(10, 11, 844, 67);
 		panelTitulos.add(lblTitulo);
@@ -163,6 +165,22 @@ public class FinalPartidaGUI {
 		lblTituloHighscores.setFont(DataHandler.FUENTE_H2);
 		lblTituloHighscores.setBounds(10, 11, 434, 82);
 		panelHighscores.add(lblTituloHighscores);
+		
+		frame.getRootPane().setDefaultButton(btnCargar);
+		
+		btnJugarDeNuevo = new JButton("Jugar de nuevo");
+		btnJugarDeNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cerrar();
+				Launcher.relanzarJuego();
+			}
+		});
+		btnJugarDeNuevo.setForeground(Color.WHITE);
+		btnJugarDeNuevo.setFont(DataHandler.FUENTE_H3);
+		btnJugarDeNuevo.setBackground(Color.DARK_GRAY);
+		btnJugarDeNuevo.setBounds(10, 446, 380, 82);
+		panelInformacion.add(btnJugarDeNuevo);
+		
 		
 		mostrarHighscores();
 	}
@@ -193,5 +211,10 @@ public class FinalPartidaGUI {
 	private void mostrarHighscores() {
 		String scores = hs.toString();
 		textArea.setText(scores);
+	}
+	
+	private void cerrar() {
+		frame.setVisible(false);
+		frame.dispose(); //Cierra la ventana.
 	}
 }

@@ -9,9 +9,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import Logica.Juego;
+import Launcher.Launcher;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -267,6 +267,7 @@ public class JuegoGUI {
 				lblTituloNiveles.setVisible(false);
 				btnNiveles.setVisible(false);
 				panelNiveles.setVisible(false);
+				txtrCaptadorDeEventos.grabFocus();
 			}
 		});
 		btnNiveles.setBackground(Color.DARK_GRAY);
@@ -277,6 +278,9 @@ public class JuegoGUI {
 		
 		if(hayMusica)
 			miJuego.iniciarMusica();
+		
+		btnNiveles.grabFocus();
+		frame.getRootPane().setDefaultButton(btnNiveles);
 		
 		matrizLabels = new JLabel[ANCHO][ALTO]; //28 x 36
 	}
@@ -380,37 +384,35 @@ public class JuegoGUI {
 	public void mostrarBotonesPerdio() {
 		lblTituloNiveles.setText("Nivel fallido");
 		btnNiveles.setText("Continuar...");
+		btnNiveles.grabFocus();
 		
 		eliminarTodosActionListeners(btnNiveles);
 		btnNiveles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Launcher.Launcher.lanzarPantallaPerdiste();
+				Launcher.lanzarPantallaPerdiste();
 			}
 		});
 		
 		panelNiveles.setVisible(true);
 		lblTituloNiveles.setVisible(true);
 		btnNiveles.setVisible(true);
-		
-		miJuego.finalizarPartida();
 	}
 	
 	public void mostrarBotonesGano() {
 		lblTituloNiveles.setText("Nivel superado");
 		btnNiveles.setText("Continuar...");
+		btnNiveles.grabFocus();
 		
 		eliminarTodosActionListeners(btnNiveles);
 		btnNiveles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Launcher.Launcher.siguienteNivel();
+				Launcher.siguienteNivel();
 			}
 		});
 		
 		panelNiveles.setVisible(true);
 		lblTituloNiveles.setVisible(true);
 		btnNiveles.setVisible(true);
-		
-		miJuego.finalizarPartida();
 	}
 	
 	private void eliminarTodosActionListeners(JButton b) {
