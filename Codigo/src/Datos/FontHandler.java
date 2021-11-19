@@ -3,6 +3,7 @@ package Datos;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
+import java.io.InputStream;
 
 public class FontHandler {
 	public static Font FUENTE_H1;
@@ -12,10 +13,10 @@ public class FontHandler {
 	
 	public static void cargarFuentes() {
 		try {
-			FUENTE_H1 = Font.createFont(Font.TRUETYPE_FONT, new File("./src/Datos/FuenteOchoBit.ttf")).deriveFont(48f);
-			FUENTE_H2 = Font.createFont(Font.TRUETYPE_FONT, new File("./src/Datos/FuenteOchoBit.ttf")).deriveFont(36f);
-			FUENTE_H3 = Font.createFont(Font.TRUETYPE_FONT, new File("./src/Datos/FuenteOchoBit.ttf")).deriveFont(24f);
-			FUENTE_H4 = Font.createFont(Font.TRUETYPE_FONT, new File("./src/Datos/FuenteOchoBit.ttf")).deriveFont(12f);
+			FUENTE_H1 = Font.createFont(Font.TRUETYPE_FONT, FontHandler.class.getResourceAsStream("/Datos/FuenteOchoBit.ttf")).deriveFont(48f);
+			FUENTE_H2 = Font.createFont(Font.TRUETYPE_FONT, FontHandler.class.getResourceAsStream("/Datos/FuenteOchoBit.ttf")).deriveFont(36f);
+			FUENTE_H3 = Font.createFont(Font.TRUETYPE_FONT, FontHandler.class.getResourceAsStream("/Datos/FuenteOchoBit.ttf")).deriveFont(24f);
+			FUENTE_H4 = Font.createFont(Font.TRUETYPE_FONT, FontHandler.class.getResourceAsStream("/Datos/FuenteOchoBit.ttf")).deriveFont(12f);
 
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 
