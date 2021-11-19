@@ -36,13 +36,15 @@ public class DataHandler {
 		try {
 			FileInputStream fileInputStream = new FileInputStream(path);
 		    ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-		    s = (Highscores) objectInputStream.readObject();
+		    s = (Serializable) objectInputStream.readObject();
 		    objectInputStream.close();
-		}  catch (IOException | ClassNotFoundException e) {
+		}  catch (IOException e) {
+			s = null;
+		} catch(ClassNotFoundException e) {
 			s = null;
 			e.printStackTrace();
 		}
-	    
+		
 	    return s;
 	}
 	

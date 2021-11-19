@@ -13,10 +13,10 @@ public class FontHandler {
 	
 	public static void cargarFuentes() {
 		try {
-			FUENTE_H1 = Font.createFont(Font.TRUETYPE_FONT, FontHandler.class.getResourceAsStream("/Datos/FuenteOchoBit.ttf")).deriveFont(48f);
-			FUENTE_H2 = Font.createFont(Font.TRUETYPE_FONT, FontHandler.class.getResourceAsStream("/Datos/FuenteOchoBit.ttf")).deriveFont(36f);
-			FUENTE_H3 = Font.createFont(Font.TRUETYPE_FONT, FontHandler.class.getResourceAsStream("/Datos/FuenteOchoBit.ttf")).deriveFont(24f);
-			FUENTE_H4 = Font.createFont(Font.TRUETYPE_FONT, FontHandler.class.getResourceAsStream("/Datos/FuenteOchoBit.ttf")).deriveFont(12f);
+			FUENTE_H1 = Font.createFont(Font.TRUETYPE_FONT, FontHandler.class.getResourceAsStream("/Datos/FuenteOchoBit.TTF")).deriveFont(48f);
+			FUENTE_H2 = Font.createFont(Font.TRUETYPE_FONT, FontHandler.class.getResourceAsStream("/Datos/FuenteOchoBit.TTF")).deriveFont(36f);
+			FUENTE_H3 = Font.createFont(Font.TRUETYPE_FONT, FontHandler.class.getResourceAsStream("/Datos/FuenteOchoBit.TTF")).deriveFont(24f);
+			FUENTE_H4 = Font.createFont(Font.TRUETYPE_FONT, FontHandler.class.getResourceAsStream("/Datos/FuenteOchoBit.TTF")).deriveFont(12f);
 
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 
