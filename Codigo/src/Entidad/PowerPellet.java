@@ -9,6 +9,7 @@ public class PowerPellet extends EntidadFija {
 	private static final int ANCHO_POWER_PELLET = 19;
 	private static final int ALTO_POWER_PELLET = 19;
 	private static final int DURACION_POWER_PELLET = 8000;
+	private static final String PATH_SFX = "/RecursosSoundEffects/powerpellet.mp3";
 	
 	public PowerPellet(int xAbs, int yAbs, int xZona, int yZona, int w, int h, Grilla g) {
 		super(xAbs, yAbs, xZona, yZona, w, h, g);
@@ -23,6 +24,7 @@ public class PowerPellet extends EntidadFija {
 	@Override
 	public void afectar() {
 		miGrilla.sumarPuntos(puntos);
+		miGrilla.pedirReproducirSFX(PATH_SFX);
 		miGrilla.ponerFantasmasEnRun();
 		miGrilla.pedirEstablecerEstadoPowerPellet(true);
 		EsperadorPowerPellet es = EsperadorPowerPellet.getEsperadorPowerPellet(DURACION_POWER_PELLET, miGrilla);

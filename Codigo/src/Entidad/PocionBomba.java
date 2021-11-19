@@ -11,6 +11,10 @@ public class PocionBomba extends Pocion {
 	private static final int ALTO_P_BOMBA = 20;
 	private static final int DURACION_P_VELOCIDAD = 2000;
 	private static final int RADIO_P_EXPLOSION = 5;
+	
+	public static final String PATH_SFX_PONER = "/RecursosSoundEffects/pocionbomba.mp3";
+	public static final String PATH_SFX_EXPLOTAR = "/RecursosSoundEffects/explosion.mp3";
+	
 	private boolean estaActivada;
 	private int radioExplosion;
 	
@@ -41,6 +45,7 @@ public class PocionBomba extends Pocion {
 	@Override
 	public void afectar() {
 		if(!estaActivada) {
+			miGrilla.pedirReproducirSFX(PATH_SFX_PONER);
 			miGrilla.removerEntidad(this);
 			miGrilla.pedirAlmacenarBomba();
 		}

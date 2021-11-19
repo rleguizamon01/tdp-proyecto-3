@@ -9,6 +9,7 @@ public class PocionVelocidad extends Pocion {
 	private static final int ALTO_P_VELOCIDAD = 20;
 	private static final int DURACION_P_VELOCIDAD = 8000; //en ms
 	private static final float COEFICIENTE = 1.75f;
+	private static final String PATH_SFX = "/RecursosSoundEffects/pocionvelocidad.mp3";
 	
 	protected float coeficienteDeAceleracion;
 	
@@ -29,6 +30,7 @@ public class PocionVelocidad extends Pocion {
 	@Override
 	public void afectar() {
 		miGrilla.sumarPuntos(puntos);
+		miGrilla.pedirReproducirSFX(PATH_SFX);
 		miGrilla.pedirEstablecerEstadoVelocidad(true);
 		int velocidadActual = miGrilla.getPacman().getVelocidad();
 		miGrilla.getPacman().setVelocidad((int) Math.floor(coeficienteDeAceleracion*velocidadActual));

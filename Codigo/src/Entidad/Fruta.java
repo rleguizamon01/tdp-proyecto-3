@@ -7,6 +7,7 @@ public class Fruta extends EntidadFija {
 	private static final int PUNTOS_FRUTA = 2000;
 	private static final int ANCHO_FRUTA = 15;
 	private static final int ALTO_FRUTA = 9;
+	private static final String PATH_SFX = "/RecursosSoundEffects/fruta.mp3";
 
 	public Fruta(int xAbs, int yAbs, int xZona, int yZona, int w, int h, Grilla g) {
 		super(xAbs, yAbs, xZona, yZona, w, h, g);
@@ -21,6 +22,7 @@ public class Fruta extends EntidadFija {
 	@Override
 	public void afectar() {
 		miGrilla.sumarPuntos(puntos);
+		miGrilla.pedirReproducirSFX(PATH_SFX);
 		miGrilla.removerEntidad(this);
 	}
 

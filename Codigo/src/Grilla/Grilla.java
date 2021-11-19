@@ -303,6 +303,7 @@ public class Grilla {
 	}
 	
 	public void posicionarPocionBomba() {
+		miJuego.reproducirSFX(PocionBomba.PATH_SFX_PONER);
 		Position posPacmanZona = pacman.getPosicionZona();
 		Bloque bloquePacman = matrizGrilla[posPacmanZona.getFila()][posPacmanZona.getColumna()];
 
@@ -316,6 +317,7 @@ public class Grilla {
 	}
 	
 	public void pedirExplotarBomba(PocionBomba pocionBombaExplotar) {
+		miJuego.reproducirSFX(PocionBomba.PATH_SFX_EXPLOTAR);
 		pocionesBombaActivas.remove(pocionBombaExplotar);
 		if(pocionesBombaActivas.isEmpty())
 			pacman.alterarEstado(null);
@@ -334,8 +336,6 @@ public class Grilla {
 		
 		miJuego.pedirEstablecerVisibleBomba(false);
 		removerEntidad(pocionBombaExplotar);
-		
-		
 	}
 	
 	private Position esquinaInicialExplosion(PocionBomba pocionBomba) {
@@ -372,5 +372,7 @@ public class Grilla {
 		return esquinaFinal;
 	}
 
-	
+	public void pedirReproducirSFX(String path) {
+		miJuego.reproducirSFX(path);
+	}
 }

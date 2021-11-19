@@ -27,6 +27,7 @@ import java.awt.Toolkit;
 
 public class JuegoGUI {
 	private static final boolean MUSICA_POR_DEFECTO = false; //Si la musica se vuelve pesada al corregir, cambiar esta constante a false!
+	private static final boolean EFECTOS_POR_DEFECTO = true; //Si los sfx se vuelven pesados al corregir, cambiar esta constante a false!
 	
 	//Constantes del tamaño de la ventana:
 	private static final int W = 900;
@@ -64,6 +65,9 @@ public class JuegoGUI {
 	private static final String PATH_PLAY = "/RecursosMenu/playButton.png";
 	private static final String PATH_PAUSE = "/RecursosMenu/stopButton.png";
 	private boolean hayMusica;
+	private boolean haySFX;
+	private JButton btnEfectos;
+	private JLabel lblEffectsIcon;
 
 	public JuegoGUI(Jugador j) {
 		miJugador = j;
@@ -80,6 +84,7 @@ public class JuegoGUI {
 	 */
 	public void initialize() {
 		hayMusica = MUSICA_POR_DEFECTO;
+		haySFX = EFECTOS_POR_DEFECTO;
 		
 		frmPacman = new JFrame();
 		frmPacman.setIconImage(Toolkit.getDefaultToolkit().getImage(JuegoGUI.class.getResource("/RecursosMenu/mati.png")));
@@ -209,13 +214,13 @@ public class JuegoGUI {
 		panelPociones.setLayout(null);
 		
 		lblPocionBombaCant = new JLabel();
-		lblPocionBombaCant.setForeground(Color.BLACK);
+		lblPocionBombaCant.setForeground(new Color(0, 0, 0));
 		lblPocionBombaCant.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPocionBombaCant.setBackground(Color.WHITE);
 		lblPocionBombaCant.setOpaque(true);
-		lblPocionBombaCant.setBounds(27, 63, 25, 25);
+		lblPocionBombaCant.setBounds(60, 53, 40, 39);
 		lblPocionBombaCant.setVisible(false);
-		lblPocionBombaCant.setFont(FontHandler.FUENTE_H4);
+		lblPocionBombaCant.setFont(FontHandler.FUENTE_H3);
 		panelPociones.add(lblPocionBombaCant);
 		
 		JLabel lblTituloPociones = new JLabel("POTIONS");
@@ -255,6 +260,20 @@ public class JuegoGUI {
 		lblMusicIcon.setIcon(new ImageIcon(JuegoGUI.class.getResource(PATH_MUSIC)));
 		panelMusica.add(lblMusicIcon);
 		
+		btnEfectos = new JButton("");
+		btnEfectos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				invertirSFX();
+				txtrCaptadorDeEventos.grabFocus();
+			}
+		});
+		btnEfectos.setBounds(60, 0, 40, 40);
+		panelMusica.add(btnEfectos);
+		
+		lblEffectsIcon = new JLabel("");
+		lblEffectsIcon.setBounds(0, 0, 40, 40);
+		panelMusica.add(lblEffectsIcon);
+		
 		panelNiveles = new JPanel();
 		panelNiveles.setBackground(Color.BLACK);
 		panelNiveles.setForeground(Color.WHITE);
@@ -289,10 +308,27 @@ public class JuegoGUI {
 		if(hayMusica)
 			miJuego.iniciarMusica();
 		
+		miJuego.setSfxHabilitados(haySFX);
+		actualizarIconoBotonSFX();
+		
 		btnNiveles.grabFocus();
 		frmPacman.getRootPane().setDefaultButton(btnNiveles);
 		
 		matrizLabels = new JLabel[ANCHO][ALTO]; //28 x 36
+	}
+	
+	protected void invertirSFX() {
+		haySFX = !haySFX;
+		miJuego.setSfxHabilitados(haySFX);
+		actualizarIconoBotonSFX();
+	}
+	
+	protected void actualizarIconoBotonSFX() {
+		if(haySFX) {
+			btnEfectos.setIcon(new ImageIcon(JuegoGUI.class.getResource(PATH_PAUSE)));
+		} else {
+			btnEfectos.setIcon(new ImageIcon(JuegoGUI.class.getResource(PATH_PLAY)));
+		}
 	}
 	
 	protected void invertirMusica() {
@@ -304,6 +340,8 @@ public class JuegoGUI {
 		}
 		
 		hayMusica = !hayMusica;
+		miJuego.setSfxHabilitados(hayMusica);
+		
 		actualizarIconoBoton();
 	}
 	

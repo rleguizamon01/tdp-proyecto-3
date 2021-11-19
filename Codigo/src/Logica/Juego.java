@@ -9,9 +9,12 @@ import Utilidad.*;
 import Highscore.*;
 import Audio.MusicHandler;
 import Audio.MusicPlayer;
+import Audio.SoundEffectPlayer;
 import Datos.DataHandler;
 
 public class Juego {
+	private static final String PATH_GAME_OVER_SFX = "/RecursosSoundEffects/gameover.mp3";
+	
 	protected JuegoGUI miGUI;
 	protected Grilla miGrilla;
 	
@@ -22,12 +25,14 @@ public class Juego {
 	protected Highscores highscores;
 	
 	protected MusicPlayer miMP;
+	protected SoundEffectPlayer miSFXP;
 	
 	protected int puntaje;
 	protected int cantPocionesBomba;
 	
 	protected boolean arrancoMusica;
 	protected boolean partidaEnCurso;
+	protected boolean sfxHabilitados;
 	
 	public Juego(JuegoGUI gui, Jugador j) {
 		miGUI = gui;
@@ -43,7 +48,10 @@ public class Juego {
 		miMP = new MusicPlayer();
 		MusicHandler.inicializarReproductor(miMP);
 		
+		miSFXP = new SoundEffectPlayer();
+		
 		arrancoMusica = false;
+		sfxHabilitados = false;
 		partidaEnCurso = false;
 	}
 	
@@ -74,6 +82,8 @@ public class Juego {
 			(new EsperadorChase(miGrilla.getMilisegundosEnScatter(), miGrilla)).start();
 			
 			partidaEnCurso = true;
+			
+			miSFXP.start();
 		}
 	}
 	
@@ -89,6 +99,7 @@ public class Juego {
 		if(partidaEnCurso) {
 			relojFantasmas.stop();
 			relojPacman.stop();
+			miSFXP.stop();
 		}
 	}
 	
@@ -99,6 +110,7 @@ public class Juego {
 	}
 	
 	public void perdio() {
+		reproducirSFX(PATH_GAME_OVER_SFX);
 		miGUI.mostrarBotonesPerdio();
 		finalizarPartida();
 	}
@@ -121,6 +133,16 @@ public class Juego {
 	
 	public void pausarMusica() {
 		miMP.stop();
+	}
+	
+	public void setSfxHabilitados(boolean sfx) {
+		sfxHabilitados = sfx;
+	}
+	
+	public void reproducirSFX(String path) {
+		if(sfxHabilitados) {
+			miSFXP.agregarSonido(path);
+		}
 	}
 	
 	public void actualizar(Position p, String path) {

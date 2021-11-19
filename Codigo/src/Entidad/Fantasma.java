@@ -8,7 +8,9 @@ public abstract class Fantasma extends EntidadMovil {
 	protected static final int ANCHO_FANTASMAS = 20;
 	protected static final int ALTO_FANTASMAS = 20;
 	protected static final int PASO_FANTASMAS = 24;
-
+	protected static final int PUNTOS_MUERTE = 1500;
+	private static final String PATH_SFX = "/RecursosSoundEffects/fantasma.mp3";
+	
 	protected EstadoFantasma miEstado;
 	
 	protected Position esquinaBuscada;
@@ -50,6 +52,8 @@ public abstract class Fantasma extends EntidadMovil {
 	}
 	
 	public void ponerEnDead() {
+		miGrilla.sumarPuntos(PUNTOS_MUERTE);
+		miGrilla.pedirReproducirSFX(PATH_SFX);
 		miEstado = dead;
 		invertirDireccion(); //Esto se hace porque pasa en el pacman de verdad.
 		eg.actualizarImagen();
