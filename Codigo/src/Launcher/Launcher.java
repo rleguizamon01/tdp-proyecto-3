@@ -26,7 +26,7 @@ public class Launcher {
 	}
 	
 	protected static void lanzar() {
-		JGUI = new JuegoGUI();
+		JGUI = new JuegoGUI(jugador);
 		
 		juego = new Juego(JGUI, jugador);
 		

@@ -106,20 +106,6 @@ public class Grilla {
 		miJuego.sumarPuntos(p);
 	}
 	
-	public void removerTodasEntidades() {
-		ArrayList<Entidad> todas = new ArrayList<Entidad>();
-		for(Bloque[] b : matrizGrilla) {
-			for(Bloque bb : b) {
-				for(Entidad e : bb) {
-					todas.add(e);
-				}
-			}
-		}
-		for(Entidad e : todas) {
-			removerEntidad(e);
-		}
-	}
-	
 	public void removerEntidad(Entidad e) {
 		Position pos = e.getPosicionZona();
 		Bloque b = matrizGrilla[pos.getFila()][pos.getColumna()];

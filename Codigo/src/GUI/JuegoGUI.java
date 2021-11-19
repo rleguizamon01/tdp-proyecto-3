@@ -16,6 +16,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import Datos.FontHandler;
+import Highscore.Jugador;
 import ResourceHandler.ResourceHandler;
 import Utilidad.Position;
 import javax.swing.JLayeredPane;
@@ -50,18 +51,24 @@ public class JuegoGUI {
 	private JPanel panelMusica;
 	private JButton btnMusica;
 	private JLabel lblMusicIcon;
-	private Juego miJuego;
 	private JPanel panelNiveles;
 	private JLabel lblTituloNiveles;
 	private JButton btnNiveles;
 	private JLabel lblPocionBomba;
 	private JLabel lblPocionBombaCant;
+	
+	private Jugador miJugador;
+	private Juego miJuego;
 
 	private static final String PATH_MUSIC = "/RecursosMenu/musicSymbol.png";
 	private static final String PATH_PLAY = "/RecursosMenu/playButton.png";
 	private static final String PATH_PAUSE = "/RecursosMenu/stopButton.png";
 	private boolean hayMusica;
 
+	public JuegoGUI(Jugador j) {
+		miJugador = j;
+	}
+	
 	public void setJuego(Juego j) {
 		miJuego = j;
 	}
@@ -149,7 +156,7 @@ public class JuegoGUI {
 		puntajeTituloLabel.setFont(FontHandler.FUENTE_H3);
 		panelInformacion.add(puntajeTituloLabel);
 		
-		puntajeLabel = new JLabel("0");
+		puntajeLabel = new JLabel(miJugador.getPuntaje() + "");
 		puntajeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		puntajeLabel.setFont(FontHandler.FUENTE_H3);
 		puntajeLabel.setForeground(java.awt.Color.WHITE);
@@ -228,7 +235,7 @@ public class JuegoGUI {
 
 		panelMusica = new JPanel();
 		panelMusica.setBackground(Color.BLACK);
-		panelMusica.setBounds(660, 646, 214, 40);
+		panelMusica.setBounds(660, 640, 200, 40);
 		frmPacman.getContentPane().add(panelMusica);
 		panelMusica.setLayout(null);
 		
@@ -239,12 +246,12 @@ public class JuegoGUI {
 				txtrCaptadorDeEventos.grabFocus();
 			}
 		});
-		btnMusica.setBounds(174, 0, 40, 40);
+		btnMusica.setBounds(160, 0, 40, 40);
 		actualizarIconoBoton();
 		panelMusica.add(btnMusica);
 		
 		lblMusicIcon = new JLabel("");
-		lblMusicIcon.setBounds(128, 0, 40, 40);
+		lblMusicIcon.setBounds(110, 0, 40, 40);
 		lblMusicIcon.setIcon(new ImageIcon(JuegoGUI.class.getResource(PATH_MUSIC)));
 		panelMusica.add(lblMusicIcon);
 		
