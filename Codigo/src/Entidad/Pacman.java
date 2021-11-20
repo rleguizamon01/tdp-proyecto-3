@@ -48,26 +48,26 @@ public class Pacman extends EntidadMovil {
 		
 		int offset = 2; //Una ayuda para que sea levemente más fácil doblar
 		
-		Position posicionNoSobreponerse = new Position(); //Es la esquina inferior derecha del pacman ya movido.
-		posicionNoSobreponerse.setFila(posicionNueva.getFila() + ancho - 1);
-		posicionNoSobreponerse.setColumna(posicionNueva.getColumna() + alto - 1);
+		Position posicionNuevaEsquinaInferiorDerecha = new Position(); //Es la esquina inferior derecha del pacman ya movido.
+		posicionNuevaEsquinaInferiorDerecha.setFila(posicionNueva.getFila() + ancho - 1);
+		posicionNuevaEsquinaInferiorDerecha.setColumna(posicionNueva.getColumna() + alto - 1);
 		
-		Position posicionNoSobreponerse2 = new Position(); //Es la esquina superior derecha del pacman ya movido.
-		posicionNoSobreponerse2.setFila(posicionNueva.getFila() + ancho - offset);
-		posicionNoSobreponerse2.setColumna(posicionNueva.getColumna());
+		Position posicionNuevaEsquinaSuperiorDerecha = new Position(); //Es la esquina superior derecha del pacman ya movido.
+		posicionNuevaEsquinaSuperiorDerecha.setFila(posicionNueva.getFila() + ancho - offset);
+		posicionNuevaEsquinaSuperiorDerecha.setColumna(posicionNueva.getColumna());
 		
-		Position posicionNoSobreponerse3 = new Position(); //Es la esquina inferior izquierda del pacman ya movido.
-		posicionNoSobreponerse3.setFila(posicionNueva.getFila());
-		posicionNoSobreponerse3.setColumna(posicionNueva.getColumna() + alto - offset);
+		Position posicionNuevaEsquinaInferiorIzquierda = new Position(); //Es la esquina inferior izquierda del pacman ya movido.
+		posicionNuevaEsquinaInferiorIzquierda.setFila(posicionNueva.getFila());
+		posicionNuevaEsquinaInferiorIzquierda.setColumna(posicionNueva.getColumna() + alto - offset);
 		
-		if(!miGrilla.zonaLibre(posicionNueva) || !miGrilla.zonaLibre(posicionNoSobreponerse) ) {
+		if(!miGrilla.zonaLibre(posicionNueva) || !miGrilla.zonaLibre(posicionNuevaEsquinaInferiorDerecha) ) {
 			int f = posicionNueva.getFila() / 20;
 			int c = posicionNueva.getColumna() / 20;
 			Position posicionCentrado = new Position(20*f+(20-ancho)/2, 20*c+(20-alto)/2);
 				
 			posicionNueva = miGrilla.zonaLibre(posicionCentrado) ? posicionCentrado : posicionAbsoluta;
 
-		} else if (!miGrilla.zonaLibre(posicionNoSobreponerse2) || !miGrilla.zonaLibre(posicionNoSobreponerse3)) {
+		} else if (!miGrilla.zonaLibre(posicionNuevaEsquinaSuperiorDerecha) || !miGrilla.zonaLibre(posicionNuevaEsquinaInferiorIzquierda)) {
 			posicionNueva = posicionAbsoluta.clone();
 		}
 		
