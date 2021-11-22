@@ -14,7 +14,6 @@ public class EsperadorBomba extends Esperador {
 	@Override
 	protected void notificar() {
 		grillaNotificada.pedirExplotarBomba(pocionBomba);
-		System.out.println("terminó");
 	}
 
 }

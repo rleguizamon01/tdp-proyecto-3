@@ -14,9 +14,7 @@ public abstract class Esperador extends Thread {
 	public void run() {
 		antesDeEsperar();
 		try {
-			System.out.println("++ Empezó a esperar, tiempo: " + tiempoEsperado);
 			Thread.sleep(tiempoEsperado);
-			System.out.println("++ Terminó de esperar");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
