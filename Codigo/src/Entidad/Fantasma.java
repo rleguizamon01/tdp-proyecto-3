@@ -8,7 +8,7 @@ public abstract class Fantasma extends EntidadMovil {
 	protected static final int ANCHO_FANTASMAS = 20;
 	protected static final int ALTO_FANTASMAS = 20;
 	protected static final int PASO_FANTASMAS = 24;
-	protected static final int PUNTOS_MUERTE = 1500;
+	public    static final int PUNTOS_MUERTE = 5000;
 	private static final String PATH_SFX = "/RecursosSoundEffects/fantasma.mp3";
 	
 	protected EstadoFantasma miEstado;

@@ -6,7 +6,6 @@ import Utilidad.Position;
 import ResourceHandler.ResourceHandler;
 
 public class EstadoRun extends Estado {
-	protected static final int PUNTOS_CUANDO_MUERE = 5000;
 	
 	public EstadoRun(Fantasma f, Grilla g) {
 		super(f, g);
@@ -19,7 +18,7 @@ public class EstadoRun extends Estado {
 
 	@Override
 	public void afectar() {
-		miGrilla.sumarPuntos(PUNTOS_CUANDO_MUERE);
+		miGrilla.sumarPuntos(miFantasma.PUNTOS_MUERTE);
 		miFantasma.ponerEnDead();
 	}
 

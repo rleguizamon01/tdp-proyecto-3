@@ -7,7 +7,7 @@ public class Portal extends EntidadFija {
 	private static final int ANCHO_PORTAL = 20;
 	private static final int ALTO_PORTAL = 20;
 	private static final int PUNTOS_PORTAL = 0;
-	private Portal PORTAL_DESTINO;
+	private Portal portalDestino;
 	private int recargado;
 	
 	public Portal(int xAbs, int yAbs, int xZona, int yZona, int w, int h, Grilla g) {
@@ -25,7 +25,7 @@ public class Portal extends EntidadFija {
 	@Override
 	public void afectar() {
 		if (recargado==5) {
-			miGrilla.teletransportarPacman(PORTAL_DESTINO);
+			miGrilla.teletransportarPacman(portalDestino);
 			descargarDestino();
 		}else
 			recargado++;
@@ -37,7 +37,7 @@ public class Portal extends EntidadFija {
 	}
 
 	public void setPortalDestino(Portal portalDestino) {
-		PORTAL_DESTINO=portalDestino;
+		this.portalDestino = portalDestino;
 	}
 	
 	public void setRecargado(int c) {
@@ -45,6 +45,6 @@ public class Portal extends EntidadFija {
 	}
 	
 	private void descargarDestino() {
-		PORTAL_DESTINO.setRecargado(0);
+		portalDestino.setRecargado(0);
 	}
 }
