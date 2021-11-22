@@ -326,7 +326,6 @@ public class Grilla {
 		Position esquinaFinal = esquinaFinalExplosion(pocionBombaExplotar);
 		
 		for(Fantasma fantasma: misFantasmas) {
-			System.out.println("+ Fantasma: " + fantasma);
 			if(fantasma != null) {
 				Position posicionFantasma = fantasma.getPosicionZona();
 				if(posicionFantasma.estaEntrePosiciones(esquinaInicial, esquinaFinal))

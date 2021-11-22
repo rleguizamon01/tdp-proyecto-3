@@ -71,11 +71,11 @@ public abstract class Nivel implements EstrategiaNivel{
 						aux.agregarEntidad(e);
 						break;
 					case '0':
-						e = crearPortal(fila, col,1);
+						e = crearPortal(fila, col, 1);
 						aux.agregarEntidad(e);
 						break;
 					case 'O':
-						e = crearPortal(fila, col,2);
+						e = crearPortal(fila, col, 2);
 						aux.agregarEntidad(e);
 						break;
 					case 'A':
@@ -142,16 +142,12 @@ public abstract class Nivel implements EstrategiaNivel{
 		vincularEntidadGrafica(m);
 		contadorMonedas++;
 		
-		System.out.println("Moneda en: " + fila + " " + col);
-		
 		return m;
 	}
 	
 	protected Entidad crearPowerPellet(int fila, int col) {
 		PowerPellet p = new PowerPellet(fila, col, g);
 		vincularEntidadGrafica(p);
-		
-		System.out.println("Power Pellet en: " + fila + " " + col);
 		
 		return p;
 	}
@@ -160,17 +156,12 @@ public abstract class Nivel implements EstrategiaNivel{
 		Fruta f = new Fruta(fila, col, g);
 		vincularEntidadGrafica(f);
 		
-
-		System.out.println("Fruta en: " + fila + " " + col);
-		
 		return f;
 	}
 	
 	protected Entidad crearPocionBomba(int fila, int col) {
 		PocionBomba pb = new PocionBomba(fila, col, g);
 		vincularEntidadGrafica(pb);
-		
-		System.out.println("Pocion Bomba en: " + fila + " " + col);
 		
 		return pb;
 	}
@@ -179,8 +170,6 @@ public abstract class Nivel implements EstrategiaNivel{
 		PocionVelocidad pv = new PocionVelocidad(fila, col, g);
 		vincularEntidadGrafica(pv);
 		
-		System.out.println("Pocion Velocidad en: " + fila + " " + col);
-		
 		return pv;
 	}
 	
@@ -188,13 +177,12 @@ public abstract class Nivel implements EstrategiaNivel{
 		Pinchos p = new Pinchos(fila, col, g);
 		vincularEntidadGrafica(p);
 		
-		System.out.println("Pinchos en: " + fila + " " + col);
-		
 		return p;
 	}
 	
 	protected Entidad crearPortal(int fila, int col,int num) {
 		Portal p = new Portal(fila, col, g);
+		
 		if(num==1) {
 			if(portalAnterior1 == null) {
 				portalAnterior1 = p;
