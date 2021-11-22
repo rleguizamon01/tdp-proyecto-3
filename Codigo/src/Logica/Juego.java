@@ -187,8 +187,6 @@ public class Juego {
 			default:
 				miGUI.getLabelPocionBombaCant().setText(cantPocionesBomba - 1 + "");
 		}
-
-		System.out.println("Consumió exitosamente la bomba");
 		cantPocionesBomba--;			
 		pedirEstablecerVisibleBomba(true);
 		miGrilla.posicionarPocionBomba();

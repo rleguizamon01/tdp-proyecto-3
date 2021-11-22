@@ -107,26 +107,21 @@ public class JuegoGUI {
 			    
 				switch( keyCode ) {
 				    case KeyEvent.VK_UP:
-			        	System.out.println("ARRIBA");
 			        	miJuego.pedirActualizarDireccion('N');
 			        	break;
 			        case KeyEvent.VK_DOWN:
-			            System.out.println("ABAJO");
 			            miJuego.pedirActualizarDireccion('S');
 			            break;
 			        case KeyEvent.VK_LEFT:
-			        	System.out.println("IZQUIERDA");
 			        	miJuego.pedirActualizarDireccion('O');
 			            break;
 			        case KeyEvent.VK_RIGHT:
-			        	System.out.println("DERECHA");
 			        	miJuego.pedirActualizarDireccion('E');
 			            break;
 			        case KeyEvent.VK_M:
 			        	invertirMusica();
 			        	break;
 			        case KeyEvent.VK_B:
-			        	System.out.println("LETRA B");
 			        	miJuego.consumirPocionBomba();
 			        	break;
 			    }
