@@ -1,6 +1,7 @@
 package Logica;
 
 import Entidad.EntidadGrafica;
+import Entidad.PocionBomba;
 import Esperador.EsperadorChase;
 import GUI.JuegoGUI;
 import Grilla.Grilla;
@@ -167,6 +168,11 @@ public class Juego {
 	
 	public void pedirEstablecerVisibleBomba(boolean b) {
 		miGUI.establecerVisible(miGUI.getLabelEfectoBomba(), b);
+	}
+	
+	public void pedirEstablecerVisibleExplosionBomba(boolean b, PocionBomba pocionBomba) {
+		miGUI.getLabelExplosionBomba().setLocation(pocionBomba.getPosicionAbsoluta().getFila() - 40, pocionBomba.getPosicionAbsoluta().getColumna() - 40);
+		miGUI.establecerVisible(miGUI.getLabelExplosionBomba(), b);
 	}
 	
 	public void pedirAlmacenarBomba() {

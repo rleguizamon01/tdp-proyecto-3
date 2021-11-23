@@ -316,6 +316,10 @@ public class Grilla {
 		pocionBomba.consumir();
 	}
 	
+	public void pedirEstablecerVisibleExplocionBomba(boolean b, PocionBomba pocionBomba) {
+		miJuego.pedirEstablecerVisibleExplosionBomba(b, pocionBomba);
+	}
+	
 	public void pedirExplotarBomba(PocionBomba pocionBombaExplotar) {
 		miJuego.reproducirSFX(PocionBomba.PATH_SFX_EXPLOTAR);
 		pocionesBombaActivas.remove(pocionBombaExplotar);

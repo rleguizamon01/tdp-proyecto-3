@@ -10,7 +10,7 @@ public class PocionBomba extends Pocion {
 	private static final int ANCHO_P_BOMBA = 20;
 	private static final int ALTO_P_BOMBA = 20;
 	private static final int DURACION_P_VELOCIDAD = 2000;
-	private static final int RADIO_P_EXPLOSION = 5;
+	private static final int RADIO_P_EXPLOSION = 3;
 	
 	public static final String PATH_SFX_PONER = "/RecursosSoundEffects/pocionbomba.mp3";
 	public static final String PATH_SFX_EXPLOTAR = "/RecursosSoundEffects/explosion.mp3";

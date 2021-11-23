@@ -57,6 +57,7 @@ public class JuegoGUI {
 	private JButton btnNiveles;
 	private JLabel lblPocionBomba;
 	private JLabel lblPocionBombaCant;
+	private JLabel lblExplosionBomba;
 	
 	private Jugador miJugador;
 	private Juego miJuego;
@@ -142,6 +143,7 @@ public class JuegoGUI {
 		frmPacman.getContentPane().add(panelContenedorDeGrilla);
 		panelContenedorDeGrilla.setLayout(null);
 		
+		
 		panelInformacion = new JPanel();
 		panelInformacion.setBackground(java.awt.Color.BLACK);
 		panelInformacion.setBounds(ANCHO*PIXELES+100, 11, 200, 125);
@@ -200,6 +202,14 @@ public class JuegoGUI {
 		lblTituloEfectos.setForeground(java.awt.Color.WHITE);
 		lblTituloEfectos.setBounds(10, 11, 180, 32);
 		panelEfectos.add(lblTituloEfectos);
+		
+		aux = ResourceHandler.getExplosionBombaCI();
+		
+		lblExplosionBomba = new JLabel();
+		lblExplosionBomba.setBounds(52, 55, 100, 100);
+		lblExplosionBomba.setIcon(new ImageIcon(JuegoGUI.class.getResource(aux)));
+		lblExplosionBomba.setVisible(false);
+		panelContenedorDeGrilla.add(lblExplosionBomba);
 		
 		JPanel panelPociones = new JPanel();
 		panelPociones.setBorder(new LineBorder(Color.WHITE));
@@ -394,6 +404,10 @@ public class JuegoGUI {
 	
 	public JLabel getLabelPocionBombaCant() {
 		return lblPocionBombaCant;
+	}
+	
+	public JLabel getLabelExplosionBomba() {
+		return lblExplosionBomba;
 	}
 	
 	public void establecerVisible(JLabel j, boolean b) {
