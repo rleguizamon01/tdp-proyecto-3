@@ -65,6 +65,7 @@ public class JuegoGUI {
 	private static final String PATH_MUSIC = "/RecursosMenu/musicSymbol.png";
 	private static final String PATH_PLAY = "/RecursosMenu/playButton.png";
 	private static final String PATH_PAUSE = "/RecursosMenu/stopButton.png";
+	private static final String PATH_EFFECTS = "/RecursosMenu/soundSymbol.png";
 	private boolean hayMusica;
 	private boolean haySFX;
 	private JButton btnEfectos;
@@ -276,7 +277,8 @@ public class JuegoGUI {
 		panelMusica.add(btnEfectos);
 		
 		lblEffectsIcon = new JLabel("");
-		lblEffectsIcon.setBounds(0, 0, 40, 40);
+		lblEffectsIcon.setBounds(10, 0, 40, 40);
+		lblEffectsIcon.setIcon(new ImageIcon(JuegoGUI.class.getResource(PATH_EFFECTS)));
 		panelMusica.add(lblEffectsIcon);
 		
 		panelNiveles = new JPanel();
