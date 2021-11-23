@@ -61,6 +61,10 @@ public abstract class Skin implements SkinStrategy{
 		return pathComun + propertiesComun.getProperty("efectoBomba");
 	}
 	
+	public String getExplosionBombaCI() {
+		return pathComun + propertiesComun.getProperty("explosionBomba");
+	}
+	
 	@Override
 	public String getPortalCI() {
 		return pathComun + propertiesComun.getProperty("portal");

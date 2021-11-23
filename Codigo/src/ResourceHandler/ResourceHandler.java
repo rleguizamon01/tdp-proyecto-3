@@ -34,6 +34,10 @@ public class ResourceHandler {
 		return s.getEfectoPowerPelletCI();
 	}
 	
+	public static String getExplosionBombaCI() {
+		return s.getExplosionBombaCI();
+	}
+	
 	//------------------------------------------------------------------//
 	//						ENTIDADES FIJAS								//
 	//------------------------------------------------------------------//

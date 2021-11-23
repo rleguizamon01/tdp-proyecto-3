@@ -54,4 +54,5 @@ public interface SkinStrategy {
 	public String getEfectoVelocidadCI();
 	public String getEfectoPowerPelletCI();
 	public String getEfectoBombaCI();
+	public String getExplosionBombaCI();
 }
